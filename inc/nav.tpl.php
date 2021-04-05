@@ -19,13 +19,12 @@ foreach ($yokais as $numYokai => $details) {
 $nav['Yōkai'] = $tableau;
 
 ?>
-
+            <div class="hbg-menu">
+                <div class="hbg-item1"></div>
+                <div class="hbg-item2"></div>
+                <div class="hbg-item3"></div>
+            </div>
             <nav>
-                <div id="hbg-menu">
-                    <div id="hbg-item1"></div>
-                    <div id="hbg-item2"></div>
-                    <div id="hbg-item3"></div>
-                </div>
                 <ul class="flex">
                     <?php
                     foreach ($nav as $page => $url) :

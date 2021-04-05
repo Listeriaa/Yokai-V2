@@ -24,12 +24,6 @@ header {
     position: relative;
 }
 
-h1 {
-    font-size: 2em;
-    font-weight: bolder;
-    padding: 0.4em;
-    color: #fbfbfb;
-}
 
 .kanji {
     padding-top: 0.5em;
@@ -66,6 +60,15 @@ a:hover::after {
     transform: scale(1);
 
 }
+h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: left;
+    padding: 0.8em;
+    width:70%;
+    color: #fbfbfb;
+   
+}
 
 /*gestion menu Nav*/
 nav {
@@ -74,20 +77,50 @@ nav {
     border-bottom-left-radius: 10px;
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
     width: 50%;
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: 0;
+    right:-500px;
     padding: 20% 0 10% 0;
+    transition: all .5s ease-out;
+    z-index: -1;
+}
+
+/*Hamburger menu*/
+
+.hbg-menu {
+    position: absolute;
+    margin : 10px;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-between;
+    cursor: pointer;
+    z-index: 2;
 
 }
 
+
+.hbg-item1,
+.hbg-item2,
+.hbg-item3 {
+    width : 100%;
+    background-color: #fbfbfb;
+    display: block;
+    height:5px;
+    border-radius: 5px;
+   transition: all 0.4s ease-out;
+}
 nav ul {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 
-    font-size: 1.5em;
+    font-size: 1.3rem;
 
 }
 
@@ -129,13 +162,38 @@ nav ul li {
 
 .sousmenu:hover ul {
     height: 600%;
-    /* background-image: url(../images/groovepaper/groovepaper.png);*/
+   
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    /*border-bottom: 1px solid #cabca3; */
+    
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
 
 }
+
+nav.open {
+    right:0;
+    z-index: 0;
+}
+
+.hbg-menu.open .hbg-item1{
+    background-color: #655a48;
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+.hbg-menu.open .hbg-item2{
+    
+    transform: translateX(-50px);
+    background: transparent;
+}
+
+.hbg-menu.open .hbg-item3{
+    background-color: #655a48;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+
 
 /* footer en responsive */
 footer {
@@ -167,8 +225,8 @@ footer p {
 
 .left {
     height: 100vh;
-
-    background-image: linear-gradient(rgba(181, 112, 112, 0.6), rgba(48, 49, 53, 0.6)), url(../images/backgroundtengu.jpg);
+    
+    background-image: linear-gradient(rgba(48, 49, 53, 0.7),rgba(181, 112, 112, 0.7) ), url(../images/backgroundtengu.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -256,34 +314,6 @@ footer p {
     margin: 1em 0;
 }
 
-/*Hamburger menu*/
-
-#hbg-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: space-between;
-    cursor: pointer;
-
-}
-
-
-
-
-#hbg-item1,
-#hbg-item2,
-#hbg-item3 {
-    width : 100%;
-    background-color: #655a48;
-    display: block;
-    height:5px;
-    border-radius: 5px;
-}
 
 
 /* media queries pour les grands écrans*/
