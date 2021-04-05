@@ -9,6 +9,11 @@ body {
     background-image: url(../images/arches/arches.png);
     color: #655a48;
     font-family: 'IM Fell Double Pica', serif;
+    background-image: linear-gradient(rgba(48, 49, 53, 0.7),rgba(181, 112, 112, 0.7) ), url(../images/backgroundtengu.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 i {
@@ -21,7 +26,7 @@ i {
 
 header {
     text-align: center;
-    position: relative;
+    
 }
 
 
@@ -79,16 +84,16 @@ nav {
     width: 50%;
     position: fixed;
     top: 0;
-    right:-500px;
+    right:-1000px;
     padding: 20% 0 10% 0;
     transition: all .5s ease-out;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 /*Hamburger menu*/
 
 .hbg-menu {
-    position: absolute;
+    position: fixed;
     margin : 10px;
     top: 20px;
     right: 20px;
@@ -99,7 +104,7 @@ nav {
     justify-content: space-around;
     align-items: space-between;
     cursor: pointer;
-    z-index: 2;
+    z-index: 4;
 
 }
 
@@ -154,8 +159,11 @@ nav ul li {
     width: 100%;
     font-size: 1rem;
     margin-bottom: 5px;
+    
 }
-
+.sousmenu ul li a {
+    z-index: 4;
+}
 .sousmenu:hover {
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
 }
@@ -172,7 +180,7 @@ nav ul li {
 
 nav.open {
     right:0;
-    z-index: 0;
+    z-index: 3;
 }
 
 .hbg-menu.open .hbg-item1{
@@ -224,19 +232,13 @@ footer p {
 /*gestion page accueil en responsive*/
 
 .left {
-    height: 100vh;
-    
-    background-image: linear-gradient(rgba(48, 49, 53, 0.7),rgba(181, 112, 112, 0.7) ), url(../images/backgroundtengu.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
+     height: 50vh;
 
 }
 
 .presentation_responsive,
 .summary_responsive {
-    width: 70%;
+    width: 60%;
     margin: 2em auto;
     padding: 1em;
     text-align: center;
@@ -262,15 +264,17 @@ footer p {
 
 .summary_responsive a {
     width: 50%;
+    position:relative;
     margin-bottom: 1.5em;
     color: #655a48;
     text-decoration: none;
+    z-index: 0;
 }
 
 .image_responsive img {
     width: 70%;
     border-radius: 50%;
-
+    
 }
 
 .presentation_yokai_responsive {
@@ -331,26 +335,25 @@ footer p {
     body {
         font-size: 1.5em;
     }
-
+    nav {
+        width: 25%;
+        padding : 50px 15px 15px 15px;
+    }
     .image_float {
         float: right;
         width: 60%;
         padding: 1em;
     }
+    
 }
 
 @media screen and (min-width: 1200px) {
-    body {
-        display: flex;
-
-
+    nav {
+        width: 15%;
+        padding : 70px 20px 20px 20px;
     }
 
-    .left,
-    .right,
-    .page_article {
-        width: 50%;
-    }
+    
 
     .hidden {
         display: none;
