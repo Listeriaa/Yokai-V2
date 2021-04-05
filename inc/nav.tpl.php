@@ -21,6 +21,11 @@ $nav['Yōkai'] = $tableau;
 ?>
 
             <nav>
+                <div id="hbg-menu">
+                    <div id="hbg-item1"></div>
+                    <div id="hbg-item2"></div>
+                    <div id="hbg-item3"></div>
+                </div>
                 <ul class="flex">
                     <?php
                     foreach ($nav as $page => $url) :

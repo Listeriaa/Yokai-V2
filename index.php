@@ -1,15 +1,11 @@
 <?php
 include 'inc/data.php';
 $title = "Yōkai on the watch";
+include "inc/head.tpl.php";
 include "inc/header.tpl.php";
+include "inc/presentation.tpl.php";
 ?>
-
-
-
-<?php
-include 'inc/left.tpl.php';
-?>
-    
+  
     <section class="right summary_responsive flex">
         <?php
         //je souhaite afficher l'image et le nom de chaque page Yokai sur ma page accueil, gestion du lien vers la page via GET
@@ -31,4 +27,5 @@ include 'inc/left.tpl.php';
     </section>
 
 <?php
-include 'inc/footer/footer.resp.tpl.php';
+include 'inc/footer.tpl.php';
+?>

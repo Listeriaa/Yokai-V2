@@ -14,38 +14,20 @@ $presentation = [
     ]
 ];
 
+if (isset($yokai)):
+    ?>
+        <section class="presentation_yokai_responsive presentation_responsive">
+        <h2><?=$yokais[$yokai]['nom']?> <?=$yokais[$yokai]['japonais']?></h2>
+        </section>
+    <?php
+    
+    else :
+    ?>
+        <section class="presentation_responsive">
+        <h2><?=$presentation[$title]['h2']?></h2>
+        <p><?=$presentation[$title]['p']?></p>
+        </section>
+    <?php
+    endif;
+
 ?>
-
-<body>
-
-    <section class="left">
-        <header>
-            <h1>Yōkai on the watch<span class="kanji">愛 妖怪</span></h1>
-            <?php
-            include 'inc/nav.tpl.php';
-            ?>
-        </header>
-
-        <?php
-        //je veux afficher seulement un h2 contenant le nom francais et japonais si je suis sur une page Yokai.
-        //comme seules ces pages ont une variable $yokai, j'utilise isset 
-        //dans mon IF.
-        if (isset($yokai)):
-            ?>
-                <section class="transparent presentation_yokai_responsive presentation_responsive">
-                <h2><?=$yokais[$yokai]['nom']?> <?=$yokais[$yokai]['japonais']?></h2>
-                </section>
-            <?php
-            
-            else :
-            ?>
-                <section class="transparent presentation_responsive">
-                <h2><?=$presentation[$title]['h2']?></h2>
-                <p><?=$presentation[$title]['p']?></p>
-                </section>
-            <?php
-            endif;
-        include 'inc/footer/footer.screen.tpl.php';
-        ?>
-
-    </section>
