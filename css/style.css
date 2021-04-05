@@ -10,9 +10,11 @@ body {
     color: #655a48;
     font-family: 'IM Fell Double Pica', serif;
 }
+
 i {
     font-style: italic;
 }
+
 .flex {
     display: flex;
 }
@@ -26,7 +28,7 @@ h1 {
     font-size: 2em;
     font-weight: bolder;
     padding: 0.4em;
-    color : #fbfbfb;
+    color: #fbfbfb;
 }
 
 .kanji {
@@ -41,8 +43,8 @@ a {
     padding: 0.5em;
     color: #655a48;
     font-weight: bolder;
-    position:relative;
-  
+    position: relative;
+
 }
 
 a::after {
@@ -50,58 +52,62 @@ a::after {
     content: '';
     transform: scale(0);
     transform-origin: 50 0;
-    bottom:0;
-    left : 0;
-    right : 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 0.05em;
     background: #655a48;
     opacity: 0.7;
     z-index: 1;
     transition: transform 0.3s ease-in;
 }
+
 a:hover::after {
-    transform:scale(1);
+    transform: scale(1);
 
 }
+
 /*gestion menu Nav*/
 nav {
     background-image: url(../images/groovepaper/groovepaper.png);
     margin: 0 auto;
     border-bottom-left-radius: 10px;
-    box-shadow: -3px 3px 9px rgba(0, 0, 0, 1);
-    width : 50%;
-    position : absolute;
-    top : 0;
-    right:0;
-    padding:10% 0;
-    
+    box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
+    width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20% 0 10% 0;
+
 }
 
 nav ul {
-    display:flex;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    
+
     font-size: 1.5em;
-    
+
 }
 
 nav ul li {
     width: 100%;
-    
+
 }
 
 /*gestion menu déroulant*/
-.sousmenu{
+.sousmenu {
     position: relative;
+    transition: .8s all .3s;
 }
+
 .sousmenu ul {
     position: absolute;
     z-index: 1000;
     width: 80%;
-    top : 100%;
-    left:10%;
+    top: 100%;
+    left: 10%;
     height: 0;
     overflow: hidden;
     -moz-transition: .8s all .3s;
@@ -117,13 +123,17 @@ nav ul li {
     margin-bottom: 5px;
 }
 
-.sousmenu:hover ul {
-    height: 600%; 
-    /* background-image: url(../images/groovepaper/groovepaper.png);*/
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px; 
-    /*border-bottom: 1px solid #cabca3; */
+.sousmenu:hover {
+    box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
+}
 
+.sousmenu:hover ul {
+    height: 600%;
+    /* background-image: url(../images/groovepaper/groovepaper.png);*/
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /*border-bottom: 1px solid #cabca3; */
+    box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
 
 }
 
@@ -157,14 +167,15 @@ footer p {
 
 .left {
     height: 100vh;
-    
+
     background-image: linear-gradient(rgba(181, 112, 112, 0.6), rgba(48, 49, 53, 0.6)), url(../images/backgroundtengu.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-  
-    
+
+
 }
+
 .presentation_responsive,
 .summary_responsive {
     width: 70%;
@@ -245,6 +256,36 @@ footer p {
     margin: 1em 0;
 }
 
+/*Hamburger menu*/
+
+#hbg-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-between;
+    cursor: pointer;
+
+}
+
+
+
+
+#hbg-item1,
+#hbg-item2,
+#hbg-item3 {
+    width : 100%;
+    background-color: #655a48;
+    display: block;
+    height:5px;
+    border-radius: 5px;
+}
+
+
 /* media queries pour les grands écrans*/
 @media screen and (min-width: 500px) {
 
@@ -271,7 +312,7 @@ footer p {
 @media screen and (min-width: 1200px) {
     body {
         display: flex;
-        
+
 
     }
 
@@ -293,7 +334,7 @@ footer p {
 
     .left {
         height: 100vh;
-        
+
         background-image: url(../images/backgroundtengu.jpg);
         background-repeat: no-repeat;
         background-position: center;
@@ -301,7 +342,7 @@ footer p {
         display: flex;
         flex-flow: column;
         justify-content: space-between;
-        
+
     }
 
     h1 {
@@ -330,17 +371,17 @@ footer p {
 
     .descriptif_article_responsive {
         padding: 2em;
-        height:100vh;
-       
+        height: 100vh;
+
     }
 
     .page_article article {
         background-image: url(../images/arches/arches.png);
         width: 100%;
-        
+
         margin: 0;
         box-shadow: none;
-        border:none;
+        border: none;
         padding-bottom: 2em;
     }
 
