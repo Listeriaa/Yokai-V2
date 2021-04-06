@@ -24,13 +24,13 @@ $nav['Yōkai'] = $tableau;
                 <div class="hbg-item2"></div>
                 <div class="hbg-item3"></div>
             </div>
-            <nav>
+            <nav class="flex">
                 <ul class="flex">
                     <?php
                     foreach ($nav as $page => $url) :
                         if (is_array($url)) :
                     ?>
-                            <li class="sousmenu"><a class="hover_nav" href="#" ><?= $page ?></a>
+                            <li class="sousmenu"><a class="hover_nav arrow" href="#" ><?= $page ?></a>
                                 <ul >
                                     <?php
                                     foreach ($url as $nom => $url_article) :
