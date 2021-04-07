@@ -68,12 +68,12 @@ a:hover::after {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 3.5rem;
     font-weight: bolder;
     text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
     padding: 0.8em;
     position: relative;
-    top: 40vh;
+    top: 30vh;
     width:100%;
     color: #fbfbfb;
    
@@ -87,8 +87,8 @@ h1 {
 .hbg-menu {
     position: fixed;
     margin : 10px;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 3px;
     width: 40px;
     height: 40px;
     display: flex;
@@ -121,7 +121,7 @@ nav {
     position: fixed;
     top: 0;
     right:-1000px;
-    padding: 1em 0 1em 0;
+    height: 90px;
     transition: all .5s ease-out;
     /* z-index: -1; */
 }
@@ -129,15 +129,14 @@ nav ul {
     
     flex-flow: row wrap;
     align-items: center;
-
-    font-size: 1.3rem;
+    
 
 }
 
-nav ul li {
+ nav ul li {
     width: 33%;
-
-}
+    font-size: 1rem;
+ }
 
 /*gestion menu déroulant*/
 .sousmenu {
@@ -326,9 +325,22 @@ footer p {
     margin: 1em 0;
 }
 
-
+.show {
+    display: line;
+}
+.hidden {
+    display: none;
+}
 
 /* media queries pour les grands écrans*/
+
+@media screen and (min-width: 370px) {
+    nav ul li  {
+        font-size: 1.3rem;
+    }
+    
+
+}
 @media screen and (min-width: 500px) {
 
     .image_float {
@@ -343,6 +355,9 @@ footer p {
     body {
         font-size: 1.5em;
     }
+    h1 {
+        font-size: 5rem;
+    }
     .hbg-menu {
         display: none;
     }
@@ -352,28 +367,27 @@ footer p {
     }
     nav ul {
         justify-content: space-around;
+        width : 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        font-size: 1.8rem;
+        width: 33%;
     }
     .image_float {
         float: right;
         width: 60%;
         padding: 1em;
     }
-    
+    .sousmenu ul li{
+        font-size: 1.3rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
-    nav {
-        width: 15%;
-        padding : 70px 20px 20px 20px;
-    }
+ 
 
-    
-    .show {
-        display: block;
-    }
-    .hidden {
-        display: none;
-    }
 
     .footer_screen {
         display: block;
