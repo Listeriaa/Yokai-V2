@@ -181,7 +181,10 @@ nav ul {
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
 
 }
-
+.up, .down {
+    padding-left: 0.5rem;
+    transition: .8s all .3s;
+}
 nav.open {
     right:0;
     z-index: 3;
@@ -325,11 +328,10 @@ footer p {
     margin: 1em 0;
 }
 
-.show {
-    display: line;
-}
+
 .hidden {
     display: none;
+    
 }
 
 /* media queries pour les grands écrans*/
