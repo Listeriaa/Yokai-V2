@@ -168,23 +168,31 @@ nav ul {
 .sousmenu ul li a {
     z-index: 4;
 }
-.sousmenu:hover {
+.sousmenu.click {
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
 }
 
-.sousmenu:hover ul {
+.sousmenu-ul.click {
     height: 600%;
-   
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
 
 }
-.up, .down {
-    padding-left: 0.5rem;
-    transition: .8s all .3s;
+.yokai-nav {
+    position: relative;
+    text-align: left;
 }
+.up, .down {
+    
+    transition: .8s all .3s;
+    opacity: 1;
+    position:absolute;
+    display: inline-block;
+    right: 10%;
+    
+}
+
 nav.open {
     right:0;
     z-index: 3;
@@ -330,8 +338,8 @@ footer p {
 
 
 .hidden {
-    display: none;
     
+    opacity:0;
 }
 
 /* media queries pour les grands écrans*/
@@ -377,6 +385,13 @@ footer p {
         font-size: 1.8rem;
         width: 33%;
     }
+    .yokai-nav {
+        position: relative;
+        text-align: center;
+    }
+    .up, .down {
+        right: 20%;
+    }
     .image_float {
         float: right;
         width: 60%;
@@ -389,7 +404,9 @@ footer p {
 
 @media screen and (min-width: 1200px) {
  
-
+    .up, .down {
+        right: 20%;
+    }
 
     .footer_screen {
         display: block;

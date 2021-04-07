@@ -2,10 +2,12 @@ const app = {
     
     init: function() {
         let hbgButton = document.querySelector(".hbg-menu");
-        let sousMenu = document.querySelector('.sousmenu .hover_nav');
+        let sousMenu = document.querySelector('.sousmenu .yokai-nav');
         let isOpen = false;
         hbgButton.addEventListener("click", app.handleHamburgerMenu);
-        sousMenu.addEventListener('hover', app.moveArrow);
+        
+        sousMenu.addEventListener('click', app.handleSousmenu);
+        
     },
     handleHamburgerMenu: function(){
         let hbgButton = document.querySelector(".hbg-menu");
@@ -28,6 +30,23 @@ const app = {
         console.log(down);
         up.classList.toggle('hidden');
         down.classList.toggle('hidden');
+        let sousMenuUl = document.querySelector('.sousmenu-ul');
+        sousMenuUl.addEventListener('mouseleave',(() => {
+            up.classList.add('hidden');
+            down.classList.remove('hidden');
+        }))
+    },
+    handleSousmenu: function () {
+        let sousMenu = document.querySelector('.sousmenu .yokai-nav');
+        let sousMenuUl = document.querySelector('.sousmenu-ul');
+        app.moveArrow();
+        sousMenu.classList.toggle('click');
+        sousMenuUl.classList.toggle('click');
+      
+        sousMenuUl.addEventListener('mouseleave',(() => {
+            sousMenuUl.classList.remove('click');
+
+        }))
     }
 }
 

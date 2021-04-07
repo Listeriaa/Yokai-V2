@@ -19,6 +19,7 @@ foreach ($yokais as $numYokai => $details) {
 $nav['Yōkai'] = $tableau;
 
 ?>
+            <div><i class="fas fa-home"></i></div>
             <div class="hbg-menu">
                 <div class="hbg-item1"></div>
                 <div class="hbg-item2"></div>
@@ -30,14 +31,14 @@ $nav['Yōkai'] = $tableau;
                     foreach ($nav as $page => $url) :
                         if (is_array($url)) :
                     ?>
-                            <li class="sousmenu"><a class="hover_nav" href="#" ><?= $page ?><span class="up hidden">&#11165;</span><span class="down">&#11167;</span></a>
-                                <ul >
+                            <li class="sousmenu"><a class="yokai-nav" href="#" ><?= $page ?><span class="up hidden">&#11165;</span><span class="down">&#11167;</span></a>
+                                <ul class="sousmenu-ul">
                                     <?php
                                     foreach ($url as $nom => $url_article) :
                                     ?>
 
 
-                                        <li><a class="hover_nav" href="<?= $url_article ?>"><?= $nom ?></a></li>
+                                        <li><a  href="<?= $url_article ?>"><?= $nom ?></a></li>
 
                                     <?php
                                     endforeach;
