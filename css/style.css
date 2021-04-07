@@ -116,19 +116,17 @@ h1 {
 nav {
     background-image: url(../images/groovepaper/groovepaper.png);
     margin: 0 auto;
-    
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
     width: 100%;
     position: fixed;
     top: 0;
     right:-1000px;
-    
     padding: 1em 0 1em 0;
     transition: all .5s ease-out;
     /* z-index: -1; */
 }
 nav ul {
-    display: flex;
+    
     flex-flow: row wrap;
     align-items: center;
 
@@ -345,9 +343,15 @@ footer p {
     body {
         font-size: 1.5em;
     }
+    .hbg-menu {
+        display: none;
+    }
     nav {
-        width: 25%;
-        padding : 50px 15px 15px 15px;
+        position:fixed;
+        right:0;
+    }
+    nav ul {
+        justify-content: space-around;
     }
     .image_float {
         float: right;
@@ -364,7 +368,9 @@ footer p {
     }
 
     
-
+    .show {
+        display: block;
+    }
     .hidden {
         display: none;
     }
