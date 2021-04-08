@@ -16,9 +16,9 @@ include "inc/presentation.tpl.php";
                     <div class="image image_responsive">
                         <img src="images/<?= $detail['image'] ?>" alt="illustration de <?= $detail['nom'] ?>">
                     </div>
-                    <h2 class="titre_image black">
+                    <h3 class="titre_image black">
                         <?= $detail['nom'] ?>
-                    </h2>
+                    </h3>
                 </article>
             </a>
         <?php

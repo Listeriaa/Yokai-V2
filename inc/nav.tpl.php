@@ -19,7 +19,7 @@ foreach ($yokais as $numYokai => $details) {
 $nav['Yōkai'] = $tableau;
 
 ?>
-            <div><i class="fas fa-home"></i></div>
+            <div class="div-home"><i class="fas fa-home"></i></div>
             <div class="hbg-menu">
                 <div class="hbg-item1"></div>
                 <div class="hbg-item2"></div>
