@@ -371,7 +371,12 @@ footer p {
         width: 60%;
         padding: 1em;
     }
+    nav>ul {
+        width:80%;
+    }
+    .yokai-nav {
 
+        text-align: center;
 }
 
 @media screen and (min-width: 700px) {
@@ -381,9 +386,10 @@ footer p {
     h1 {
         font-size: 5rem;
     }
-    .hbg-menu {
+    .hbg-menu,.div-home {
         display: none;
     }
+    
     nav {
         position:fixed;
         right:0;
@@ -400,7 +406,7 @@ footer p {
     }
     .yokai-nav {
         position: relative;
-        text-align: center;
+        
         border-left: #655a48 solid 0.5px;
         border-right: #655a48 solid 0.5px;
 
