@@ -36,10 +36,7 @@ $nav['Yōkai'] = $tableau;
                                     <?php
                                     foreach ($url as $nom => $url_article) :
                                     ?>
-
-
                                         <li><a  href="<?= $url_article ?>"><?= $nom ?></a></li>
-
                                     <?php
                                     endforeach;
                                     ?>
