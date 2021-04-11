@@ -169,6 +169,7 @@ nav {
     height: 90px;
     transition: all .5s ease-out;
     text-align: center;
+    z-index:1;
 }
 nav ul {
     
