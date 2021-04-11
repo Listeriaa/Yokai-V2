@@ -16,14 +16,14 @@ $presentation = [
 
 if (isset($yokai)):
     ?>
-        <section class="presentation_yokai_responsive presentation_responsive">
+        <section  class="presentation_yokai_responsive">
         <h3><?=$yokais[$yokai]['nom']?> <?=$yokais[$yokai]['japonais']?></h3>
         </section>
     <?php
     
     else :
     ?>
-        <section class="presentation_responsive">
+        <section id ="ancre" class="presentation_responsive">
         <h3><?=$presentation[$title]['h3']?></h3>
         <p><?=$presentation[$title]['p']?></p>
         </section>

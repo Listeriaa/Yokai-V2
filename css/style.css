@@ -3,7 +3,9 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 body {
     background-color: #fafafa;
     background-image: url(../images/arches/arches.png);
@@ -26,7 +28,6 @@ i {
 
 header {
     text-align: center;
-    
     height: 100vh;
 }
 
@@ -35,7 +36,24 @@ header {
     padding-top: 0.5em;
     display: block;
 }
+/* flèches scroll*/
+.div-scroll {
+    position:absolute;
+    top :70%;
+    left : 50%;
 
+}
+.span-scroll {
+    display: block;
+    box-shadow: 3px 0px 9px rgba(0, 0, 0, 1);
+    width : 40px;
+    height: 40px;
+    border-bottom: #ececec solid 5px;
+    border-right: #ececec solid 5px;
+    border-radius: 5px;
+    transform: rotate(45deg);
+    margin:-10px;
+}
 /* CSS des liens <a>*/
 a {
     display: block;
@@ -47,33 +65,36 @@ a {
 
 }
 
-a::after {
+a::before {
     position: absolute;
     content: '';
-    transform: scale(0);
-    transform-origin: 50 0;
+    transform: scaleX(0);
+    transform-origin: center;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 0.1em;
+    height: 2px;
+    overflow: hidden;
     background: #655a48;
     opacity: 0.7;
-    z-index: 1;
+
     transition: all 0.3s ease-in;
 }
 
-a:hover::after {
-    transform: scale(1);
-
+a:hover::before {
+    transform: scaleX(1);
+    
 }
-
+.a-none::before {
+    height: 0;
+}
 h1 {
     font-size: 3.3rem;
     font-weight: bolder;
     text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
     padding: 0.8em;
     position: relative;
-    top: 30vh;
+    top: 25vh;
     width:100%;
     color: #ececec;
    
@@ -87,10 +108,21 @@ h1 {
     z-index: 2;
     cursor: pointer;
 }
-.fa-home {
+.fa-home,
+.fa-angle-double-down {
     color:#ececec;
     font-size: 2.5rem;
     text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+}
+/* flèches scroll*/
+.div-scroll {
+    position:absolute;
+    top :70%;
+    left : 45%;
+
+}
+.fa-angle-double-down{
+    font-size: 4rem;
 }
 /*gestion menu Nav*/
 
@@ -375,10 +407,10 @@ footer p {
         width:80%;
     }
     .yokai-nav {
-
-        text-align: center;
+        
+        padding-left: 25%;
 }
-
+}
 @media screen and (min-width: 700px) {
     body {
         font-size: 1.5em;
@@ -406,7 +438,8 @@ footer p {
     }
     .yokai-nav {
         position: relative;
-        
+        padding-left: 0;
+        text-align: center;
         border-left: #655a48 solid 0.5px;
         border-right: #655a48 solid 0.5px;
 
