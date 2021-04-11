@@ -2,7 +2,9 @@
 include 'inc/data.php';
 $title = "Yōkai on the watch";
 include "inc/head.tpl.php";
-include "inc/header.tpl.php";
+include "inc/hbg-home.tpl.php";
+include "inc/accueil.tpl.php";
+include "inc/nav.tpl.php";
 include "inc/presentation.tpl.php";
 ?>
   

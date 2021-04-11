@@ -23,7 +23,8 @@ if (isset($yokai)):
     
     else :
     ?>
-        <section id ="ancre" class="presentation_responsive">
+        <div id="ancre"></div>
+        <section class="presentation_responsive">
         <h3><?=$presentation[$title]['h3']?></h3>
         <p><?=$presentation[$title]['p']?></p>
         </section>
