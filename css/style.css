@@ -352,6 +352,7 @@ footer p {
 }
 .titre_image {
     font-size: 1rem;
+    padding-top:0.5rem;
 }
 .presentation_yokai_responsive {
     display: none;
@@ -470,6 +471,13 @@ footer p {
     .up, .down {
         right: 20%;
     }
+    .image_responsive img {
+        width: 80%;
+    
+    }
+    .titre_image {
+        font-size: 1.5rem;
+    }
     .image_float {
         float: right;
         width: 60%;
@@ -491,37 +499,32 @@ footer p {
         width: 100%;
 
     }
-
-    .left {
-        height: 100vh;
-
-        background-image: url(../images/backgroundtengu.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-
+    .presentation_responsive p {
+        font-size: 1.5rem;
+        line-height: 2rem;
     }
-
+    .presentation_responsive h3,
+    .titre_image {
+        font-size: 2rem;
+    }
+    .image_responsive img {
+        width: 60%;
+        border-radius: 50%;
+    
+    }
     h1 {
         color: #eee9d5;
     }
 
-    .right,
+    /*
     .page_article {
         border-left: 1px solid #cabca3;
         margin-left: 50%;
         margin-top: 0;
         margin-bottom: 0em;
         background-image: url(../images/arches/arches.png);
-    }
+    } */
 
-    .presentation_responsive {
-        background: none;
-
-    }
 
     .presentation_yokai_responsive {
         display: block;

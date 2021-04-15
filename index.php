@@ -8,7 +8,7 @@ include "inc/nav.tpl.php";
 include "inc/presentation.tpl.php";
 ?>
   
-    <section class="right summary_responsive flex">
+    <section class="summary_responsive flex">
         <?php
         //je souhaite afficher l'image et le nom de chaque page Yokai sur ma page accueil, gestion du lien vers la page via GET
         foreach ($yokais as $yokai => $detail) :
