@@ -361,13 +361,15 @@ footer p {
 /*page Yokai en responsive*/
 .page_article article {
     background-image: url(../images/groovepaper/groovepaper.png);
-    width: 85%;
-    margin: 2em auto;
+    width:60%;
+    margin: 80px auto;
     text-align: center;
     border: 1px solid #cabca3;
     box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
 }
-
+.page_article h2{
+    padding:1rem;
+}
 .page_article h3 {
     padding: 1.2em;
     text-transform: uppercase;
@@ -388,7 +390,7 @@ footer p {
 .descriptif_article_responsive span {
     text-transform: uppercase;
     font-weight: bolder;
-
+    text-align: center;
 }
 
 .descriptif_article_responsive p {
@@ -539,7 +541,7 @@ footer p {
     }
 
     .page_article article {
-        background-image: url(../images/arches/arches.png);
+        
         width: 100%;
 
         margin: 0;
