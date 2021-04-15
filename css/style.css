@@ -119,14 +119,17 @@ h1 {
     position:absolute;
     top :70%;
     left : 45%;
+    width:100px;
+    height: 100px;
     
 }
 .fa-angle-double-down{
     font-size: 4rem;
+    transition: transform 0.3s ;
 }
 
-.fa-angle-double-down:hover{
-    
+.div-scroll:hover .fa-angle-double-down{
+    transform: translateY(20px);
 }    
 /*gestion menu Nav*/
 
