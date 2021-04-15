@@ -30,7 +30,9 @@ header {
     text-align: center;
     height: 100vh;
 }
-
+.construct {
+    height: 90vh;
+}
 
 .kanji {
     padding-top: 0.5em;
@@ -576,6 +578,6 @@ footer p {
     .construction {
         height: 100vh;
         padding-top: 20%;
-        border-left: 1px solid #cabca3;
+        
     }
 }
