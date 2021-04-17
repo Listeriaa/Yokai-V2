@@ -576,6 +576,10 @@ footer p {
         padding-top: 20%;
         
     }
-
+    .clearfix::after{
+        content: "";
+        display: table;
+        clear: both;
+      }
     
 }
