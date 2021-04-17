@@ -289,9 +289,11 @@ footer {
 
 .a_footer {
     display: inline;
+    transition: all 0.2s  ease-in;
 }
 .a_footer:hover {
-
+    color:#b26e6e;
+    
 }
 footer p {
     padding-top: 0.8em;
