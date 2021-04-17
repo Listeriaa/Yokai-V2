@@ -509,11 +509,7 @@ footer p {
         right: 20%;
     }
 
-    .footer_screen {
-        display: block;
-        width: 100%;
 
-    }
     .presentation_responsive p {
         font-size: 1.5rem;
         line-height: 2rem;
@@ -539,8 +535,7 @@ footer p {
 
     .descriptif_article_responsive {
         padding: 2em;
-        height: 100vh;
-
+        
     }
     .page_article h2 {
         font-size: 3rem;
@@ -548,9 +543,9 @@ footer p {
     .page_article article {
         
         width: 80%;
-        margin: 0 auto;
+        margin: 2em auto;
         border: none;
-        padding-bottom: 2em;
+        
     }
     .descriptif_article_responsive{
         text-align: left;
