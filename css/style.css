@@ -481,6 +481,10 @@ footer p {
     .up, .down {
         right: 20%;
     }
+    .up .fas,
+    .down .fas {
+        fo
+    }
     .image_responsive img {
         width: 80%;
     

@@ -26,7 +26,7 @@ $nav['Yōkai'] = $tableau;
                     foreach ($nav as $page => $url) :
                         if (is_array($url)) :
                     ?>
-                            <li class="sousmenu"><a class="yokai-nav" href="#" ><?= $page ?><span class="up hidden">&#11165;</span><span class="down">&#11167;</span></a>
+                            <li class="sousmenu"><a class="yokai-nav" href="#" ><?= $page ?><span class="down"><i class="fas fa-angle-down"></i></span><span class="up hidden"><i class="fas fa-angle-up"></i></span></a>
                                 <ul class="sousmenu-ul">
                                     <?php
                                     foreach ($url as $nom => $url_article) :
