@@ -491,16 +491,15 @@ footer p {
     .sousmenu ul li{
         font-size: 1.3rem;
     }
-    .image_float {
-        float: right;
-        width: 60%;
-        padding: 1em;
-    }
+
     .summary_responsive a{
         width:33%;
     }
     .summary_responsive{
         width:80%;
+    }
+    .page_article{
+        margin-top:110px;
     }
 }
 
@@ -532,16 +531,6 @@ footer p {
         color: #eee9d5;
     }
 
-    /*
-    .page_article {
-        border-left: 1px solid #cabca3;
-        margin-left: 50%;
-        margin-top: 0;
-        margin-bottom: 0em;
-        background-image: url(../images/arches/arches.png);
-    } */
-
-
     .presentation_yokai_responsive {
         display: block;
         text-transform: uppercase;
@@ -553,20 +542,26 @@ footer p {
         height: 100vh;
 
     }
-
-
+    .page_article h2 {
+        font-size: 3rem;
+    }
     .page_article article {
         
-        width: 100%;
-        margin: 0;
-        box-shadow: none;
+        width: 80%;
+        margin: 0 auto;
         border: none;
         padding-bottom: 2em;
     }
-
+    .descriptif_article_responsive{
+        text-align: left;
+    }
+    .image_article_responsive img {
+        width: 100%;
+    }
     .image_float {
-        margin-top: 2em;
-        padding-bottom: 0.5em;
+        margin-right: 2rem;;
+        padding: 2rem;
+        width:40%;
     }
 
     nav a,
@@ -574,8 +569,6 @@ footer p {
     footer a {
 
         box-shadow: none;
-
-
     }
 
     .transparent {
