@@ -489,6 +489,12 @@ footer p {
         width: 60%;
         padding: 1em;
     }
+    .summary_responsive a{
+        width:33%;
+    }
+    .summary_responsive{
+        width:80%;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -541,10 +547,12 @@ footer p {
 
     }
 
+    .summary_responsive a:hover .image_responsive img{
+        box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+    }
     .page_article article {
         
         width: 100%;
-
         margin: 0;
         box-shadow: none;
         border: none;
@@ -556,11 +564,6 @@ footer p {
         padding-bottom: 0.5em;
     }
 
-    .summary_responsive {
-        box-shadow: none;
-    }
-
-    nav,
     nav a,
     footer,
     footer a {
@@ -580,4 +583,6 @@ footer p {
         padding-top: 20%;
         
     }
+
+    
 }
