@@ -67,7 +67,8 @@ a {
 
 }
 
-a::before {
+nav a::before,
+.summary_responsive a::before {
     position: absolute;
     content: '';
     transform: scaleX(0);
@@ -83,7 +84,8 @@ a::before {
     transition: all 0.3s ease-in;
 }
 
-a:hover::before {
+nav a:hover::before,
+.summary_responsive a:hover::before {
     transform: scaleX(1);
 
 }
@@ -282,14 +284,15 @@ footer {
     background-image: url(../images/groovepaper/groovepaper.png);
     border-top: 1px solid #cabca3;
     font-size: smaller;
-    box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
-    height: 10vh;
+    height:10vh;
 }
 
-footer a {
+.a_footer {
     display: inline;
 }
+.a_footer:hover {
 
+}
 footer p {
     padding-top: 0.8em;
 }
@@ -346,11 +349,13 @@ footer p {
     text-decoration: none;
     z-index: 0;
 }
-
+.summary_responsive a:hover .image_responsive img{
+    box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+}
 .image_responsive img {
     width: 90%;
     border-radius: 50%;
-
+    transition: all 0.3s ease-in;
 }
 .titre_image {
     font-size: 1rem;
@@ -547,9 +552,7 @@ footer p {
 
     }
 
-    .summary_responsive a:hover .image_responsive img{
-        box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
-    }
+
     .page_article article {
         
         width: 100%;
