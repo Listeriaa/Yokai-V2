@@ -228,9 +228,6 @@ nav ul {
 .sousmenu ul li a {
     z-index: 4;
 }
-.sousmenu.click {
-    box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
-}
 
 .sousmenu-ul.click {
     height: 600%;
@@ -472,8 +469,8 @@ footer p {
         font-size: 1.8rem;
         width: 33%;
     }
-    .yokai-nav {
-        position: relative;
+    .sousmenu {
+       
         padding-left: 0;
         text-align: center;
         border-left: #655a48 solid 0.5px;

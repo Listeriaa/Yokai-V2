@@ -2,7 +2,7 @@ const app = {
     
     init: function() {
         let hbgButton = document.querySelector(".hbg-menu");
-        let sousMenu = document.querySelector('.sousmenu .yokai-nav');
+        let sousMenu = document.querySelector('.sousmenu');
         let isOpen = false;
         hbgButton.addEventListener("click", app.handleHamburgerMenu);
         
@@ -37,7 +37,7 @@ const app = {
         }))
     },
     handleSousmenu: function () {
-        let sousMenu = document.querySelector('.sousmenu .yokai-nav');
+        let sousMenu = document.querySelector('.sousmenu');
         let sousMenuUl = document.querySelector('.sousmenu-ul');
         app.moveArrow();
         sousMenu.classList.toggle('click');
