@@ -28,9 +28,6 @@ header {
     text-align: center;
     height: 100vh;
 }
-.construct {
-    height: 90vh;
-}
 
 .kanji {
     padding-top: 0.5em;
@@ -103,6 +100,7 @@ h1 {
     color: #ececec;
 
 }
+
 .div-home {
     position: fixed;
     
@@ -281,9 +279,8 @@ nav.open {
 footer {
     text-align: center;
     background-image: url(../images/groovepaper/groovepaper.png);
-    border-top: 1px solid #cabca3;
-    font-size: smaller;
-    height:10vh;
+  
+    height:12vh;
 }
 
 .a_footer {
@@ -295,24 +292,28 @@ footer {
     
 }
 footer p {
-    padding-top: 0.8em;
+    padding-top: 1.2rem;
 }
 
 
 
 /* page en construction*/
-.construction {
-    height: 60vh;
+.construct {
+    height: 90vh;
     text-align: center;
 
 }
-
-/*gestion page accueil en responsive*/
-
-.left {
-     height: 50vh;
-
+.construct h2{
+    font-size: 2rem;
+    font-weight: bolder;
+    text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+    padding: 0.8em;
+    position: relative;
+    top: 25vh;
+    width:100%;
+    color: #ececec;
 }
+/*gestion page accueil en responsive*/
 
 .presentation_responsive,
 .summary_responsive {
@@ -375,6 +376,7 @@ footer p {
     border: 1px solid #cabca3;
     box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
     font-size: 1rem;
+    line-height: 1.5rem;
 }
 .page_article h2{
     padding:1rem;
@@ -506,6 +508,9 @@ footer p {
     .page_article{
         margin-top:110px;
     }
+    .page_article article {
+        line-height: 1.7rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -550,7 +555,7 @@ footer p {
         width: 80%;
         margin: 2em auto;
         border: none;
-        
+        line-height: 2rem;
     }
     .descriptif_article_responsive{
         text-align: left;
@@ -576,11 +581,7 @@ footer p {
         color: #f2f0d9;
     }
 
-    .construction {
-        height: 100vh;
-        padding-top: 20%;
-        
-    }
+
     .clearfix::after{
         content: "";
         display: table;
