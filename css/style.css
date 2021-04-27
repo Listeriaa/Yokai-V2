@@ -4,20 +4,18 @@
 html{
     scroll-behavior: smooth;
 }
-body {
-    
+
+.wrapper {
     background-color: #fafafa;
     background-image: url(../images/arches/arches.png);
     color: #655a48;
     font-family: 'IM Fell Double Pica', serif;
-    background-image: linear-gradient(rgba(48, 49, 53, 0.7), rgba(181, 112, 112, 0.7)), url(../images/backgroundtengu.jpg);
+    background-image: linear-gradient(rgba(48, 49, 53, 0.7), rgba(181, 112, 112, 0.7)), url(../images/tenguhalf.jpg);
     background-repeat: no-repeat;
-    background-position:right;
+    background-position:left;
     background-size: cover;
-    
-    
+    background-attachment: fixed;
 }
-
 i {
     font-style: italic;
 }
@@ -26,7 +24,7 @@ i {
     display: flex;
 }
 
-header {
+.accueil {
     text-align: center;
     height: 100vh;
 }
@@ -449,7 +447,11 @@ footer p {
 @media screen and (min-width: 700px) {
     body {
         font-size: 1.5em;
-        background-position:inherit;
+        
+    }
+    .wrapper {
+        background-image: linear-gradient(rgba(48, 49, 53, 0.7), rgba(181, 112, 112, 0.7)), url(../images/backgroundtengu2.jpg);
+        
     }
     h1 {
         font-size: 5rem;
