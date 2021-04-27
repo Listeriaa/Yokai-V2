@@ -23,11 +23,13 @@ if (isset($yokai)):
     
     else :
     ?>
-        <div id="ancre"></div>
-        <section class="presentation_responsive">
-        <h3><?=$presentation[$title]['h3']?></h3>
-        <p><?=$presentation[$title]['p']?></p>
-        </section>
+        <!-- <div id="ancre"></div> -->
+        <section class="presentation display-none">
+            <div class="presentation_responsive">
+            <h3><?=$presentation[$title]['h3']?></h3>
+            <p><?=$presentation[$title]['p']?></p>
+            </div>
+        
     <?php
     endif;
 

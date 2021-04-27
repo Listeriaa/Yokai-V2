@@ -8,13 +8,13 @@ include "inc/accueil.tpl.php";
 include "inc/presentation.tpl.php";
 ?>
   
-    <section class="summary_responsive flex">
+    <div class="display-none summary_responsive">
         <?php
         //je souhaite afficher l'image et le nom de chaque page Yokai sur ma page accueil, gestion du lien vers la page via GET
         foreach ($yokais as $yokai => $detail) :
         ?>
             <a href="yokai.php?yokai=<?= $yokai ?>">
-                <article class="article article_responsive">
+                <article class=" article article_responsive">
                     <div class="image image_responsive">
                         <img src="images/<?= $detail['image'] ?>" alt="illustration de <?= $detail['nom'] ?>">
                     </div>
@@ -26,6 +26,7 @@ include "inc/presentation.tpl.php";
         <?php
         endforeach; ?>
 
+    </div>
     </section>
 
 <?php

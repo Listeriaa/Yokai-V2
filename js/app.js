@@ -1,33 +1,28 @@
 const app = {
     
     init: function() {
-        let hbgButton = document.querySelector(".hbg-menu");
+        let hbgButton = document.querySelector('.hbg-menu');
         let sousMenu = document.querySelector('.sousmenu');
-        let isOpen = false;
-        hbgButton.addEventListener("click", app.handleHamburgerMenu);
+        let entryButton = document.querySelector('.div-scroll');
         
+        hbgButton.addEventListener('click', app.handleHamburgerMenu);
         sousMenu.addEventListener('click', app.handleSousmenu);
-        
+        entryButton.addEventListener('click', app.handleEntryButton);
     },
     handleHamburgerMenu: function(){
-        let hbgButton = document.querySelector(".hbg-menu");
+        let hbgButton = document.querySelector('.hbg-menu');
         
         let nav = document.querySelector('nav');
         nav.classList.toggle('open');
         hbgButton.classList.toggle('open');
-        
-        // window.addEventListener('click', (()=> {
-        //     nav.classList.remove('open');
-        // hbgButton.classList.remove('open');
-        
-        // }))
+     
     },
     moveArrow: function() {
         //je récupère les span de mes flèches
         let up = document.querySelector('.up');
-        console.log(up);
+        
         let down = document.querySelector('.down');
-        console.log(down);
+        
         up.classList.toggle('hidden');
         down.classList.toggle('hidden');
         let sousMenuUl = document.querySelector('.sousmenu-ul');
@@ -47,6 +42,19 @@ const app = {
             sousMenuUl.classList.remove('click');
 
         }))
+    },
+    handleEntryButton:function () {
+        let home = document.querySelector('.div-home');
+        let hbgButton = document.querySelector('.hbg-menu');
+        let accueil = document.querySelector('.accueil');
+        accueil.classList.add('accueil-remove');
+        hbgButton.classList.remove('display-none');
+        // hbgButton.classList.add('')
+        
+        home.classList.remove('display-none');
+        let presentation = document.querySelector('.presentation');
+        console.log(presentation);
+        
     }
 }
 
