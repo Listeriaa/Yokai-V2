@@ -16,15 +16,15 @@ const app = {
         app.hbgButton.addEventListener('click', app.handleHamburgerMenu);
         sousMenu.addEventListener('click', app.handleSousmenu);
         let session = sessionStorage.getItem('alreadyload');
-        console.log(session);
-
+        width=screen.width;
+        
 
         if (title == "Yōkai on the watch" && session == null) {
 
             entryButton.addEventListener('click', app.handleEntryButton);
         } else {
 
-            app.alreadyLoaded();
+            app.alreadyLoaded(width);
         }
     },
     handleHamburgerMenu: function () {
@@ -85,23 +85,25 @@ const app = {
         app.nav.classList.remove('display-none')
     },
 
-    alreadyLoaded: function () {
+    alreadyLoaded: function (width) {
         title=document.title;
+
+        
         if (title == "Yōkai on the watch") {
             app.accueil.classList.add('notransition');
             app.presentation.classList.add('notransition');
             app.accueil.classList.add('accueil-remove');
             app.presentation.classList.remove('display-none');
         };
-        app.hbgButton.classList.add('notransition');
-        app.home.classList.add('notransition');
-        app.nav.classList.add('notransition');
-    
+        if (width > 700){
+            app.hbgButton.classList.add('notransition');
+            app.home.classList.add('notransition');
+            app.nav.classList.add('notransition');
+        }
         app.footer.classList.add('notransition');
         app.hbgButton.classList.remove('display-none');
         app.home.classList.remove('display-none');
         app.nav.classList.remove('display-none');
-  
         app.footer.classList.remove('display-none');
     }
 
