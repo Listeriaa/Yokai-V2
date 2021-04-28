@@ -20,7 +20,7 @@ $nav['Yōkai'] = $tableau;
 
 ?>
 
-            <nav class="flex">
+            <nav class="display-none">
                 <ul class="flex">
                     <?php
                     foreach ($nav as $page => $url) :

@@ -3,6 +3,7 @@
 }
 html{
     scroll-behavior: smooth;
+    
 }
 /* .display-none{
     display: none;
@@ -11,16 +12,30 @@ html{
 } */
 .hbg-menu.display-none,
 .div-home.display-none,
-.presentation.display-none,
-footer.display-none
+nav.display-none
  {
     transform: translateY(-25px);
     opacity:0;
     transition : all 0.4s;
     height:0;
-    overflow: hidden;
+    
+    
 }
-
+.presentation.display-none,
+footer.display-none{
+    opacity:0;
+    height:0;
+    transition : all 0.3s ease-out;
+    display:none;
+    
+    
+}
+.presentation {
+    opacity:1;
+    height:100%;
+    padding-top:100px;
+    
+}
 .wrapper {
     background-color: #fafafa;
     background-image: url(../images/arches/arches.png);
@@ -31,6 +46,7 @@ footer.display-none
     background-position:left;
     background-size: cover;
     background-attachment: fixed;
+    
 }
 i {
     font-style: italic;
@@ -43,13 +59,18 @@ i {
 .accueil {
     text-align: center;
     height: 100vh;
-    transition:all 0.3s;
+    transition:opacity 0.3s, transform 0.3s, height 0.3s 0.8s;
 
+    /* transition:height 0.4s 0.5s; */
 }
 .accueil-remove{
     opacity:0;
-    
+    height:0;
     transform: translateY(-100px);
+    
+}
+.notransition{
+    transition: none;
 }
 .kanji {
     padding-top: 0.5em;
@@ -194,6 +215,7 @@ h1 {
 }
 
 nav {
+    display:flex;
     background-image: url(../images/groovepaper/groovepaper.png);
     margin: 0 auto;
     box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
@@ -205,6 +227,7 @@ nav {
     transition: all .5s ease-out;
     text-align: center;
     z-index:1;
+    opacity:1;
 }
 nav ul {
 
@@ -395,10 +418,14 @@ footer p {
 }
 
 /*page Yokai en responsive*/
+.page_article{
+    padding:90px 0;
+}
 .page_article article {
     background-image: url(../images/groovepaper/groovepaper.png);
     width:60%;
-    margin: 80px auto;
+    margin: 0 auto;
+    padding:20px 10px;
     text-align: center;
     border: 1px solid #cabca3;
     box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
@@ -539,7 +566,7 @@ footer p {
         width:80%;
     }
     .page_article{
-        margin-top:110px;
+        padding-top:110px;
     }
     .page_article article {
         line-height: 1.7rem;
