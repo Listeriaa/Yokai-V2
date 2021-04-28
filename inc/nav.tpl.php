@@ -2,7 +2,7 @@
 <?php
 // include 'data.php';
 $nav = [
-    "Accueil"   => "index.php#ancre",
+    "Accueil"   => "index.php",
     "Yōkai" => [],
     "Aller plus loin"   => "aller_plus_loin.php"
 ];

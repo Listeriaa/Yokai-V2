@@ -16,8 +16,9 @@ const app = {
         app.hbgButton.addEventListener('click', app.handleHamburgerMenu);
         sousMenu.addEventListener('click', app.handleSousmenu);
         let session = sessionStorage.getItem('alreadyload');
-        width=screen.width;
-        
+        width = screen.width;
+
+
 
         if (title == "Yōkai on the watch" && session == null) {
 
@@ -86,16 +87,16 @@ const app = {
     },
 
     alreadyLoaded: function (width) {
-        title=document.title;
+        title = document.title;
 
-        
+
         if (title == "Yōkai on the watch") {
             app.accueil.classList.add('notransition');
             app.presentation.classList.add('notransition');
             app.accueil.classList.add('accueil-remove');
             app.presentation.classList.remove('display-none');
         };
-        if (width > 700){
+        if (width > 700) {
             app.hbgButton.classList.add('notransition');
             app.home.classList.add('notransition');
             app.nav.classList.add('notransition');
