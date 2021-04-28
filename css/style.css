@@ -263,6 +263,7 @@ nav ul {
     transition: all .4s 0.3s ;
     background-image: url(../images/groovepaper/groovepaper.png);
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .sousmenu ul li {
