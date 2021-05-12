@@ -17,23 +17,20 @@ const app = {
         sousMenu.addEventListener('click', app.handleSousmenu);
         let session = sessionStorage.getItem('alreadyload');
         width = screen.width;
-
+        
 
 
         if (title == "Yōkai on the watch" && session == null) {
 
             entryButton.addEventListener('click', app.handleEntryButton);
         } else {
-
-            app.alreadyLoaded(width);
+            document.addEventListener('DOMContentLoaded', app.alreadyLoaded(width));
         }
     },
     handleHamburgerMenu: function () {
-        let hbgButton = document.querySelector('.hbg-menu');
 
-        let nav = document.querySelector('nav');
-        nav.classList.toggle('open');
-        hbgButton.classList.toggle('open');
+        app.nav.classList.toggle('open');
+        app.hbgButton.classList.toggle('open');
 
     },
     moveArrow: function () {
@@ -88,7 +85,7 @@ const app = {
 
     alreadyLoaded: function (width) {
         title = document.title;
-
+        
 
         if (title == "Yōkai on the watch") {
             app.accueil.classList.add('notransition');
@@ -111,4 +108,4 @@ const app = {
 
 }
 
-app.init();
+document.addEventListener('DOMContentLoaded', app.init);
