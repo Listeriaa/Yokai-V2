@@ -1,0 +1,658 @@
+* {
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+    
+}
+/* .display-none{
+    display: none;
+    transition : all 0.3s;
+    opacity:0;
+} */
+.hbg-menu.display-none,
+.div-home.display-none,
+nav.display-none
+ {
+    transform: translateY(-25px);
+    opacity:0;
+    transition : all 0.6s;
+    height:0;
+    
+    
+}
+.presentation.display-none,
+footer.display-none{
+    opacity:0;
+    height:0;
+    transition : all 0.8s ease-out;
+    display:none;
+    
+    
+}
+.presentation {
+    opacity:1;
+    height:100%;
+    padding-top:100px;
+    
+}
+.bg {
+   z-index: -5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(48, 49, 53, 0.7), rgba(181, 112, 112, 0.7)),url(../images/tenguhalf.jpg);
+    background-repeat: no-repeat;
+    background-position:left;
+    background-size: cover;
+    
+}
+.wrapper{
+    color: #655a48;
+    font-family: 'IM Fell Double Pica', serif;
+}
+i {
+    font-style: italic;
+}
+
+.flex {
+    display: flex;
+}
+
+.accueil {
+    text-align: center;
+    height: 100vh;
+    transition: opacity 0.3s, transform 0.3s, height 0.8s 0.8s ease-out;
+
+
+    /* transition:height 0.4s 0.5s; */
+}
+.accueil-remove{
+    opacity:0;
+    height:0;
+    transform: translateY(-100px);
+   
+}
+.notransition{
+    transition: none;
+}
+.kanji {
+    padding-top: 0.5em;
+    display: block;
+}
+/* flèches scroll*/
+.div-scroll {
+    position:absolute;
+    top :70%;
+    left : 50%;
+
+}
+/* .span-scroll {
+    display: block;
+    box-shadow: 3px 0px 9px rgba(0, 0, 0, 1);
+    width : 40px;
+    height: 40px;
+    border-bottom: #ececec solid 5px;
+    border-right: #ececec solid 5px;
+    border-radius: 5px;
+    transform: rotate(45deg);
+    margin:-10px;
+} */
+/* CSS des liens <a>*/
+a {
+    display: block;
+    text-decoration: none;
+    padding: 0.5em;
+    color: #655a48;
+    font-weight: bolder;
+    position: relative;
+
+}
+
+nav a::before,
+.summary_responsive a::before,
+.sousmenu::before {
+    position: absolute;
+    content: '';
+    transform: scaleX(0);
+    transform-origin: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    overflow: hidden;
+    background: #655a48;
+    opacity: 0.7;
+
+    transition: all 0.3s ease-in;
+}
+
+nav a:hover::before,
+.summary_responsive a:hover::before,
+.sousmenu:hover::before {
+    transform: scaleX(1);
+
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+    text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+    padding: 0.8em;
+    position: relative;
+    top: 25vh;
+    width:100%;
+    color: #ececec;
+
+}
+
+.div-home {
+    position: fixed;
+    color: #ececec;
+    top: 15px;
+    left: 3px;
+    padding:0;
+    z-index: 2;
+    cursor: pointer;
+    opacity:1;
+    transition: all 0.5s;
+ 
+    
+}
+.fa-torii-gate,
+.fa-angle-double-down {
+    color:#ececec;
+    font-size: 2.5rem;
+    text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+}
+/* flèches scroll*/
+.div-scroll {
+    position:absolute;
+    top :70%;
+    left : 50%;
+    transform: translateX(-50%);
+    width:100px;
+    height: 100px;
+    cursor: pointer;
+}
+.fa-angle-double-down{
+    font-size: 4rem;
+    transition: transform 0.3s;
+}
+
+.div-scroll:hover .fa-angle-double-down{
+    transform: translateY(20px);
+}
+/*gestion menu Nav*/
+
+
+/*Hamburger menu*/
+
+.hbg-menu {
+    position: fixed;
+    margin : 10px;
+    top: 15px;
+    right: 3px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-between;
+    cursor: pointer;
+    z-index: 4;
+    opacity:1;
+    transition: all 0.5s;
+}
+
+
+.hbg-item1,
+.hbg-item2,
+.hbg-item3 {
+    width : 100%;
+    background-color: #ececec;
+    display: block;
+    height:5px;
+    border-radius: 5px;
+   transition: all 0.4s ease-out;
+   box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+}
+
+nav {
+    display:flex;
+    background-image: url(../images/groovepaper/groovepaper.png);
+    margin: 0 auto;
+    box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right:-1000px;
+    height: 90px;
+    transition: all .5s ease-out;
+    text-align: center;
+    z-index:1;
+    opacity:1;
+}
+nav ul {
+
+    flex-flow: row wrap;
+    align-items: center;
+
+
+}
+
+ nav ul li {
+    width: 33%;
+    font-size: 1.1rem;
+ }
+
+/*gestion menu déroulant*/
+.sousmenu {
+    position: relative;
+    text-align:left;
+    cursor : pointer;
+    padding: 0.5em;
+    color: #655a48;
+    font-weight: bolder;
+}
+
+.sousmenu ul {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .4s 0.3s ;
+    background-image: url(../images/groovepaper/groovepaper.png);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.sousmenu ul li {
+    width: 100%;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+
+}
+.sousmenu ul li a {
+    z-index: 4;
+}
+
+.sousmenu-ul.click {
+    height: 600%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: -2px 22px 21px -12px rgba(0, 0, 0, 0.75);
+    transition : all 0.8s;
+}
+.yokai-nav {
+    position: relative;
+    
+}
+.up, .down {
+
+    transition: .8s all;
+    opacity: 1;
+    position:absolute;
+    display: inline-block;
+    right: 10%;
+
+}
+
+nav.open {
+    right:0;
+    z-index: 3;
+}
+
+.hbg-menu.open .hbg-item1{
+    background-color: #655a48;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    box-shadow: none;
+}
+
+.hbg-menu.open .hbg-item2{
+    box-shadow: none;
+    transform: translateX(-50px);
+    background: transparent;
+}
+
+.hbg-menu.open .hbg-item3{
+    background-color: #655a48;
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+    box-shadow: none;
+}
+
+
+
+/* footer en responsive */
+footer {
+    text-align: center;
+    background-image: url(../images/groovepaper/groovepaper.png);
+  
+    height:12vh;
+}
+
+.a_footer {
+    display: inline;
+    transition: all 0.2s  ease-in;
+}
+.a_footer:hover {
+    color:#b26e6e;
+    
+}
+footer p {
+    padding-top: 1.2rem;
+}
+
+
+
+/* page en construction*/
+.construct {
+    height: 90vh;
+    text-align: center;
+
+}
+.construct h2{
+    font-size: 2rem;
+    font-weight: bolder;
+    text-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+    padding: 0.8em;
+    position: relative;
+    top: 25vh;
+    width:100%;
+    color: #ececec;
+}
+/*gestion page accueil en responsive*/
+
+.presentation_responsive,
+.summary_responsive {
+    width: 60%;
+    margin: 2em auto;
+    padding: 1em;
+    text-align: center;
+    background-image: url(../images/groovepaper/groovepaper.png);
+    border: 1px solid #cabca3;
+    box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+
+}
+.summary_responsive{
+    display : flex;
+}
+.presentation_responsive h3 {
+    font-weight: bolder;
+    font-size: 1.5rem;
+
+}
+
+.presentation_responsive p {
+    padding-top: 0.5em;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.summary_responsive {
+    flex-flow: row wrap;
+}
+
+.summary_responsive a {
+    width: 50%;
+    position:relative;
+    margin-bottom: 1.5em;
+    color: #655a48;
+    text-decoration: none;
+    z-index: 0;
+}
+.summary_responsive a:hover .image_responsive img{
+    box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+}
+.image_responsive img {
+    width: 90%;
+    border-radius: 50%;
+    transition: all 0.3s ease-in;
+}
+.titre_image {
+    font-size: 1rem;
+    padding-top:0.5rem;
+}
+.presentation_yokai_responsive {
+    display: none;
+}
+
+/*page Yokai en responsive*/
+.page_article{
+    padding:90px 0;
+}
+.page_article article {
+    background-image: url(../images/groovepaper/groovepaper.png);
+    width:60%;
+    margin: 0 auto;
+    padding:20px 10px;
+    text-align: center;
+    border: 1px solid #cabca3;
+    box-shadow: 3px 4px 9px rgba(0, 0, 0, 1);
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.page_article h2{
+    padding:1rem;
+}
+.page_article h3 {
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.image_article_responsive img {
+    width: 80%;
+    border-radius: 50%;
+}
+
+.descriptif_article_responsive {
+    /* text-align: justify; */
+    padding: 1.2rem;
+}
+
+.descriptif_article_responsive p {
+    margin-bottom: 1.2rem;
+}
+
+
+.hidden {
+
+    opacity:0;
+}
+
+/* media queries pour les grands écrans*/
+
+@media screen and (min-width: 370px) {
+    nav ul li  {
+        font-size: 1.3rem;
+    }
+    .sousmenu ul li{
+        font-size: 1rem;
+    }
+    .page_article article {
+        width:70%;
+    }
+}
+@media screen and (min-width: 500px) {
+  
+ 
+    nav>ul {
+        width:80%;
+    }
+    .yokai-nav {
+
+        padding-left: 25%;
+    }
+    .titre_image {
+        font-size: 1.3rem;
+    }
+    .presentation_responsive p {
+        font-size: 1.3rem;
+    }
+    .page_article h3 {
+        font-size: 1.4rem;
+    }
+    .page_article article{
+        font-size: 1.3rem;
+    }
+}
+@media screen and (min-width: 700px) {
+    body {
+        font-size: 1.5em;
+        
+    }
+    .bg {
+        background-image: linear-gradient(rgba(48, 49, 53, 0.7), rgba(181, 112, 112, 0.7)), url(../images/backgroundtengu2.jpg);
+        
+    }
+    h1 {
+        font-size: 5rem;
+    }
+    .hbg-menu,.div-home {
+        display: none;
+    }
+    #ancre {
+        height: 100px;
+    }
+
+    nav {
+        position:fixed;
+        right:0;
+    }
+    nav ul {
+        justify-content: space-around;
+        width : 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        font-size: 1.8rem;
+        width: 33%;
+    }
+    .sousmenu {
+       
+        padding-left: 0;
+        text-align: center;
+        border-left: #655a48 solid 0.5px;
+        border-right: #655a48 solid 0.5px;
+
+    }
+    .up, .down {
+        right: 20%;
+    }
+
+    .image_responsive img {
+        width: 80%;
+    
+    }
+    .titre_image {
+        font-size: 1.5rem;
+    }
+    .image_float {
+        float: right;
+        width: 60%;
+        padding: 1em;
+    }
+    .sousmenu ul li{
+        font-size: 1.3rem;
+    }
+
+    .summary_responsive a{
+        width:33%;
+    }
+    .summary_responsive{
+        width:80%;
+    }
+    .page_article{
+        padding-top:110px;
+    }
+    .page_article article {
+        line-height: 1.7rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .up, .down {
+        right: 20%;
+    }
+
+
+    .presentation_responsive p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .presentation_responsive h3,
+    .titre_image {
+        font-size: 2rem;
+    }
+    .image_responsive img {
+        width: 60%;
+        border-radius: 50%;
+    
+    }
+    h1 {
+        color: #ececec;
+    }
+
+    .presentation_yokai_responsive {
+        display: block;
+        text-transform: uppercase;
+        font-size: smaller;
+    }
+
+    .descriptif_article_responsive {
+        padding: 2em;
+        
+    }
+    .page_article h2 {
+        font-size: 3rem;
+    }
+    .page_article article {
+        
+        width: 80%;
+        margin: 2em auto;
+        border: none;
+        line-height: 2rem;
+    }
+    .descriptif_article_responsive{
+        text-align: left;
+    }
+    .image_article_responsive img {
+        width: 100%;
+    }
+    .image_float {
+        margin-right: 2rem;;
+        padding: 2rem;
+        width:40%;
+    }
+
+    nav a,
+    footer,
+    footer a {
+
+        box-shadow: none;
+    }
+
+    .transparent {
+        background-color: rgba(168, 168, 168, 0.363);
+        color: #f2f0d9;
+    }
+
+
+    .clearfix::after{
+        content: "";
+        display: table;
+        clear: both;
+      }
+    
+}
