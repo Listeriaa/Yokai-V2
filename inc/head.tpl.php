@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body> 
+<div class="bg"></div>
 <div class="wrapper">
 <header>
     <div class="div-home display-none"><a class="a-none" href="index.php"><i class="fas fa-torii-gate"></i></a></div>
