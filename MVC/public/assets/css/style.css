@@ -52,6 +52,8 @@ footer.display-none{
 .wrapper{
     color: #655a48;
     font-family: 'IM Fell Double Pica', serif;
+    position:relative;
+    height: 100vh;
 }
 i {
     font-style: italic;
@@ -334,7 +336,8 @@ nav.open {
 footer {
     text-align: center;
     background-image: url(../images/groovepaper/groovepaper.png);
-  
+    bottom:0;
+    position:relative;
     height:12vh;
 }
 

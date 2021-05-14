@@ -18,39 +18,10 @@
                     <img src="images/" alt="illustration de yokai">
                 </div>
                 <h3 class="titre_image">
-                    yokai
+                    Cliquez pour un yokai random
                 </h3>
             </article>
         </a>
-        <a href="#">
-            <article class=" article article_responsive">
-                <div class="image image_responsive">
-                    <img src="images/" alt="illustration de yokai">
-                </div>
-                <h3 class="titre_image">
-                    yokai
-                </h3>
-            </article>
-        </a>        
-        <a href="#">
-            <article class=" article article_responsive">
-                <div class="image image_responsive">
-                    <img src="images/" alt="illustration de yokai">
-                </div>
-                <h3 class="titre_image">
-                    yokai
-                </h3>
-            </article>
-        </a>        
-        <a href="#">
-            <article class=" article article_responsive">
-                <div class="image image_responsive">
-                    <img src="images/" alt="illustration de yokai">
-                </div>
-                <h3 class="titre_image">
-                    yokai
-                </h3>
-            </article>
-        </a>
+        
     </div>
 </section>

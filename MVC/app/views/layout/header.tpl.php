@@ -20,12 +20,12 @@
 <body> 
 <div class="bg"></div>
 <div class="wrapper">
-<header>
-    <div class="div-home display-none"><a class="a-none" href="index.php"><i class="fas fa-torii-gate"></i></a></div>
-    <div class="hbg-menu display-none">
-        <div class="hbg-item1"></div>
-        <div class="hbg-item2"></div>
-        <div class="hbg-item3"></div>
-    </div>
+    <header>
+        <div class="div-home display-none"><a class="a-none" href="index.php"><i class="fas fa-torii-gate"></i></a></div>
+        <div class="hbg-menu display-none">
+            <div class="hbg-item1"></div>
+            <div class="hbg-item2"></div>
+            <div class="hbg-item3"></div>
+        </div>
 
-<?php   require_once __DIR__ . '/../partials/nav.tpl.php'; ?>
+    <?php   require_once __DIR__ . '/../partials/nav.tpl.php'; ?>

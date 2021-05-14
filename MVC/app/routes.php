@@ -20,3 +20,18 @@ $this->addRoute(
     'home',
     'main-home'
 );
+
+$this->addRoute(
+    'GET',
+    '/yokai',
+    'YokaiController',
+    'list',
+    'yokai-list'
+);
+$this->addRoute(
+    'GET',
+    '/yokai/[i:id]',
+    'YokaiController',
+    'showById',
+    'yokai-showbyid'
+);
