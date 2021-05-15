@@ -8,17 +8,19 @@
 <section class="presentation display-none">
     <div class="presentation_responsive">
         <h3>Qu'est ce qu'un yōkai?</h3>
-        <p>Les yōkai (妖怪, « esprit », « fantôme ») sont un type de créatures surnaturelles dans le folklore japonais. Ils peuvent être malfaisants et dangereux, comme la célèbre Kuchisake onna (« femme à la bouche fendue ») ou juste malicieux à l'instar de l'Akaname (« lèche-crasse ») dont le seul hobbie est de lécher la saleté des baignoires.  Au Japon, encore aujourd'hui, la plupart des phénomènes surnaturels ou inexplicables sont attribués aux yōkai, et bien qu'ils existent depuis le moyen-âge nippon, certains sont nés récemment, grâce à l'imagination de mangakas comme Shigeru Mizuki.</p>
+        <p>Les  (妖怪, « esprit », « fantôme ») sont un type de créatures surnaturelles dans le folklore japonais. Ils peuvent être malfaisants et dangereux, comme la célèbre Kuchisake onna (« femme à la bouche fendue ») ou juste malicieux à l'instar de l'Akaname (« lèche-crasse ») dont le seul hobbie est de lécher la saleté des baignoires.  Au Japon, encore aujourd'hui, la plupart des phénomènes surnaturels ou inexplicables sont attribués aux yōkai, et bien qu'ils existent depuis le moyen-âge nippon, certains sont nés récemment, grâce à l'imagination de mangakas comme Shigeru Mizuki.</p>
     </div>
-    <div class="display-none summary_responsive">
+
+    <div class="presentation_responsive random">
 
         <a href="#">
             <article class=" article article_responsive">
-                <div class="image image_responsive">
-                    <img src="images/" alt="illustration de yokai">
+                <div class="image image_responsive blur">
+                    <img src="<?=$assetsBaseUri.$yokai->getPicture()?>" alt="illustration de yokai">
                 </div>
+                
                 <h3 class="titre_image">
-                    Cliquez pour un yokai random
+                    Un yōkai au hasard....
                 </h3>
             </article>
         </a>

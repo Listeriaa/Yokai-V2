@@ -21,6 +21,7 @@ $this->addRoute(
     'main-home'
 );
 
+//routes for yokai
 $this->addRoute(
     'GET',
     '/yokai',

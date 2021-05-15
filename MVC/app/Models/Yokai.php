@@ -7,7 +7,7 @@ use PDO;
 
 // Classe mère de tous les Models
 // On centralise ici toutes les propriétés et méthodes utiles pour TOUS les Models
-class YokaiModel
+class Yokai
 {
     private $id;
     private $name;
@@ -19,7 +19,33 @@ class YokaiModel
     private $origin;
     private $behavior;
     
+    public static function getAllYokai(){
+        $pdo = Database::getPDO();
+        $sql = 'SELECT * FROM `yokais`';
+        
+        $pdoStatement = $pdo->query($sql);
+        
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $results;
+    }
 
+    public static function getRandomYokai(){
+        $yokai = false;
+        
+        while ($yokai == false) {
+            $pdo = Database::getPDO();
+            //selection d'une ligne aléatoire
+            $sql = "SELECT *
+            FROM `yokais`
+            WHERE RAND() > 0.9
+            ORDER BY RAND( )
+            LIMIT 1";
+            $pdoStatement = $pdo->query($sql);
+            $character = $pdoStatement->fetchObject(self::class);
+        }
+        return $character;
+    }
     /**
      * Get the value of behavior
      */ 

@@ -34,7 +34,8 @@ footer.display-none{
     opacity:1;
     height:100%;
     padding-top:100px;
-    
+    display :flex;
+    flex-direction: column;
 }
 .bg {
    z-index: -5;
@@ -53,7 +54,7 @@ footer.display-none{
     color: #655a48;
     font-family: 'IM Fell Double Pica', serif;
     position:relative;
-    height: 100vh;
+    height: 100%;
 }
 i {
     font-style: italic;
@@ -83,6 +84,10 @@ i {
 .kanji {
     padding-top: 0.5em;
     display: block;
+}
+
+.fa-question-circle {
+    font-size: 5rem;
 }
 /* flèches scroll*/
 .div-scroll {
@@ -372,7 +377,9 @@ footer p {
     color: #ececec;
 }
 /*gestion page accueil en responsive*/
-
+.random {
+    display:block;
+}
 .presentation_responsive,
 .summary_responsive {
     width: 60%;
@@ -418,6 +425,9 @@ footer p {
     width: 90%;
     border-radius: 50%;
     transition: all 0.3s ease-in;
+}
+.blur{
+    filter: blur(2rem);
 }
 .titre_image {
     font-size: 1rem;
@@ -523,8 +533,13 @@ footer p {
     .hbg-menu,.div-home {
         display: none;
     }
-    #ancre {
-        height: 100px;
+    .presentation_responsive {
+        width:40%;
+        
+    }
+    .random {
+
+        
     }
 
     nav {
@@ -549,6 +564,13 @@ footer p {
         border-right: #655a48 solid 0.5px;
 
     }
+    .presentation{
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+  
+    
     .up, .down {
         right: 20%;
     }

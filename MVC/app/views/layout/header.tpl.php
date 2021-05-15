@@ -21,7 +21,7 @@
 <div class="bg"></div>
 <div class="wrapper">
     <header>
-        <div class="div-home display-none"><a class="a-none" href="index.php"><i class="fas fa-torii-gate"></i></a></div>
+        <div class="div-home display-none"><a class="a-none" href="<?=$router->generate('main-home')?>"><i class="fas fa-torii-gate"></i></a></div>
         <div class="hbg-menu display-none">
             <div class="hbg-item1"></div>
             <div class="hbg-item2"></div>

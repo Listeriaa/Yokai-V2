@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-
+use App\Models\Yokai;
 
 
 class YokaiController extends CoreController
@@ -12,11 +12,12 @@ class YokaiController extends CoreController
      */
     public function list()
     {
-    
+     
 
         
-        $this->show('yokai/list', ['title'=>'Tous les Yōkai']);
+        $this->show('yokai/list', ['title'=>'Tous les Yōkai', 'yokaiList'=>Yokai::getAllYokai()]);
     }
+
 
     public function showById($id){
         $title="";

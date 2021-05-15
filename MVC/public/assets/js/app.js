@@ -10,11 +10,11 @@ const app = {
 
     init: function () {
 
-        let sousMenu = document.querySelector('.sousmenu');
+        //let sousMenu = document.querySelector('.sousmenu');
         let entryButton = document.querySelector('.div-scroll');
         let title = document.title;
         app.hbgButton.addEventListener('click', app.handleHamburgerMenu);
-        sousMenu.addEventListener('click', app.handleSousmenu);
+        //sousMenu.addEventListener('click', app.handleSousmenu);
         let session = sessionStorage.getItem('alreadyload');
         width = screen.width;
         
@@ -33,32 +33,32 @@ const app = {
         app.hbgButton.classList.toggle('open');
 
     },
-    moveArrow: function () {
-        //je récupère les span de mes flèches
-        let up = document.querySelector('.up');
+    // moveArrow: function () {
+    //     //je récupère les span de mes flèches
+    //     let up = document.querySelector('.up');
 
-        let down = document.querySelector('.down');
+    //     let down = document.querySelector('.down');
 
-        up.classList.toggle('hidden');
-        down.classList.toggle('hidden');
-        let sousMenuUl = document.querySelector('.sousmenu-ul');
-        sousMenuUl.addEventListener('mouseleave', (() => {
-            up.classList.add('hidden');
-            down.classList.remove('hidden');
-        }))
-    },
-    handleSousmenu: function () {
-        let sousMenu = document.querySelector('.sousmenu');
-        let sousMenuUl = document.querySelector('.sousmenu-ul');
-        app.moveArrow();
-        sousMenu.classList.toggle('click');
-        sousMenuUl.classList.toggle('click');
+    //     up.classList.toggle('hidden');
+    //     down.classList.toggle('hidden');
+    //     let sousMenuUl = document.querySelector('.sousmenu-ul');
+    //     sousMenuUl.addEventListener('mouseleave', (() => {
+    //         up.classList.add('hidden');
+    //         down.classList.remove('hidden');
+    //     }))
+    // },
+    // handleSousmenu: function () {
+    //     let sousMenu = document.querySelector('.sousmenu');
+    //     let sousMenuUl = document.querySelector('.sousmenu-ul');
+    //     app.moveArrow();
+    //     sousMenu.classList.toggle('click');
+    //     sousMenuUl.classList.toggle('click');
 
-        sousMenuUl.addEventListener('mouseleave', (() => {
-            sousMenuUl.classList.remove('click');
+    //     sousMenuUl.addEventListener('mouseleave', (() => {
+    //         sousMenuUl.classList.remove('click');
 
-        }))
-    },
+    //     }))
+    // },
     handleEntryButton: function () {
         console.log("test");
         let presentation = document.querySelector('.presentation');
