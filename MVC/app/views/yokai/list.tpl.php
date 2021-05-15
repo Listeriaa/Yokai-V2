@@ -10,7 +10,7 @@
                 <a href="#">
                     <article class=" article article_responsive">
                     <div class="image image_responsive">
-                        <img src="<?=$assetsBaseUri.$yokai->getPicture()?>" alt="illustration de yokai">
+                        <img src="assets/<?=$yokai->getPicture()?>" alt="illustration de yokai">
                     </div>
                     <h3 class="titre_image">
                     <?=$yokai->getName()?>

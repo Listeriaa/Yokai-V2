@@ -13,9 +13,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="manifest" href="site.webmanifest">
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?=$assetsBaseUri ?>css/reset.css">
-    <link rel="stylesheet" href="<?=$assetsBaseUri ?>css/fontawesome/css/all.css">
-    <link rel="stylesheet" href="<?=$assetsBaseUri ?>css/style.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body> 
 <div class="bg"></div>

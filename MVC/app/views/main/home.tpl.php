@@ -1,4 +1,6 @@
-
+<?php
+//dd($yokai);
+?>
 <div class="accueil">
     <h1>Yōkai on the watch<span class="kanji">愛 妖怪</span></h1>
     <div class="div-scroll">
@@ -14,9 +16,10 @@
     <div class="presentation_responsive random">
 
         <a href="#">
-            <article class=" article article_responsive">
+            <article class=" random-article article_responsive">
                 <div class="image image_responsive blur">
-                    <img src="<?=$assetsBaseUri.$yokai->getPicture()?>" alt="illustration de yokai">
+                    <img src="assets/<?=$yokai->getPicture()?>" alt="illustration de yokai">
+                    
                 </div>
                 
                 <h3 class="titre_image">

@@ -31,20 +31,22 @@ class Yokai
     }
 
     public static function getRandomYokai(){
-        $yokai = false;
+        //je sélectionne tous les id des yokai
+        $pdo = Database::getPDO();
+        $sql = 'SELECT `id` FROM `yokais`';
+        $pdoStatement = $pdo->query($sql);
+        $arrayId = $pdoStatement->fetchAll(PDO::FETCH_COLUMN);
+
+        //je choisis une clé du tableau au hasard et je récupère sa valeur c'est à dire une id existante (présente dans la bdd)
+        $id = $arrayId[array_rand($arrayId, 1)];
+
+        //je récupère le yokai correspondant à cette id
+        $sql = 'SELECT * FROM `yokais` WHERE `id` = '. $id;
+        $pdoStatement = $pdo->query($sql);
         
-        while ($yokai == false) {
-            $pdo = Database::getPDO();
-            //selection d'une ligne aléatoire
-            $sql = "SELECT *
-            FROM `yokais`
-            WHERE RAND() > 0.9
-            ORDER BY RAND( )
-            LIMIT 1";
-            $pdoStatement = $pdo->query($sql);
-            $character = $pdoStatement->fetchObject(self::class);
-        }
-        return $character;
+        //je retourne l'objet Yokai correspondant
+        $yokai = $pdoStatement->fetchObject(self::class);
+        return $yokai;
     }
     /**
      * Get the value of behavior

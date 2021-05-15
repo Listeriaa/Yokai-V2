@@ -4,7 +4,8 @@
     <p>Illustrations par <a class="a_footer" href="https://senryoya.tumblr.com">Senryo</a></p>
 </footer>
 </div>
-<script src="<?=$assetsBaseUri ?>js/app.js"></script>
+
+<script src="assets/js/app.js"></script>
 </body>
 
 </html>
