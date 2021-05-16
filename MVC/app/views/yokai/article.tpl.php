@@ -1,23 +1,24 @@
  
 <section class="page_article">
+    
     <article class="clearfix">
-        <h2>Nom Kanji</h2>
+        <h2><?= $yokai->getName() ?> <?= $yokai->getKanji() ?></h2>
         <div class="image_article_responsive image_float">
-            <img src="images/" alt="illustration de ">
+            <img src="<?= $assetsBaseUri.$yokai->getPicture() ?>" alt="illustration de <?= $yokai->getName() ?>">
         </div>
         <div class="descriptif_article_responsive">
             <h3>Traduction :</h3>
-            <p></p>
+            <p><?= $yokai->getTranslation() ?></p>
             <h3>Habitat :</h3>
-            <p></p>
-            
+            <p><?= $yokai->getHabitat() ?></p>
+        <?php if ($yokai->getOrigin()!==null): ?>
             <h3>Origines :</h3>
-            <p></p>
-
+            <p><?= $yokai->getOrigin() ?></p>
+        <?php endif; ?>
             <h3>Apparence :</h3>
-            <p></p>
+            <p><?= $yokai->getAppearance() ?></p>
             <h3>Comportement :</h3>
-            <p></p>
+            <p><?= $yokai->getBehavior() ?></p>
         </div>
 
     </article>

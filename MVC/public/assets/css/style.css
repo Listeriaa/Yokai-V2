@@ -431,7 +431,7 @@ footer p {
     position : relative;
     width:80%;
     border-radius:50%;
-    filter: blur(5px); 
+    filter: blur15px); 
 }
 .image_responsive img {
     width:80%;

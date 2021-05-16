@@ -7,10 +7,9 @@ use PDO;
 
 // Classe mère de tous les Models
 // On centralise ici toutes les propriétés et méthodes utiles pour TOUS les Models
-class Yokai
+class Yokai extends CoreModel
 {
-    private $id;
-    private $name;
+
     private $kanji;
     private $picture;
     private $translation;
@@ -47,6 +46,32 @@ class Yokai
         //je retourne l'objet Yokai correspondant
         $yokai = $pdoStatement->fetchObject(self::class);
         return $yokai;
+    }
+
+    public static function getYokaiById($id){
+        $pdo = Database::getPDO();
+
+        $sql = 'SELECT * FROM `yokais` WHERE `id` = '. $id;
+
+        $pdoStatement = $pdo->query($sql);
+
+        $yokai = $pdoStatement->fetchObject(self::class);
+
+        return $yokai;
+    }
+
+
+    public function create(){
+
+    }
+    public function update(){
+        
+    }
+    public function add(){
+        
+    }
+    public function delete(){
+        
     }
     /**
      * Get the value of behavior
@@ -188,43 +213,5 @@ class Yokai
         return $this;
     }
 
-    /**
-     * Get the value of name
-     */ 
-    public function getName()
-    {
-        return $this->name;
-    }
 
-    /**
-     * Set the value of name
-     *
-     * @return  self
-     */ 
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 }

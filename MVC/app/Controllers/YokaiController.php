@@ -20,7 +20,8 @@ class YokaiController extends CoreController
 
 
     public function showById($id){
-        $title="";
-        $this->show('yokai/article', ['title'=>$title]);
+        $yokai = Yokai::getYokaiById($id);
+        $title=$yokai->getName();
+        $this->show('yokai/article', ['title'=>$title, 'yokai'=>$yokai]);
     }
 }

@@ -7,7 +7,7 @@
         <div class="summary_responsive">
             
             <?php foreach ($yokaiList as $yokai) : ?>
-                <a href="#">
+                <a href="<?= $router->generate('yokai-showbyid', ['id'=>$yokai->getId()])?>">
                     <article class=" article article_responsive">
                     <div class="image image_responsive">
                         <img src="assets/<?=$yokai->getPicture()?>" alt="illustration de yokai">
