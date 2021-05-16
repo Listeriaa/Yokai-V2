@@ -11,7 +11,7 @@ class Application
      * @var AltoRouter
      */
     protected $altoRouter;
-
+   
     /**
      * @var string
      */
@@ -76,6 +76,7 @@ class Application
 
         // then run the dispatch method which will call the mapped method
         $dispatcher->dispatch();
+        
     }
 
     /**

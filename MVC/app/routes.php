@@ -36,3 +36,28 @@ $this->addRoute(
     'showById',
     'yokai-showbyid'
 );
+
+//routes pour backoffice
+
+$this->addRoute(
+    'GET',
+    '/admin',
+    'BackController',
+    'home',
+    'back-main'
+);
+$this->addRoute(
+    'GET',
+    '/admin/yokai',
+    'YokaiController',
+    'backlist',
+    'back-yokailist'
+);
+
+$this->addRoute(
+    'GET',
+    '/admin/users',
+    'UserController',
+    'backlist',
+    'back-userslist'
+);

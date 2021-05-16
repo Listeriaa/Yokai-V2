@@ -12,9 +12,6 @@ class YokaiController extends CoreController
      */
     public function list()
     {
-     
-
-        
         $this->show('yokai/list', ['title'=>'Tous les Yōkai', 'yokaiList'=>Yokai::getAllYokai()]);
     }
 
@@ -23,5 +20,9 @@ class YokaiController extends CoreController
         $yokai = Yokai::getYokaiById($id);
         $title=$yokai->getName();
         $this->show('yokai/article', ['title'=>$title, 'yokai'=>$yokai]);
+    }
+
+    public function backlist(){
+        $this->show('back/list', ['type'=>'yokai','list'=>Yokai::getAllYokai()]);
     }
 }
