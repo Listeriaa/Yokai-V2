@@ -52,13 +52,16 @@ abstract class CoreController
         // => la variable $baseUri existe désormais, et sa valeur est $_SERVER['BASE_URI']
         // => il en va de même pour chaque élément du tableau
         
-        $folder = (substr($viewName, 0,4) == 'back')?'back':'layout';
-        
-        
+       
+        if (substr($viewName, 0,4) == 'back'){
+            require_once __DIR__ . '/../views/back/layout/header.tpl.php';
+            require_once __DIR__ . '/../views/'. $viewName . '.tpl.php';
+            require_once __DIR__ . '/../views/back/layout/footer.tpl.php';
+        } else {
+            require_once __DIR__ . '/../views/layout/header.tpl.php';
+            require_once __DIR__ . '/../views/'. $viewName . '.tpl.php';
+            require_once __DIR__ . '/../views/layout/footer.tpl.php';
+        }
 
-        // $viewVars est disponible dans chaque fichier de vue
-        require_once __DIR__ . '/../views/'.$folder .'/header.tpl.php';
-        require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';
-        require_once __DIR__ . '/../views/'.$folder .'/footer.tpl.php';
     }
 }
