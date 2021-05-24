@@ -53,7 +53,20 @@ $this->addRoute(
     'backlist',
     'back-yokailist'
 );
-
+$this->addRoute(
+    'GET',
+    '/admin/yokai/add',
+    'YokaiController',
+    'add',
+    'back-yokaiadd'
+);
+$this->addRoute(
+    'POST',
+    '/admin/yokai/add',
+    'YokaiController',
+    'create',
+    'back-yokaicreate'
+);
 $this->addRoute(
     'GET',
     '/admin/users',

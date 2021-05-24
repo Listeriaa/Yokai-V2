@@ -23,6 +23,16 @@ class YokaiController extends CoreController
     }
 
     public function backlist(){
-        $this->show('back/yokai/list', ['type'=>'yokai','list'=>Yokai::getAllYokai()]);
+        $this->show('back/list', ['type'=>'yokai','list'=>Yokai::getAllYokai()]);
+    }
+
+    public function add(){
+        $this->show('back/yokai/add');
+
+    }
+
+    public function create(){
+        
+
     }
 }

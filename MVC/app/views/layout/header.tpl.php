@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?=$assetsBaseUri?>css/reset.css">
     <link rel="stylesheet" href="<?=$assetsBaseUri?>css/fontawesome/css/all.css">
     <link rel="stylesheet" href="<?=$assetsBaseUri?>css/style.css">
+    <script defer src="<?=$assetsBaseUri?>js/app.js"></script>
 </head>
 <body> 
 <div class="bg"></div>
