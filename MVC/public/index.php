@@ -8,7 +8,7 @@ use App\Utils\Application;
 require __DIR__.'/../vendor/autoload.php';
 
 // Load session
-//session_start();
+session_start();
 
 // On lance l'application
 $app = new Application('App\Controllers');

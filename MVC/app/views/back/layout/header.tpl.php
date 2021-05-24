@@ -46,4 +46,8 @@
   </div>
 </nav>
 
+<?php
+include __DIR__.'/flash.tpl.php';
+?>
+
    

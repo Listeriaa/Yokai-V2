@@ -188,9 +188,13 @@ class Yokai extends CoreModel
      */ 
     public function setPicture($picture)
     {
-        $this->picture = $picture;
-
-        return $this;
+        $regex = "#\.jpg|\.png$#";
+        if(preg_match($regex, $picture)===1){
+            $picture = "images/".$picture;
+            $this->picture = $picture;
+        } else {
+            return false;
+        }
     }
 
     /**

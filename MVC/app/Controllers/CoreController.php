@@ -19,7 +19,38 @@ abstract class CoreController
         header('Location:' . $this->router->generate($currentRouteName, $params));
     }
 
+    public function addFlashError($message)
+    {
+        // On vérifie d'abord que la clé de stockage des messages
+        // existe
+        if (empty($_SESSION['errors'])) {
+            $_SESSION['errors'] = [];
+        }
 
+        // On ajoute le message d'erreur dans un tableau en session
+        $_SESSION['errors'][] = $message;
+    }
+
+    public function addFlashInfo($message)
+    {
+        // On vérifie d'abord que la clé de stockage des messages
+        // existe
+        if (empty($_SESSION['infos'])) {
+            $_SESSION['infos'] = [];
+        }
+
+        // On ajoute le message d'erreur dans un tableau en session
+        $_SESSION['infos'][] = $message;
+    }
+
+
+    public function checkValue($value, $message){
+        if($value === false){
+            $this->addFlashError($message);
+            return $value;
+        }
+        return $value;
+    }
     /**
      * Méthode permettant d'afficher du code HTML en se basant sur les views
      *
