@@ -29,6 +29,8 @@ class Yokai extends CoreModel
         return $results;
     }
 
+//     et pour le tableClass tu as des fonctions php qui te permettent d'avoir la classe de l'objet en cours (ou de la classe qui appelle la fonction si on est en static)
+// c'est get_class et get_called_class
     public static function getRandomYokai(){
         //je sélectionne tous les id des yokai
         $pdo = Database::getPDO();

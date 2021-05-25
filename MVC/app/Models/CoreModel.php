@@ -46,7 +46,7 @@ abstract class  CoreModel {
      */ 
     public function setName($name)
     {
-        if (strlen($name) >= 50){
+        if (strlen($name) >= 3){
             $this->name = $name;
             return $this->name;
         }else {
