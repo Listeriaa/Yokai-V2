@@ -1,13 +1,14 @@
 const newYokaiForm= {
     init:function(){
         const addYokaiForm = document.querySelector('.yokai-add');
-        console.log(addYokaiForm);
+        document.querySelector('#name').focus();
         addYokaiForm.addEventListener('submit', newYokaiForm.handleSubmitAddYokai);
     },
     handleSubmitAddYokai:function(evt){
         
         const newForm = evt.currentTarget;
-        let error = document.querySelector('.alert');
+        let error = document.querySelector('.alert-JS');
+        console.log(error);
         
         
         //je dois vérifier que tous les champs sont remplis sauf origine qui peut être nul
@@ -16,7 +17,6 @@ const newYokaiForm= {
         let translationInput = newForm.querySelector('#translation').value;
         let pictureInput = newForm.querySelector('#picture').value;
         let habitatInput = newForm.querySelector('#habitat').value;
-        let originInput = newForm.querySelector('#origin').value;
         let appearanceInput = newForm.querySelector('#appearance').value;
         let behaviorInput = newForm.querySelector('#behavior').value;
         
@@ -36,6 +36,8 @@ const newYokaiForm= {
                 error.classList.remove('d-none');
                 
                 window.scrollTo(0, 0);
+
+                newForm.querySelector('#name').focus();
             }
         console.log(nameInput);
         //je dois vérifier que le format de l'image est bien image/....jpg

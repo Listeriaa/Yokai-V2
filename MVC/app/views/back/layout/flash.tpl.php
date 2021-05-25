@@ -1,4 +1,4 @@
-<div class="alert alert-danger d-none d-flex justify-content-center my-4" role="alert">
+<div class="alert-JS alert-danger d-none d-flex justify-content-center my-4" role="alert">
     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
         <use xlink:href="#exclamation-triangle-fill" />
     </svg>
@@ -7,17 +7,7 @@
     </div>
 </div>
 
-<?php if (isset($_SESSION['errors'])) : ?>
-    <div class="container my-4">
-        <?php foreach ($_SESSION['errors'] as $error) : ?>
-            <div class="alert alert-danger">
-                <?= $error ?>
-            </div>
-        <?php endforeach; ?>
-        <!-- On nettoie la session après affichage -->
-        <?php unset($_SESSION['errors']) ?>
-    </div>
-<?php endif; ?>
+
 
 
 <?php if (isset($_SESSION['infos'])) : ?>
