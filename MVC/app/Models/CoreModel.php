@@ -46,9 +46,12 @@ abstract class  CoreModel {
      */ 
     public function setName($name)
     {
-        $this->name = $name;
-
-        return $this;
+        if (strlen($name) >= 50){
+            $this->name = $name;
+            return $this->name;
+        }else {
+            return false;
+        }
     }
 
     abstract protected function insert();

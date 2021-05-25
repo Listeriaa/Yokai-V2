@@ -19,7 +19,7 @@ abstract class CoreController
         header('Location:' . $this->router->generate($currentRouteName, $params));
     }
 
-    public function addFlashError($message)
+    public function addFlashError($variable, $message)
     {
         // On vérifie d'abord que la clé de stockage des messages
         // existe
@@ -28,7 +28,7 @@ abstract class CoreController
         }
 
         // On ajoute le message d'erreur dans un tableau en session
-        $_SESSION['errors'][] = $message;
+        $_SESSION['errors'][$variable] = $message;
     }
 
     public function addFlashInfo($message)
@@ -49,9 +49,9 @@ abstract class CoreController
         $data = htmlspecialchars($data);
         return $data;
     }
-    public function checkValue($value, $message){
+    public function checkValue($value, $variable, $message){
         if($value === false){
-            $this->addFlashError($message);
+            $this->addFlashError($variable, $message);
             return $value;
         }
         return $value;

@@ -23,7 +23,7 @@ class YokaiController extends CoreController
     }
 
     public function backlist(){
-        $this->show('back/list', ['type'=>'yokai','list'=>Yokai::getAllYokai()]);
+        $this->show('back/yokai/list', ['type'=>'yokai','list'=>Yokai::getAllYokai()]);
     }
 
     public function add(){
@@ -57,17 +57,16 @@ class YokaiController extends CoreController
         }
 
        // J'utilise les setter pour valider les données ou retourner false. Si false, le checkValue remplira le tableau d'erreurs
-        $name=$this->checkValue($yokai->setName($name), "Nombre de caractères insuffisant (3 minimum)");
-        $kanji=$this->checkValue($yokai->setKanji($kanji), "Non conforme");
-        $translation=$this->checkValue($yokai->setTranslation($translation), "Nombre de caractères insuffisant (5 minimum)");
-        $picture=$this->checkValue($yokai->setPicture($picture), "le format de l'image doit être .jpg ou .png");
-        $habitat=$this->checkValue($yokai->setHabitat($habitat), "Nombre de caractères insuffisant (5 minimum)");
-        $origin=$this->checkValue($yokai->setOrigin($origin), "Nombre de caractères insuffisant (20 minimum)");
-        $appearance=$this->checkValue($yokai->setAppearance($appearance), "Nombre de caractères insuffisant (50 minimum)");
-        $behavior=$this->checkValue($yokai->setBehavior($behavior), "Nombre de caractères insuffisant (50 minimum)");
+        $name=$this->checkValue($yokai->setName($name),"name", "Nombre de caractères insuffisant (3 minimum)");
+        $kanji=$this->checkValue($yokai->setKanji($kanji),"kanji", "Non conforme");
+        $translation=$this->checkValue($yokai->setTranslation($translation),"translation", "Nombre de caractères insuffisant (5 minimum)");
+        $picture=$this->checkValue($yokai->setPicture($picture),"picture", "le format de l'image doit être .jpg ou .png");
+        $habitat=$this->checkValue($yokai->setHabitat($habitat),'habitat', "Nombre de caractères insuffisant (5 minimum)");
+        $origin=$this->checkValue($yokai->setOrigin($origin),"origin", "Nombre de caractères insuffisant (20 minimum)");
+        $appearance=$this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
+        $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
 
-        dd($_SESSION['errors']);
-  
+        dump($name);
         // Si le tableau d'erreur n'est pas vide, je re-crée un token, et j'appelle la methode show sur le tpl add
         //sinon, je lance la requete.
             //si pas d'erreur, je rajoute le message de succès et je redirige vers la liste
