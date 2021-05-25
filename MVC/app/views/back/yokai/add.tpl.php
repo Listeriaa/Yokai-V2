@@ -5,7 +5,7 @@ if (isset($yokai)){
 ?>
 <div class="container my-4">
     <h1 class="text-center">Ajouter un Yokai</h1>
-    <a href="<?= $router->generate('back-yokailist')?>" class="btn btn-success float-right">Retour</a>
+    <a href="<?= $router->generate('back-yokailist')?>" class="btn btn-danger float-left">Retour</a>
     <form action="<?=$router->generate('back-yokaicreate')?>" method="POST" class="mt-5 yokai-add">
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
