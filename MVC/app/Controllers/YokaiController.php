@@ -31,40 +31,42 @@ class YokaiController extends CoreController
 
     }
 
-    public function create($id=null){
-        $name = trim(addslashes(filter_input(INPUT_POST, 'name')));
-        $kanji = trim(addslashes(filter_input(INPUT_POST, 'kanji')));
-        $translation = trim(addslashes(filter_input(INPUT_POST, 'translation')));
-        $picture = trim(addslashes(filter_input(INPUT_POST, 'picture')));
-        $habitat = trim(addslashes(filter_input(INPUT_POST, 'habitat')));
-        $origin = trim(addslashes(filter_input(INPUT_POST, 'origin')));
-        $appearance = trim(addslashes(filter_input(INPUT_POST, 'appearance')));
-        $behavior = trim(addslashes(filter_input(INPUT_POST, 'behavior')));
+    public function createOrUpdate($id=null){
+        $name = $this->dataValidate(filter_input(INPUT_POST, 'name'));
+        $kanji = $this->dataValidate(filter_input(INPUT_POST, 'kanji'));
+        $translation = $this->dataValidate(filter_input(INPUT_POST, 'translation'));
+        $picture = $this->dataValidate(filter_input(INPUT_POST, 'picture'));
+        $habitat = $this->dataValidate(filter_input(INPUT_POST, 'habitat'));
+        $origin = $this->dataValidate(filter_input(INPUT_POST, 'origin'));
+        $appearance = $this->dataValidate(filter_input(INPUT_POST, 'appearance'));
+        $behavior = $this->dataValidate(filter_input(INPUT_POST, 'behavior'));
 
+        
+        //!utiliser validateData et verifier quoi utiliser comme filtres (attention, y'a des balises dans le texte)
         //je décide quelle requête doit être appelé en fonction de si y'a une ID (modif) ou non.
         if ($id == null) {
             // On est dans le cas d'une création
             // on crée un objet vide
             $request = 'insert';
-            $user = new Yokai();
+            $yokai = new Yokai();
             
         } else {
             // On est dans le cas d'une mise à jour
             $request = 'update';
-            $user = Yokai::getYokaiById($id);
+            $yokai = Yokai::getYokaiById($id);
         }
 
        // J'utilise les setter pour valider les données ou retourner false. Si false, le checkValue remplira le tableau d'erreurs
-        $name=$this->checkValue($user->setName($name), "Nombre de caractères insuffisant (3 minimum)");
-        $kanji=$this->checkValue($user->setKanji($kanji), "Non conforme");
-        $translation=$this->checkValue($user->setTranslation($translation), "Nombre de caractères insuffisant (5 minimum)");
-        $picture=$this->checkValue($user->setPicture($picture), "le format de l'image doit être .jpg ou .png");
-        $habitat=$this->checkValue($user->setHabitat($habitat), "Nombre de caractères insuffisant (5 minimum)");
-        $origin=$this->checkValue($user->setOrigin($origin), "Nombre de caractères insuffisant (20 minimum)");
-        $appearance=$this->checkValue($user->setAppearance($appearance), "Nombre de caractères insuffisant (30 minimum)");
-        $behavior=$this->checkValue($user->setBehavior($behavior), "Nombre de caractères insuffisant (50 minimum)");
+        $name=$this->checkValue($yokai->setName($name), "Nombre de caractères insuffisant (3 minimum)");
+        $kanji=$this->checkValue($yokai->setKanji($kanji), "Non conforme");
+        $translation=$this->checkValue($yokai->setTranslation($translation), "Nombre de caractères insuffisant (5 minimum)");
+        $picture=$this->checkValue($yokai->setPicture($picture), "le format de l'image doit être .jpg ou .png");
+        $habitat=$this->checkValue($yokai->setHabitat($habitat), "Nombre de caractères insuffisant (5 minimum)");
+        $origin=$this->checkValue($yokai->setOrigin($origin), "Nombre de caractères insuffisant (20 minimum)");
+        $appearance=$this->checkValue($yokai->setAppearance($appearance), "Nombre de caractères insuffisant (50 minimum)");
+        $behavior=$this->checkValue($yokai->setBehavior($behavior), "Nombre de caractères insuffisant (50 minimum)");
 
-
+        dd($_SESSION['errors']);
   
         // Si le tableau d'erreur n'est pas vide, je re-crée un token, et j'appelle la methode show sur le tpl add
         //sinon, je lance la requete.
@@ -74,13 +76,13 @@ class YokaiController extends CoreController
         if (!empty($_SESSION['errors'])){
             $token = bin2hex(random_bytes(32));
             $_SESSION['token'] = $token;
-            $this->show('user/add', [$_SESSION['errors'], 'user'=>$user, 'token'=>$token, 'request'=>$request]);
+            $this->show('back/yokai/add', [$_SESSION['errors'], 'yokai'=>$yokai, 'token'=>$token, 'request'=>$request]);
         } else{
             
-            if ($user->$request()) {
+            if ($yokai->$request()) {
                 ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
                 
-                header('Location: '.$router->generate('user-list'));
+                
             }else{
                 echo "la requête a échouée";
             }

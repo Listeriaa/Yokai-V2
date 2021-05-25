@@ -43,7 +43,12 @@ abstract class CoreController
         $_SESSION['infos'][] = $message;
     }
 
-
+    function dataValidate($data){
+        $data = trim($data);
+        $data = addslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
     public function checkValue($value, $message){
         if($value === false){
             $this->addFlashError($message);

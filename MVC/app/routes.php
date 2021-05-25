@@ -64,7 +64,7 @@ $this->addRoute(
     'POST',
     '/admin/yokai/add',
     'YokaiController',
-    'create',
+    'createOrUpdate',
     'back-yokaicreate'
 );
 $this->addRoute(

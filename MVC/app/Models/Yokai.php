@@ -61,15 +61,13 @@ class Yokai extends CoreModel
     }
 
 
-    public function create(){
+    public function insert(){
 
     }
     public function update(){
         
     }
-    public function add(){
-        
-    }
+
     public function delete(){
         
     }
@@ -88,9 +86,12 @@ class Yokai extends CoreModel
      */ 
     public function setBehavior($behavior)
     {
-        $this->behavior = $behavior;
-
-        return $this;
+        if (strlen($behavior) >= 50){
+            $this->behavior = $behavior;
+            return $this->behavior;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -108,9 +109,12 @@ class Yokai extends CoreModel
      */ 
     public function setOrigin($origin)
     {
-        $this->origin = $origin;
-
-        return $this;
+        if ($origin ==='' || strlen($origin) >= 20){
+            $this->origin = $origin;
+            return $this->origin;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -128,9 +132,12 @@ class Yokai extends CoreModel
      */ 
     public function setAppearance($appearance)
     {
-        $this->appearance = $appearance;
-
-        return $this;
+        if (strlen($appearance) >= 50){
+            $this->appearance = $appearance;
+            return $this->appearance;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -148,9 +155,12 @@ class Yokai extends CoreModel
      */ 
     public function setHabitat($habitat)
     {
-        $this->habitat = $habitat;
-
-        return $this;
+        if (strlen($habitat) >= 5){
+            $this->habitat = $habitat;
+            return $this->habitat;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -168,9 +178,12 @@ class Yokai extends CoreModel
      */ 
     public function setTranslation($translation)
     {
-        $this->translation = $translation;
-
-        return $this;
+        if (strlen($translation) >= 5){
+            $this->translation = $translation;
+            return $this->translation;
+        }else {
+            return false;
+        }
     }
 
     /**
@@ -192,6 +205,7 @@ class Yokai extends CoreModel
         if(preg_match($regex, $picture)===1){
             $picture = "images/".$picture;
             $this->picture = $picture;
+            return $this->picture;
         } else {
             return false;
         }
@@ -212,9 +226,12 @@ class Yokai extends CoreModel
      */ 
     public function setKanji($kanji)
     {
-        $this->kanji = $kanji;
-
-        return $this;
+        if (strlen($kanji) >= 1){
+            $this->kanji = $kanji;
+            return $this->kanji;
+        }else {
+            return false;
+        }
     }
 
 
