@@ -69,8 +69,29 @@ $this->addRoute(
 );
 $this->addRoute(
     'GET',
+    '/admin/yokai/update/[i:id]',
+    'YokaiController',
+    'add',
+    'back-yokaiupdate'
+);
+$this->addRoute(
+    'POST',
+    '/admin/yokai/update/[i:id]',
+    'YokaiController',
+    'createOrUpdate',
+    'back-yokaimodify'
+);
+$this->addRoute(
+    'GET',
     '/admin/users',
     'UserController',
     'backlist',
     'back-userslist'
+);
+$this->addRoute(
+    'GET',
+    '/admin/test',
+    'UserController',
+    'test',
+    'test'
 );

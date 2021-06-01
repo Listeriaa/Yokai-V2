@@ -12,9 +12,9 @@
 
 <?php if (isset($_SESSION['infos'])) : ?>
     <div class="container my-4">
-        <?php foreach ($_SESSION['infos'] as $error) : ?>
+        <?php foreach ($_SESSION['infos'] as $info) : ?>
             <div class="alert alert-info">
-                <?= $error ?>
+                <?= $info ?>
             </div>
         <?php endforeach; ?>
         <!-- On nettoie la session après affichage -->

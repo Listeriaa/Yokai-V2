@@ -1,12 +1,14 @@
-<?php
-if (isset($yokai)){
-    dump($yokai->getName());
-}
-?>
+
 <div class="container my-4">
-    <h1 class="text-center">Ajouter un Yokai</h1>
+    <h1 class="text-center">
+    <?php if (isset($yokai) && $yokai->getId() !== null) : ?>
+    Modifier <?= $yokai->getName() ?>
+    <?php else : ?>
+    Ajouter un yokai
+    <?php endif; ?>
+    </h1>
     <a href="<?= $router->generate('back-yokailist')?>" class="btn btn-danger float-left">Retour</a>
-    <form action="<?=$router->generate('back-yokaicreate')?>" method="POST" class="mt-5 yokai-add">
+    <form action="" method="POST" class="mt-5 yokai-add">
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
             <input type="text" class="form-control" id="name" value="<?= (isset($yokai))? $yokai->getName() :"" ?>" name="name" aria-describedby="nameHelp">
@@ -38,7 +40,7 @@ if (isset($yokai)){
         </div>
         <div class="mb-3">
             <label for="picture" class="form-label">Image</label>
-            <input type="text" class="form-control" id="picture" name="picture" value="<?= (isset($yokai))? $yokai->getPicture() :"" ?>" aria-describedby="pictureHelp">
+            <input type="text" class="form-control" id="picture" name="picture" value="<?= (isset($yokai))? substr($yokai->getPicture(), 7) :"" ?>" aria-describedby="pictureHelp">
             <?php if (isset($_SESSION['errors']['picture'])) :?>
             <div id="nameHelp" class="form-text text-danger"><?= $_SESSION['errors']['picture'] ?></div>
             <?php else: ?>
@@ -58,7 +60,7 @@ if (isset($yokai)){
         </div>
         <div class="mb-3">
             <label for="origin" class="form-label">Origine</label>
-            <textarea type="text" class="form-control" id="origin" name="origin" value="<?= (isset($yokai))? $yokai->getOrigin() :"" ?>" aria-describedby="originHelp"></textarea>
+            <textarea type="text" class="form-control" id="origin" name="origin" style="height:150px" aria-describedby="originHelp"><?= (isset($yokai))? $yokai->getOrigin() :"" ?></textarea>
             <?php if (isset($_SESSION['errors']['origin'])) :?>
             <div id="nameHelp" class="form-text text-danger"><?= $_SESSION['errors']['origin'] ?></div>
             <?php else: ?>
@@ -69,7 +71,7 @@ if (isset($yokai)){
 
         <div class="mb-3">
             <label for="appearance" class="form-label">Apparence</label>
-            <textarea type="text" class="form-control" id="appearance" name="appearance" value="<?= (isset($yokai))? $yokai->getAppearance() :"" ?>" aria-describedby="appearanceHelp"></textarea>
+            <textarea type="text" class="form-control" id="appearance" name="appearance" style="height:200px" aria-describedby="appearanceHelp"><?= (isset($yokai))? $yokai->getAppearance() :"" ?></textarea>
             <?php if (isset($_SESSION['errors']['appearance'])) :?>
             <div id="nameHelp" class="form-text text-danger"><?= $_SESSION['errors']['appearance'] ?></div>
             <?php else: ?>
@@ -79,7 +81,7 @@ if (isset($yokai)){
         </div>
         <div class="mb-3">
             <label for="behavior" class="form-label">Comportement</label>
-            <textarea type="text" class="form-control" id="behavior" value="<?= (isset($yokai))? $yokai->getBehavior() :"" ?>" name="behavior" aria-describedby="behaviorHelp"></textarea>
+            <textarea type="text" class="form-control" id="behavior" style="height:300px" name="behavior" aria-describedby="behaviorHelp"><?= (isset($yokai))? $yokai->getBehavior() :"" ?></textarea>
             <?php if (isset($_SESSION['errors']['behavior'])) :?>
             <div id="nameHelp" class="form-text text-danger"><?= $_SESSION['errors']['behavior'] ?></div>
             <?php else: ?>

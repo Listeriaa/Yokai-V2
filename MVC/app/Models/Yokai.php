@@ -17,17 +17,7 @@ class Yokai extends CoreModel
     private $appearance;
     private $origin;
     private $behavior;
-    
-    public static function getAllYokai(){
-        $pdo = Database::getPDO();
-        $sql = 'SELECT * FROM `yokais`';
-        
-        $pdoStatement = $pdo->query($sql);
-        
-        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
-        
-        return $results;
-    }
+
 
 //     et pour le tableClass tu as des fonctions php qui te permettent d'avoir la classe de l'objet en cours (ou de la classe qui appelle la fonction si on est en static)
 // c'est get_class et get_called_class
@@ -62,16 +52,74 @@ class Yokai extends CoreModel
         return $yokai;
     }
 
-
+ 
     public function insert(){
+        $pdo = Database::getPDO();
 
+        $sql = "
+        INSERT INTO `yokais` (name, kanji, picture, translation, habitat, appearance, origin, behavior)
+        VALUES (:name, :kanji, :picture, :translation, :habitat, :appearance, NULLIF(:origin, ''), :behavior)
+    ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':name', $this->name);
+        $pdoStatement->bindValue(':kanji', $this->kanji);
+        $pdoStatement->bindValue(':picture', $this->picture);
+        $pdoStatement->bindValue(':translation', $this->translation);
+        $pdoStatement->bindValue(':habitat', $this->habitat);
+        $pdoStatement->bindValue(':appearance', $this->appearance);
+        $pdoStatement->bindValue(':origin', $this->origin);
+        $pdoStatement->bindValue(':behavior', $this->behavior);
+
+        $done = $pdoStatement->execute();
+
+        if($done) {
+            // si tout s'est bien passé on va renseigner l'identifiant généré par la BDD dans la propriété de l'objet
+            // la propriété id est définit dans le CoreModel !
+            $this->id = $pdo->lastInsertId();
+        }
+        return $done;
     }
+
     public function update(){
+        $pdo = Database::getPDO();
         
+        // Ecriture de la requête INSERT INTO
+        $sql = "
+            UPDATE `yokais`
+            SET name = :name, kanji = :kanji, picture = :picture, translation = :translation, habitat = :habitat, appearance = :appearance, origin=NULLIF(:origin, ''), behavior = :behavior, updated_at = NOW()
+            WHERE id=:id
+        ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':name', $this->name);
+        $pdoStatement->bindValue(':kanji', $this->kanji);
+        $pdoStatement->bindValue(':picture', $this->picture);
+        $pdoStatement->bindValue(':translation', $this->translation);
+        $pdoStatement->bindValue(':habitat', $this->habitat);
+        $pdoStatement->bindValue(':appearance', $this->appearance);
+        $pdoStatement->bindValue(':origin', $this->origin);
+        $pdoStatement->bindValue(':behavior', $this->behavior);
+        $pdoStatement->bindValue(':id', $this->id);
+        
+        return $pdoStatement->execute();
     }
 
     public function delete(){
-        
+        $pdo = Database::getPDO();
+        $sql = "DELETE FROM `yokais`
+        WHERE `id` = :id";
+
+        // Pour éviter les injections SQL on va utiliser la méthode prepare de PDO
+        $pdoStatement = $pdo->prepare($sql);
+
+        // bindValue associe une valeur à un paramètre
+
+        $pdoStatement->bindValue(':id', $this->id);
+
+        return $pdoStatement->execute();
     }
     /**
      * Get the value of behavior
@@ -205,9 +253,16 @@ class Yokai extends CoreModel
     {
         $regex = "#\.jpg|\.png$#";
         if(preg_match($regex, $picture)===1){
-            $picture = "images/".$picture;
-            $this->picture = $picture;
-            return $this->picture;
+            $imgregex = "#^images\/#";
+            if (preg_match($imgregex, $picture)===1){
+                $this->picture = $picture;
+                return $this->picture;
+            }
+            else {
+                $picture = "images/".$picture;
+                $this->picture = $picture;
+                return $this->picture;
+            }
         } else {
             return false;
         }

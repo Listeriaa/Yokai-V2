@@ -4,6 +4,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Yokai;
+
 abstract class CoreController
 {
     protected $router;
@@ -13,7 +15,11 @@ abstract class CoreController
         $this->router = $router;
 
     }
-
+    public function test(){
+        $yokai = Yokai::all('yokai');
+        dump($yokai);
+        $this->show('error/test.tpl.php');
+    }
     public function redirect($currentRouteName, $params = [])
     {
         header('Location:' . $this->router->generate($currentRouteName, $params));

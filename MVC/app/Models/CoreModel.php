@@ -11,6 +11,33 @@ abstract class  CoreModel {
     protected $updated_at;
     protected $creaded_at;
 
+    abstract protected function insert();
+    abstract protected function update();
+    abstract protected function delete();
+
+    public static function all($nameTable){
+        
+
+        $pdo = Database::getPDO();
+        $sql = 'SELECT * FROM `'.$nameTable.'`';
+        
+        $pdoStatement = $pdo->query($sql);
+        
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, get_called_class());
+        
+        return $results;
+    }
+
+    public static function find($id, $nameTable){
+        $pdo = Database::getPDO();
+
+        $sql = 'SELECT * FROM `'.$nameTable.'` WHERE `id` = '. $id;
+
+        $pdoStatement = $pdo->query($sql);
+
+        $results = $pdoStatement->fetchObject(get_called_class());
+        return $results;
+    }
     /**
      * Get the value of id
      */ 
@@ -53,13 +80,6 @@ abstract class  CoreModel {
             return false;
         }
     }
-
-    abstract protected function insert();
-    abstract protected function update();
-    
-    abstract protected function delete();
-
-
 
     /**
      * Get the value of updated_at

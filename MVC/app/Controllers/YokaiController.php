@@ -12,26 +12,33 @@ class YokaiController extends CoreController
      */
     public function list()
     {
-        $this->show('yokai/list', ['title'=>'Tous les Yōkai', 'yokaiList'=>Yokai::getAllYokai()]);
+        $this->show('yokai/list', ['title'=>'Tous les Yōkai', 'yokaiList'=>Yokai::all('yokai')]);
     }
 
 
     public function showById($id){
-        $yokai = Yokai::getYokaiById($id);
+        $yokai = Yokai::find($id, 'yokai');
         $title=$yokai->getName();
         $this->show('yokai/article', ['title'=>$title, 'yokai'=>$yokai]);
     }
 
     public function backlist(){
-        $this->show('back/yokai/list', ['type'=>'yokai','list'=>Yokai::getAllYokai()]);
+        $this->show('back/list', ['type'=>'yokai','list'=>Yokai::all('yokai')]);
     }
 
-    public function add(){
-        $this->show('back/yokai/add');
+    public function add($id=null){
+        $yokai=null;
+        if(isset($id)){
+            $yokai = Yokai::find($id,'yokai');
+        }
+        
+
+        $this->show('back/yokai/add',['yokai'=>$yokai]);
 
     }
 
     public function createOrUpdate($id=null){
+
         $name = $this->dataValidate(filter_input(INPUT_POST, 'name'));
         $kanji = $this->dataValidate(filter_input(INPUT_POST, 'kanji'));
         $translation = $this->dataValidate(filter_input(INPUT_POST, 'translation'));
@@ -53,9 +60,9 @@ class YokaiController extends CoreController
         } else {
             // On est dans le cas d'une mise à jour
             $request = 'update';
-            $yokai = Yokai::getYokaiById($id);
+            $yokai = Yokai::find($id, 'yokai');
         }
-
+        
        // J'utilise les setter pour valider les données ou retourner false. Si false, le checkValue remplira le tableau d'erreurs
         $name=$this->checkValue($yokai->setName($name),"name", "Nombre de caractères insuffisant (3 minimum)");
         $kanji=$this->checkValue($yokai->setKanji($kanji),"kanji", "Non conforme");
@@ -66,7 +73,7 @@ class YokaiController extends CoreController
         $appearance=$this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
         $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
 
-        dump($name);
+
         // Si le tableau d'erreur n'est pas vide, je re-crée un token, et j'appelle la methode show sur le tpl add
         //sinon, je lance la requete.
             //si pas d'erreur, je rajoute le message de succès et je redirige vers la liste
@@ -79,8 +86,9 @@ class YokaiController extends CoreController
         } else{
             
             if ($yokai->$request()) {
+               
                 ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
-                
+                $this->redirect('back-yokailist', ['type'=>'yokai']);
                 
             }else{
                 echo "la requête a échouée";
