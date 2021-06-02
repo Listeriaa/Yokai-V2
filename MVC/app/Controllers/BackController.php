@@ -13,7 +13,7 @@ class BackController extends CoreController
     {
         
         // For now, this page only needs the view
-        $this->show('back/home');
+        $this->show('back/home', ['type'=>'back office']);
     }
 
     

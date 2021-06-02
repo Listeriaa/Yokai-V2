@@ -5,7 +5,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Yokais</h5>
                     <p class="card-text">Ajouter, modifier ou supprimer des yokais</p>
-                    <a href="<?= $router->generate('back-yokailist')?>" class="btn btn-custom btn-outline-light">J'y vais!</a>
+                    <a href="<?= $router->generate('yokai-backlist')?>" class="btn btn-custom btn-outline-light">J'y vais!</a>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Utilisateurs</h5>
                     <p class="card-text">Ajouter, modifier ou supprimer des utilisateurs</p>
-                    <a href="#" class="btn btn-custom btn-outline-light">J'y vais!</a>
+                    <a href="<?= $router->generate('user-list')?>" class="btn btn-custom btn-outline-light">J'y vais!</a>
                 </div>
             </div>
         </div>

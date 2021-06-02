@@ -14,7 +14,7 @@ class UserController extends CoreController {
     public function login() {
         // views/user/login.tpl.php
   
-        $this->show('user/login');
+        $this->show('back/user/login');
     }
 
     public function logout()
@@ -23,7 +23,8 @@ class UserController extends CoreController {
         unset($_SESSION['userObject']);
         unset($_SESSION['isConnected']);
 
-        header('Location: '.$_SERVER['BASE_URI']);
+        
+        $this->redirect('main-home');
         exit;
     }
     public function doLogin() {
@@ -33,30 +34,30 @@ class UserController extends CoreController {
         
         $password = trim(filter_input(INPUT_POST, 'password'));
 
-        $errorsList=[];
+        
         // 2) On interroge la BDD pour savoir si l'utilisateur existe
-        $user = AppUser::findByEmail($username);
+        $user = User::findByEmail($username);
         
         if($user && password_verify($password, $user->getPassword())){
             
             $_SESSION['userId'] = $user->getId();
             $_SESSION['userObject'] = $user;
             $_SESSION['isConnected']=true;
-            header('Location: '.$_SERVER['BASE_URI']);
+            $this->redirect('back-home');
+
          }else{
             
-            $errorsList[]="Utilisateur et/ou mot de passe inconnu";
-            $this->show('user/login', ['errorsList'=>$errorsList]);
+            $this->redirect('user-login', ['error'=> 'Utilisateur et/ou mot de passe inconnu']);
 
         }
     
     }
 
     public function list(){
-        $this->checkAutorization(['admin']);
+        $this->checkACL(['admin']);
         // On affiche le contenu de la vue
         // views/user/list.tpl.php
-        $this->show('user/list', ['usersList' => AppUser::findAllInTable('app_user')]);
+        $this->show('back/list', ['type'=>'user', 'list' => User::all('user')]);
     }
     public function add()
     {
@@ -70,7 +71,7 @@ class UserController extends CoreController {
     {
         global $router;
         $this->checkAutorization(['admin']);
-        $user = AppUser::find('app_user', $id);
+        $user = User::find('app_user', $id);
         switch ($action) {
 
 
@@ -111,11 +112,11 @@ class UserController extends CoreController {
             // On est dans le cas d'une création de produit
             // on crée un objet vide
             $request = 'insert';
-            $user = new AppUser();
+            $user = new User();
         } else {
             // On est dans le cas d'une mise à jour de produit
             $request = 'update';
-            $user = AppUser::find('app_user', $id);
+            $user = User::find(' user', $id);
         }
 
         $email = $user->setEmail($email);

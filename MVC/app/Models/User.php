@@ -19,6 +19,12 @@ class User extends CoreModel{
     private $role;
     private $status;
 
+    /**
+     * method to check if a 
+     *
+     * @param string $email
+     * @return void
+     */
     public static function findByEmail(string $email){
         $pdo = Database::getPDO();
         
@@ -40,13 +46,9 @@ class User extends CoreModel{
         // Récupération de l'objet PDO représentant la connexion à la DB
         $pdo = Database::getPDO();
 
-        // Ecriture de la requête INSERT INTO. On utilise NULLIF pour mettre la valeur en NULL dans la bdd si on récupère une string vide
-        //            INSERT INTO `category` (name, subtitle, home_order, picture)
-        //VALUES (:name, :subtitle, :home_order, :picture)
-
-            $sql = "
-            INSERT INTO `users` (email, password, lastname, firstname, role, status)
-            VALUES (:email, :password, :lastname, :firstname, :role, :status)
+        $sql = "
+        INSERT INTO `users` (email, password, lastname, firstname, role, status)
+        VALUES (:email, :password, :lastname, :firstname, :role, :status)
         ";
 
         // Préparation de la requête pour protéger contre hack

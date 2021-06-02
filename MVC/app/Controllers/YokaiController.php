@@ -8,37 +8,59 @@ use App\Models\Yokai;
 class YokaiController extends CoreController
 {
     /**
-     * Method for the yokai list page
+     * Method for the yokai list page on the front office
      */
     public function list()
     {
         $this->show('yokai/list', ['title'=>'Tous les Yōkai', 'yokaiList'=>Yokai::all('yokai')]);
     }
 
-
+    /**
+     * method to show a yokai by ID on the front office
+     *
+     * @param string $id du yokai
+     * @return void
+     */
     public function showById($id){
         $yokai = Yokai::find($id, 'yokai');
         $title=$yokai->getName();
         $this->show('yokai/article', ['title'=>$title, 'yokai'=>$yokai]);
     }
 
+    /**
+     * method to show all yokai on the back office home page
+     *
+     * @return void
+     */
     public function backlist(){
         $this->show('back/list', ['type'=>'yokai','list'=>Yokai::all('yokai')]);
     }
 
+    /**
+     * method GET to show the form to add or update a yokai
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function add($id=null){
         $yokai=null;
         if(isset($id)){
             $yokai = Yokai::find($id,'yokai');
         }
         
-
-        $this->show('back/yokai/add',['yokai'=>$yokai]);
+        $this->show('back/yokai/add',['type'=>'yokai','yokai'=>$yokai]);
 
     }
 
+    /**
+     * method POST to insert or update datas in the database
+     *
+     * @param [type] $id
+     * @return void
+     */
     public function createOrUpdate($id=null){
 
+        // check, clean and validate inputs from the form
         $name = $this->dataValidate(filter_input(INPUT_POST, 'name'));
         $kanji = $this->dataValidate(filter_input(INPUT_POST, 'kanji'));
         $translation = $this->dataValidate(filter_input(INPUT_POST, 'translation'));
@@ -49,8 +71,7 @@ class YokaiController extends CoreController
         $behavior = $this->dataValidate(filter_input(INPUT_POST, 'behavior'));
 
         
-        //!utiliser validateData et verifier quoi utiliser comme filtres (attention, y'a des balises dans le texte)
-        //je décide quelle requête doit être appelé en fonction de si y'a une ID (modif) ou non.
+        //If id is null, it is a insert, if not, it is an update
         if ($id == null) {
             // On est dans le cas d'une création
             // on crée un objet vide
@@ -63,7 +84,8 @@ class YokaiController extends CoreController
             $yokai = Yokai::find($id, 'yokai');
         }
         
-       // J'utilise les setter pour valider les données ou retourner false. Si false, le checkValue remplira le tableau d'erreurs
+       // I check the value with setters : if it returns false, i push the errors in the $_SESSION['errors'], else
+       // the data is valid and it is set
         $name=$this->checkValue($yokai->setName($name),"name", "Nombre de caractères insuffisant (3 minimum)");
         $kanji=$this->checkValue($yokai->setKanji($kanji),"kanji", "Non conforme");
         $translation=$this->checkValue($yokai->setTranslation($translation),"translation", "Nombre de caractères insuffisant (5 minimum)");
@@ -74,10 +96,9 @@ class YokaiController extends CoreController
         $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
 
 
-        // Si le tableau d'erreur n'est pas vide, je re-crée un token, et j'appelle la methode show sur le tpl add
-        //sinon, je lance la requete.
-            //si pas d'erreur, je rajoute le message de succès et je redirige vers la liste
-            //sinon la requete a échouée
+        // If array is not empty, there is errors, so I go back on the form 
+            //else, if empty and the request is successfull, i head towards the list with successfull flash message
+            //else if request failed, i head towards the list with errors message
 
         if (!empty($_SESSION['errors'])){
             $token = bin2hex(random_bytes(32));
@@ -92,7 +113,12 @@ class YokaiController extends CoreController
                 
             }else{
                 echo "la requête a échouée";
+                $this->redirect('back-yokailist', ['type'=>'yokai']);
             }
         }
+    }
+
+    public function delete($id){
+        
     }
 }

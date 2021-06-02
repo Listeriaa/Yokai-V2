@@ -11,7 +11,7 @@ $this->addRoute(
     $routeName
 );
 */
-//Route for home 
+//Route for home FRONT
 
 $this->addRoute(
     'GET',
@@ -21,7 +21,7 @@ $this->addRoute(
     'main-home'
 );
 
-//routes for yokai
+//routes for yokai FRONT
 $this->addRoute(
     'GET',
     '/yokai',
@@ -37,57 +37,111 @@ $this->addRoute(
     'yokai-showbyid'
 );
 
-//routes pour backoffice
-
+//routes for backoffice
+// BACK Homepage
 $this->addRoute(
     'GET',
     '/admin',
     'BackController',
     'home',
-    'back-main'
+    'back-home'
 );
+//BACK yokai List
 $this->addRoute(
     'GET',
     '/admin/yokai',
     'YokaiController',
     'backlist',
-    'back-yokailist'
+    'yokai-backlist'
 );
+
+//BACK yokai add or modify
 $this->addRoute(
     'GET',
     '/admin/yokai/add',
     'YokaiController',
     'add',
-    'back-yokaiadd'
-);
-$this->addRoute(
-    'POST',
-    '/admin/yokai/add',
-    'YokaiController',
-    'createOrUpdate',
-    'back-yokaicreate'
+    'yokai-add'
 );
 $this->addRoute(
     'GET',
     '/admin/yokai/update/[i:id]',
     'YokaiController',
     'add',
-    'back-yokaiupdate'
+    'yokai-update'
 );
+//BACK yokai POST to add
+$this->addRoute(
+    'POST',
+    '/admin/yokai/add',
+    'YokaiController',
+    'createOrUpdate',
+    'yokai-create'
+);
+//BACK yokai POST to update
 $this->addRoute(
     'POST',
     '/admin/yokai/update/[i:id]',
     'YokaiController',
     'createOrUpdate',
-    'back-yokaimodify'
+    'yokai-modify'
 );
+//BACK login
 $this->addRoute(
     'GET',
-    '/admin/users',
+    '/admin/login',
     'UserController',
-    'backlist',
-    'back-userslist'
+    'login',
+    'user-login'
 );
+//BACK login POST
+$this->addRoute(
+    'POST',
+    '/admin/login',
+    'UserController',
+    'doLogin',
+    'user-doLogin'
+);
+//BACK users List
+$this->addRoute(
+    'GET',
+    '/admin/user',
+    'UserController',
+    'list',
+    'user-list'
+);
+//BACK user add or modify
+$this->addRoute(
+    'GET',
+    '/admin/user/add',
+    'UserController',
+    'add',
+    'user-add'
+);
+$this->addRoute(
+    'GET',
+    '/admin/user/update/[i:id]',
+    'UserController',
+    'add',
+    'user-update'
+);
+//BACK user POST to add
+$this->addRoute(
+    'POST',
+    '/admin/user/add',
+    'UserController',
+    'createOrUpdate',
+    'user-create'
+);
+//BACK user POST to update
+$this->addRoute(
+    'POST',
+    '/admin/user/update/[i:id]',
+    'UserController',
+    'createOrUpdate',
+    'user-modify'
+);
+//test route
 $this->addRoute(
     'GET',
     '/admin/test',

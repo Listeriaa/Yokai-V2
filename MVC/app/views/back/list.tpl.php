@@ -2,7 +2,7 @@
 
 <div class="container d-flex flex-column align-items-center my-4">
     <h1 class="text-center">Gestion de la table : <?=$type?></h1>
-    <a href="<?= $router->generate('back-yokaiadd')?>" class="btn btn-custom">Ajouter un <?=$type?></a>
+    <a href="<?= $router->generate($type.'-add')?>" class="btn btn-custom">Ajouter un <?=$type?></a>
     
     <table class="table table-hover mt-4 w-75">
             <thead>
@@ -18,7 +18,7 @@
                     <td scope="row"><?= $element->getId() ?></td>
                     <td><?= $element->getName() ?></td>
                     <td class="text-center">
-                        <a href="<?=($type == 'yokai')? $router->generate('back-yokaiupdate', ['id'=>$element->getId()]):$router->generate('back-userupdate', ['id'=>$element->getId()])?>" class="btn btn-sm btn-warning">
+                        <a href="<?=($type == 'yokai')? $router->generate('yokai-update', ['id'=>$element->getId()]):$router->generate('user-update', ['id'=>$element->getId()])?>" class="btn btn-sm btn-warning">
                             <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>
                         <!-- Example single danger button -->

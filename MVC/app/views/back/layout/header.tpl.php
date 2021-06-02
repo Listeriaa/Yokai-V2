@@ -18,14 +18,14 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-custom border-bottom border-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?= $router->generate('back-main')?>">BackOffice</a>
+    <a class="navbar-brand" href="<?= $router->generate('back-home')?>">BackOffice</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= $router->generate('back-yokailist')?>">Gestion des yokai</a>
+          <a class="nav-link <?= (strpos($currentPage, "yokai")!==false)?'active':''?>" aria-current="page" href="<?= $router->generate('yokai-backlist')?>">Gestion des yokai</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">gestion des users</a>

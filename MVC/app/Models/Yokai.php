@@ -24,7 +24,7 @@ class Yokai extends CoreModel
     public static function getRandomYokai(){
         //je sélectionne tous les id des yokai
         $pdo = Database::getPDO();
-        $sql = 'SELECT `id` FROM `yokais`';
+        $sql = 'SELECT `id` FROM `yokai`';
         $pdoStatement = $pdo->query($sql);
         $arrayId = $pdoStatement->fetchAll(PDO::FETCH_COLUMN);
 
@@ -32,7 +32,7 @@ class Yokai extends CoreModel
         $id = $arrayId[array_rand($arrayId, 1)];
 
         //je récupère le yokai correspondant à cette id
-        $sql = 'SELECT * FROM `yokais` WHERE `id` = '. $id;
+        $sql = 'SELECT * FROM `yokai` WHERE `id` = '. $id;
         $pdoStatement = $pdo->query($sql);
         
         //je retourne l'objet Yokai correspondant

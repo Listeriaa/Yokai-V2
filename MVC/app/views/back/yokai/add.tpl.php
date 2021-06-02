@@ -7,7 +7,7 @@
     Ajouter un yokai
     <?php endif; ?>
     </h1>
-    <a href="<?= $router->generate('back-yokailist')?>" class="btn btn-danger float-left">Retour</a>
+    <a href="<?= $router->generate('yokai-backlist')?>" class="btn btn-danger float-left">Retour</a>
     <form action="" method="POST" class="mt-5 yokai-add">
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
