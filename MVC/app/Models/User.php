@@ -23,12 +23,12 @@ class User extends CoreModel{
      * method to check if a 
      *
      * @param string $email
-     * @return void
+     * @return object
      */
     public static function findByEmail(string $email){
         $pdo = Database::getPDO();
         
-        $sql = 'SELECT * FROM `users` WHERE `email` = :email';
+        $sql = 'SELECT * FROM `user` WHERE `email` = :email';
 
         $pdoStatement=$pdo->prepare($sql);
 
@@ -47,7 +47,7 @@ class User extends CoreModel{
         $pdo = Database::getPDO();
 
         $sql = "
-        INSERT INTO `users` (email, password, lastname, firstname, role, status)
+        INSERT INTO `user` (email, password, lastname, firstname, role, status)
         VALUES (:email, :password, :lastname, :firstname, :role, :status)
         ";
 

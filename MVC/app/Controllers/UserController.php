@@ -7,16 +7,21 @@ use App\Models\User;
 class UserController extends CoreController {
 
     /**
-     * Méthode permettant d'afficher un formulaire de connexion
+     * Method to connection form
      *
      * @return void
      */
     public function login() {
-        // views/user/login.tpl.php
+        
   
         $this->show('back/user/login');
     }
 
+    /**
+     * method to logout
+     *
+     * @return void
+     */
     public function logout()
     {
         unset($_SESSION['userId']);
@@ -27,16 +32,23 @@ class UserController extends CoreController {
         $this->redirect('main-home');
         exit;
     }
+
+    /**
+     * method to check if user exists in database
+     *
+     * @return void
+     */
     public function doLogin() {
         // 1) On récupère les infos du formulaire
         
-        $username = trim(filter_input(INPUT_POST, 'username'));
+        $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+
         
         $password = trim(filter_input(INPUT_POST, 'password'));
 
         
         // 2) On interroge la BDD pour savoir si l'utilisateur existe
-        $user = User::findByEmail($username);
+        $user = User::findByEmail($email);
         
         if($user && password_verify($password, $user->getPassword())){
             
@@ -54,24 +66,24 @@ class UserController extends CoreController {
     }
 
     public function list(){
-        $this->checkACL(['admin']);
+        
         // On affiche le contenu de la vue
         // views/user/list.tpl.php
         $this->show('back/list', ['type'=>'user', 'list' => User::all('user')]);
     }
     public function add()
     {
-        $this->checkAutorization(['admin']);
+        
         // On affiche le contenu de la vue
         // views/category/list.tpl.php
-        $this->show('user/add');
+        $this->show('back/user/add', ['type'=>'user']);
     }
 
     public function updateOrDelete($action, $id)
     {
-        global $router;
-        $this->checkAutorization(['admin']);
-        $user = User::find('app_user', $id);
+    
+        
+        $user = User::find('user', $id);
         switch ($action) {
 
 
@@ -84,8 +96,8 @@ class UserController extends CoreController {
 
                 $result = $user->delete($id);
                 if ($result) {
-
-                    header("Location: " . $router->generate('user-list'));
+                    $this->redirect('user-list');
+                    
                 } else {
                     echo "la requête a échouée";
                 }
@@ -95,7 +107,7 @@ class UserController extends CoreController {
     }
     public function createOrUpdate($id = null)
     {
-        global $router;
+        
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $email = filter_var($email, FILTER_VALIDATE_EMAIL);
         $firstname = trim(addslashes(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING)));

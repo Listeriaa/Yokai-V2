@@ -102,6 +102,13 @@ $this->addRoute(
     'doLogin',
     'user-doLogin'
 );
+$this->addRoute(
+    'GET',
+    '/admin/logout',
+    'UserController',
+    'logout',
+    'user-logout'
+);
 //BACK users List
 $this->addRoute(
     'GET',

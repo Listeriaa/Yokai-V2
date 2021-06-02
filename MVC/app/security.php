@@ -21,7 +21,7 @@ $acl = [
     'yokai-modify' => ['admin', 'manager'],
     'yokai-delete' => ['admin', 'manager'],
 
-    'user-list' => ['admin'],
+    
     'user-add' => ['admin'],
     'user-create' => ['admin'],
     'user-update' => ['admin'],

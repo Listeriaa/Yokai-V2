@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -25,10 +27,10 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?= (strpos($currentPage, "yokai")!==false)?'active':''?>" aria-current="page" href="<?= $router->generate('yokai-backlist')?>">Gestion des yokai</a>
+          <a class="nav-link <?= ($type == 'yokai')?'active':''?>" aria-current="page" href="<?= $router->generate('yokai-backlist')?>">Gestion des yokai</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">gestion des users</a>
+          <a class="nav-link <?= ($type == 'user')?'active':''?>" href="<?= $router->generate('user-list')?>">gestion des users</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

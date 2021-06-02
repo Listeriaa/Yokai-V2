@@ -13,15 +13,15 @@ abstract class CoreController
     private $csrfTokenToCheck;
     private $acl;
 
-    public function __construct($router)
+    public function __construct($router, $match)
     {
         
         $this->router = $router;
-        
+
         // Current route name from altoRouter match
         //null coalescent
         $this->currentRouteName = $match['name'] ?? '';
-
+        
         // Security rules
         require __DIR__ . '/../security.php';
 
@@ -39,11 +39,13 @@ abstract class CoreController
     {
         // ACL : Access Control List
         // Permet de centraliser la gestion des autorisations
-
+        
+        
+        
         // 3) Si la route actuelle est dans la liste des ACL
         if (isset($this->acl[$currentRouteName])) {
             $roles = $this->acl[$currentRouteName];
-
+            
             // On va vérifier que la personne actuellement connectée
             // a le droit d'afficher cette route courante
 
@@ -236,7 +238,7 @@ abstract class CoreController
     {
         // On récupère la propriété $router que l'on transmet aux vues
         $router = $this->router;
-        
+        dump($_SESSION);
         // Comme $viewVars est déclarée comme paramètre de la méthode show()
         // les vues y ont accès
         // ici une valeur dont on a besoin sur TOUTES les vues

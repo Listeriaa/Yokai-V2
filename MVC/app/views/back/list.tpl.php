@@ -1,4 +1,6 @@
-
+<?php
+dump($list);
+?>
 
 <div class="container d-flex flex-column align-items-center my-4">
     <h1 class="text-center">Gestion de la table : <?=$type?></h1>
@@ -16,9 +18,9 @@
                 <?php foreach($list as $element): ?>
                 <tr>
                     <td scope="row"><?= $element->getId() ?></td>
-                    <td><?= $element->getName() ?></td>
+                    <td><?= ($type == 'yokai')? $element->getName() : $element->getFirstname().' '.$element->getLastname()?> </td>
                     <td class="text-center">
-                        <a href="<?=($type == 'yokai')? $router->generate('yokai-update', ['id'=>$element->getId()]):$router->generate('user-update', ['id'=>$element->getId()])?>" class="btn btn-sm btn-warning">
+                        <a href="<?=($type == 'yokai')? $router->generate('yokai-update', ['id'=>$element->getId()]):$router->generate('user-update', ['id'=>$element->getId()])?>" role="button" class="btn btn-warning">
                             <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>
                         <!-- Example single danger button -->
