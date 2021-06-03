@@ -1,117 +1,82 @@
 <div class="container my-4">
-    <a href="<?= $router->generate('user-list') ?>" class="btn btn-success float-right">Retour</a>
-    <?php
-    if (isset($action)) : ?>
-
-        <h2>Modifier <?= $user->getFirstname() ?> <?= $user->getLastname() ?></h2>
+    <h1 class="text-center">
+    <?php if (isset($user) && $user->getId() !== null) : ?>
+    Modifier <?= $user->getName() ?>
     <?php else : ?>
-        <h2>Ajouter un utilisateur</h2>
-    <?php endif;
-    //si les champs obligatoires sont vides, renvoie un message d'alerte
-    //si un champ était valide mais pas les autres, la valeur est insérée en value
-    //si un champ est invalide, affiche un message d'erreur dans le small
-    if (isset($alert)) : ?>
-        <h3 class="text-danger"><?= $alert ?></h3>
+    Ajouter un utilisateur
     <?php endif; ?>
+    </h1>
 
+    <a href="<?= $router->generate('user-list') ?>" class="btn btn-danger float-left">Retour</a>
     <form action="" method="POST" class="mt-5">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" <?php if (isset($user)) : ?>value="<?= $user->getEmail() ?>" <?php endif; ?> name="email" placeholder="Mail de l'utilisateur">
-            <?php if (isset($email) && $email === false) :
-            ?>
 
-                <small id="emailHelpBlock" class="form-text text-danger">
-                    Merci de renseigner un email
-                </small>
+        <div class="mb-3">
+            <label for="email" class="form-label" >Email</label>
+            <input type="email" class="form-control" id="email" value="<?=  (isset($user))?$user->getEmail() :"" ?>" name="email" placeholder="Mail de l'utilisateur">
+            <?php if (isset($_SESSION['errors']['name'])) :?>
+                <div id="nameHelp" class="form-text text-danger"><?= $_SESSION['errors']['email'] ?></div>
+            <?php endif; ?>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="mot de passe" aria-describedby="passwordHelpBlock">
+            <?php if (isset($_SESSION['errors']['password'])) :?>
+                <div id="passwordHelp" class="form-text text-danger"><?= $_SESSION['errors']['email'] ?></div>
+            <?php else: ?>
+                <div id="passwordHelp" class="form-text ">   Au moins : 8 caractères / 1 lettre minuscule / 1 lettre majuscule / un chiffre /  et un caractère spécial</div>
 
             <?php endif; ?>
         </div>
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="text" class="form-control" id="password" name="password" placeholder="password" aria-describedby="passwordHelpBlock">
-            <?php if (isset($password) && $password === false) :
-            ?>
-                <small id="subtitleHelpBlock" class="form-text text-danger">
-                    AU moins : 8 caractères / 1 lettre minuscule / 1 lettre majuscule / un chiffre /  et un caractère spécial
-                </small>
+
+        <div class="mb-3">
+            <label for="firstname" class="form-label">Nom de famille</label>
+            <input type="text" class="form-control" name="firstname" id="firstname" value="<?=  (isset($user))?$user->getFirstname() :"" ?>" placeholder="Nom de l'utilisateur" aria-describedby="firstnameHelpBlock">
+            <?php if (isset($_SESSION['errors']['firstname'])) :?>
+                <div id="firstnameHelp" class="form-text text-danger"><?= $_SESSION['errors']['firstname'] ?></div>
 
             <?php endif; ?>
         </div>
-        <div class="form-group">
-            <label for="firstname">Nom de famille</label>
-            <input type="text" class="form-control" name="firstname" id="firstname" <?php if (isset($user)) : ?>value="<?= $user->getFirstname() ?>" <?php endif; ?>placeholder="Nom de l'utilisateur" aria-describedby="firstnameHelpBlock">
-            <?php if (isset($firstname) && $firstname === false) :
-            ?>
 
-                <small id="pictureHelpBlock" class="form-text text-danger">
-                    Obligatoire
-                </small>
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Prénom</label>
+            <input type="text" class="form-control" name="lastname" value="<?=  (isset($user))?$user->getLastname() :"" ?>" id="lastname" placeholder="Prénom de l'utilisateur" aria-describedby="lastnameHelpBlock">
+            <?php if (isset($_SESSION['errors']['lastname'])) :?>
+                <div id="lastnameHelp" class="form-text text-danger"><?= $_SESSION['errors']['lastname'] ?></div>
 
             <?php endif; ?>
-
         </div>
-        <div class="form-group">
-            <label for="lastname">Prénom</label>
-            <input type="text" class="form-control" name="lastname" <?php if (isset($user)) : ?>value="<?= $user->getLastname() ?>" <?php endif; ?> id="lastname" placeholder="Prénom de l'utilisateur" aria-describedby="lastnameHelpBlock">
-            <?php if (isset($lastname) && $lastname === false) :
-            ?>
 
-                <small id="homeorderHelpBlock" class="form-text text-danger">
-                    Obligatoire
-                </small>
-
-            <?php endif; ?>
-
-        </div>
-        <div class="form-group">
-            <label for="role">Rôle</label>
+        <div class="mb-3">
+            <label for="role" class="form-label">Rôle</label>
             <select class="custom-select" id="role" name="role" aria-describedby="roleHelpBlock">
                 <option value="">--Choisissez un rôle--</option>
-                <option <?php if (isset($user) && $user->getRole() == 'catalog-manager') : ?>selected <?php endif; ?> value="catalog-manager">Catalog-manager</option>
+                <option <?php if (isset($user) && $user->getRole() == 'manager') : ?>selected <?php endif; ?> value="manager">manager</option>
                 <option <?php if (isset($user) && $user->getRole() == 'admin') : ?>selected <?php endif; ?> value="admin">Admin</option>
-
-
             </select>
-            <?php if (isset($role) && $role === false) :
-            ?>
-
-                <small id="typeHelpBlock" class="form-text text-danger">
-                    obligatoire
-                </small>
+            <?php if (isset($_SESSION['errors']['role'])) :?>
+                <div id="roleHelp" class="form-text text-danger"><?= $_SESSION['errors']['role'] ?></div>
             <?php else : ?>
-
-                <small id="typeHelpBlock" class="form-text text-muted">
-                    Rôle de l'utilisateur (défini les permissions)
-                </small>
-            <?php endif; ?>
-
+                <div id="roleHelp" class="form-text ">Rôle de l'utilisateur (définit les permissions)</div>
+            <?php endif; ?>   
         </div>
-        <div class="form-group">
-            <label for="status">Status</label>
+
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
             <select class="custom-select" id="status" name="status" aria-describedby="statusHelpBlock">
                 <option value="">--Choisissez un statut--</option>
-                <option <?php if (isset($user) && $user->getStatus() == 0) : ?>selected <?php endif; ?> value="0">-</option>
                 <option <?php if (isset($user) && $user->getStatus() == 1) : ?>selected <?php endif; ?> value="1">actif</option>
                 <option <?php if (isset($user) && $user->getStatus() == 2) : ?>selected <?php endif; ?> value="2">désactivé</option>
-
-
-
             </select>
-            <?php if (isset($status) && $status === false) :
-            ?>
-
-                <small id="typeHelpBlock" class="form-text text-danger">
-                    obligatoire
-                </small>
+            <?php if (isset($_SESSION['errors']['status'])) :?>
+                <div id="statusHelp" class="form-text text-danger"><?= $_SESSION['errors']['status'] ?></div>
             <?php else : ?>
-
-                <small id="typeHelpBlock" class="form-text text-muted">
-                    Statut de l'utilisateur
-                </small>
-            <?php endif; ?>
-
+                <div id="statusHelp" class="form-text ">Statut de l'utilisateur</div>
+            <?php endif; ?>   
         </div>
-        <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
+
+        <button type="submit" class="my-4 btn btn-custom">Valider</button>
+
     </form>
 </div>
+<?php unset($_SESSION['errors']); ?>

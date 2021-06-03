@@ -32,17 +32,26 @@
         <li class="nav-item">
           <a class="nav-link <?= ($type == 'user')?'active':''?>" href="<?= $router->generate('user-list')?>">gestion des users</a>
         </li>
+        <?php if (isset($_SESSION['isConnected'])) : ?>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Prénom de l'utilisateur
+           <?= $_SESSION['userObject']->getFirstname()?>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Profil</a></li>
-            
+            <?php if ($_SESSION['userObject']->getRole()=='admin') : ?>
+            <li><a class="dropdown-item" href="<?= $router->generate('user-update', ['id'=>$_SESSION['userId']])?>">Profil</a></li>
+            <?php endif; ?>
+
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+            <li><a class="dropdown-item" href="<?= $router->generate('user-logout')?>">Déconnexion</a></li>
           </ul>
         </li>
+        <?php else : ?>
+          <li class="nav-item">
+          <a class="nav-link " href="<?= $router->generate('user-login')?>">Connexion</a>
+          </li>
+        <?php endif; ?>
       </ul>
     </div>
   </div>

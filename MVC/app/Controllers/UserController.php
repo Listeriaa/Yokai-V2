@@ -14,7 +14,7 @@ class UserController extends CoreController {
     public function login() {
         
   
-        $this->show('back/user/login');
+        $this->show('back/user/login', ['type'=>null]);
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends CoreController {
         unset($_SESSION['isConnected']);
 
         
-        $this->redirect('main-home');
+        $this->redirect('back-home');
         exit;
     }
 
@@ -51,11 +51,15 @@ class UserController extends CoreController {
         $user = User::findByEmail($email);
         
         if($user && password_verify($password, $user->getPassword())){
-            
-            $_SESSION['userId'] = $user->getId();
-            $_SESSION['userObject'] = $user;
-            $_SESSION['isConnected']=true;
-            $this->redirect('back-home');
+            if ($user->getRole()=='1'){
+                $_SESSION['userId'] = $user->getId();
+                $_SESSION['userObject'] = $user;
+                $_SESSION['isConnected']=true;
+                $this->redirect('back-home');
+            } else {
+                $this->redirect('user-login', ['error'=> 'utilisateur inactif']);
+            }
+
 
          }else{
             
@@ -71,12 +75,14 @@ class UserController extends CoreController {
         // views/user/list.tpl.php
         $this->show('back/list', ['type'=>'user', 'list' => User::all('user')]);
     }
-    public function add()
+    public function add($id=null)
     {
-        
-        // On affiche le contenu de la vue
-        // views/category/list.tpl.php
-        $this->show('back/user/add', ['type'=>'user']);
+        $user = null;
+
+        if(isset($id)){
+            $user = User::find($id,'user');
+        }
+        $this->show('back/user/add', ['type'=>'user', 'user'=>$user]);
     }
 
     public function updateOrDelete($action, $id)
@@ -89,7 +95,7 @@ class UserController extends CoreController {
 
             case 'update':
                
-                $this->show('user/add', ['id' => $id, 'action' => 'update', 'user' => $user]);
+                $this->show('user/add', ['id' => $id, 'type' => 'user', 'user' => $user]);
                 break;
             case 'delete':
 

@@ -27,6 +27,7 @@ $acl = [
     'user-update' => ['admin'],
     'user-modify' => ['admin'],
     'user-delete' => ['admin'],
+    'user-list' => ['admin']
 
     // ...
 ];
