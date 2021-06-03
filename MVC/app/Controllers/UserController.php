@@ -57,15 +57,17 @@ class UserController extends CoreController {
                 $_SESSION['userObject'] = $user;
                 $_SESSION['isConnected']=true;
                 $this->redirect('back-home');
+                exit;
 
             } else {
-
-                $this->redirect('user-login', ['error'=> 'utilisateur inactif']);
+                $this->addFlashInfo('Utilisateur désactivé');
+                $this->redirect('user-login');
+                exit;
             }
         }else{
-            
-            $this->redirect('user-login', ['error'=> 'Utilisateur et/ou mot de passe inconnu']);
-
+            $this->addFlashInfo('l\'email et/ou le mot de passe sont incorrects');
+            $this->redirect('user-login');
+            exit;
         }
     
     }
@@ -137,15 +139,31 @@ class UserController extends CoreController {
                
                 //it is ok, redirection with a success message
                 ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
-                $this->redirect('user-list', ['type'=>'user']);
+                $this->redirect('user-list');
+                exit;
                 
             }else{
                 // not ok, redirection with error message
                 $this->addFlashInfo("la requête a échouée");
-                $this->redirect('user-list', ['type'=>'user']);
+                $this->redirect('user-list');
+                exit;
             }
         }
-
-
+    }
+    public function delete($id){
+        $user = User::find($id,'user');
+        
+        if ($user->delete()) {
+               
+            $this->addFlashInfo("la suppression a bien été effectuée");
+            $this->redirect('user-list');
+            exit;
+            
+        }else{
+          
+            $this->addFlashInfo("la requête a échouée");
+            $this->redirect('user-list');
+            exit;
+        }
     }
 }

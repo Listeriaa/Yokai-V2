@@ -1,4 +1,3 @@
-
 <div class="container my-4">
     <!-- 
         On utilise le composant Alert de Bootstrap 

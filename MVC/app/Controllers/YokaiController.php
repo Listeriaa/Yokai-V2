@@ -125,12 +125,14 @@ class YokaiController extends CoreController
             if ($yokai->$request()) {
                
                 ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
-                $this->redirect('yokai-backlist', ['type'=>'yokai']);
+                $this->redirect('yokai-backlist');
+                exit;
                 
             }else{
               
                 $this->addFlashInfo("la requête a échouée");
-                $this->redirect('yokai-backlist', ['type'=>'yokai']);
+                $this->redirect('yokai-backlist');
+                exit;
             }
         }
     }
@@ -141,12 +143,14 @@ class YokaiController extends CoreController
         if ($yokai->delete()) {
                
             $this->addFlashInfo("la suppression a bien été effectuée");
-            $this->redirect('yokai-backlist', ['type'=>'yokai']);
+            $this->redirect('yokai-backlist');
+            exit;
             
         }else{
           
             $this->addFlashInfo("la requête a échouée");
-            $this->redirect('yokai-backlist', ['type'=>'yokai']);
+            $this->redirect('yokai-backlist');
+            exit;
         }
     }
 }

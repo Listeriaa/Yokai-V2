@@ -125,8 +125,6 @@ abstract class CoreController
      * @return void
      */
     public function test(){
-        $yokai = Yokai::all('yokai');
-        
         $this->show('error/test.tpl.php');
     }
 
@@ -139,7 +137,9 @@ abstract class CoreController
      */
     public function redirect($currentRouteName, $params = [])
     {
+       
         header('Location:' . $this->router->generate($currentRouteName, $params));
+        
     }
 
     /**

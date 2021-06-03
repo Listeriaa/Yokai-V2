@@ -1,4 +1,3 @@
-
 <div class="container d-flex flex-column align-items-center my-4">
     <h1 class="text-center">Gestion de la table : <?=$type?></h1>
     <a href="<?= $router->generate($type.'-add')?>" class="btn btn-custom">Ajouter un <?=$type?></a>
