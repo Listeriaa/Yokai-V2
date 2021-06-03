@@ -13,8 +13,9 @@ class UserController extends CoreController {
      */
     public function login() {
         
-  
-        $this->show('back/user/login', ['type'=>null]);
+        $token = $this->generateToken();
+        
+        $this->show('back/user/login', ['token'=>$token]);
     }
 
     /**
@@ -28,7 +29,6 @@ class UserController extends CoreController {
         unset($_SESSION['userObject']);
         unset($_SESSION['isConnected']);
 
-        
         $this->redirect('back-home');
         exit;
     }
@@ -39,29 +39,30 @@ class UserController extends CoreController {
      * @return void
      */
     public function doLogin() {
-        // 1) On récupère les infos du formulaire
+        // Recover of Post datas
         
-        $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+        $email = $this->dataValidate(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+        $password = $this->dataValidate(filter_input(INPUT_POST, 'password'));
 
         
-        $password = trim(filter_input(INPUT_POST, 'password'));
-
-        
-        // 2) On interroge la BDD pour savoir si l'utilisateur existe
         $user = User::findByEmail($email);
         
+        //if user exists and password matches
         if($user && password_verify($password, $user->getPassword())){
-            if ($user->getRole()=='1'){
+
+            // if user is active
+            if ($user->getStatus()=='1'){
+
                 $_SESSION['userId'] = $user->getId();
                 $_SESSION['userObject'] = $user;
                 $_SESSION['isConnected']=true;
                 $this->redirect('back-home');
+
             } else {
+
                 $this->redirect('user-login', ['error'=> 'utilisateur inactif']);
             }
-
-
-         }else{
+        }else{
             
             $this->redirect('user-login', ['error'=> 'Utilisateur et/ou mot de passe inconnu']);
 
@@ -70,97 +71,81 @@ class UserController extends CoreController {
     }
 
     public function list(){
-        
-        // On affiche le contenu de la vue
-        // views/user/list.tpl.php
-        $this->show('back/list', ['type'=>'user', 'list' => User::all('user')]);
+
+        $token = $this->generateToken();
+        $this->show('back/list', ['type'=>'user','token'=>$token, 'list' => User::all('user')]);
     }
+
     public function add($id=null)
     {
         $user = null;
+        $token = $this->generateToken();
 
+        //if there is an id, it is an update
         if(isset($id)){
             $user = User::find($id,'user');
+
+            //if it doesn't exist
+            if($user == false){
+                http_response_code(404);
+                $this->show('back/error/404');
+                exit;
+            }
+
         }
-        $this->show('back/user/add', ['type'=>'user', 'user'=>$user]);
+        $this->show('back/user/add', ['type'=>'user', 'user'=>$user, 'token'=>$token]);
     }
 
-    public function updateOrDelete($action, $id)
-    {
-    
-        
-        $user = User::find('user', $id);
-        switch ($action) {
 
-
-            case 'update':
-               
-                $this->show('user/add', ['id' => $id, 'type' => 'user', 'user' => $user]);
-                break;
-            case 'delete':
-
-
-                $result = $user->delete($id);
-                if ($result) {
-                    $this->redirect('user-list');
-                    
-                } else {
-                    echo "la requête a échouée";
-                }
-
-                break;
-        }
-    }
     public function createOrUpdate($id = null)
     {
-        
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-        $firstname = trim(addslashes(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING)));
-        $lastname = trim(addslashes(filter_input(INPUT_POST, 'lastname',FILTER_SANITIZE_STRING)));
-        $password = filter_input(INPUT_POST, 'password');
-        $role = filter_input(INPUT_POST, 'role');
-        $status = filter_input(INPUT_POST, 'status', FILTER_VALIDATE_INT);
-        
+        //recover of datas from POST and validate/sanitize
 
-
-    
-        // 2) On instancie la classe Product
+        $email = $this->dataValidate(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+        $firstname = $this->dataValidate(filter_input(INPUT_POST, 'firstname'));
+        $lastname = $this->dataValidate(filter_input(INPUT_POST, 'lastname'));
+        $password = $this->dataValidate(filter_input(INPUT_POST, 'password'));  
+        $role = $this->dataValidate(filter_input(INPUT_POST, 'role'));
+        $status = $this->dataValidate(filter_input(INPUT_POST, 'status', FILTER_VALIDATE_INT));
+  
         if ($id == null) {
-            // On est dans le cas d'une création de produit
-            // on crée un objet vide
+            //It is a new user
             $request = 'insert';
             $user = new User();
         } else {
-            // On est dans le cas d'une mise à jour de produit
+            //it is an update
             $request = 'update';
-            $user = User::find(' user', $id);
+            $user = User::find($id, 'user');
         }
 
-        $email = $user->setEmail($email);
-         
-        $firstname = $user->setFirstname($firstname);
+        $email = $this->checkValue($user->setEmail($email),"email", "merci de saisir un email valide");
+        $firstname = $this->checkValue($user->setFirstname($firstname),"firstname", "le champ est obligatoire");
+        $lastname = $this->checkValue($user->setLastname($lastname),"lastname", "le champ est obligatoire");
+        $password = $this->checkValue($user->setPassword($password),"password", "merci de saisir un mot de passe valide : 8 caractères / 1 lettre minuscule / 1 lettre majuscule / un chiffre /  et un caractère spécial");
+        $role = $this->checkValue($user->setRole($role),"role", "la sélection est obligatoire");
+        $status = $this->checkValue($user->setStatus($status),"status", "la sélection est obligatoire");
         
-        $lastname = $user->setLastname($lastname);
-        $password = $user->setPassword($password);
-        $role = $user->setRole($role);
-        $status = $user->setStatus($status);
-        // $email=$this->checkValue($user->setEmail($email), 'mail');
-        // $password=$this->checkValue($user->setPassword($password), 'password');
-        // $firstname=$this->checkValue($user->setFirstname($firstname), 'firstname');
-        // $lastname=$this->checkValue($user->setLastname($lastname), 'lst');
-        // $status=$this->checkValue($user->setStatus($status), 'status');
-        
+        //if not empty, there are errors
+        if (!empty($_SESSION['errors'])){
 
-        if ($email === false || $firstname === false || $lastname === false ||  $password === false || $role===false || $status === false) {
+            $token = $this->generateToken();
 
-            $this->show('user/add', ['firstname'=>$firstname, 'password'=>$password, 'email' => $email, 'lastname' => $lastname, 'role'=>$role, 'status'=>$status, 'user' => $user]);
-        } else {
-            if ($user->$request($id)) {
-                header("Location: " . $router->generate('user-list'));
-            } else {
-                echo "la requête a échouée";
+            $this->show('back/user/add', [$_SESSION['errors'], 'user'=>$user, 'token'=>$token, 'type'=>'user']);
+        } else{
+            
+            if ($user->$request()) {
+               
+                //it is ok, redirection with a success message
+                ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
+                $this->redirect('user-list', ['type'=>'user']);
+                
+            }else{
+                // not ok, redirection with error message
+                $this->addFlashInfo("la requête a échouée");
+                $this->redirect('user-list', ['type'=>'user']);
             }
         }
+
+
     }
 }

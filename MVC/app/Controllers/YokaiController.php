@@ -23,8 +23,15 @@ class YokaiController extends CoreController
      */
     public function showById($id){
         $yokai = Yokai::find($id, 'yokai');
-        $title=$yokai->getName();
-        $this->show('yokai/article', ['title'=>$title, 'yokai'=>$yokai]);
+        if($yokai){
+            $title=$yokai->getName();
+            $this->show('yokai/article', ['title'=>$title, 'yokai'=>$yokai]);
+        }else {
+            http_response_code(404);
+            $this->show('back/error/404');
+            exit;
+        }
+
     }
 
     /**
@@ -33,7 +40,8 @@ class YokaiController extends CoreController
      * @return void
      */
     public function backlist(){
-        $this->show('back/list', ['type'=>'yokai','list'=>Yokai::all('yokai')]);
+        $token = $this->generateToken();
+        $this->show('back/list', ['type'=>'yokai','token'=>$token, 'list'=>Yokai::all('yokai')]);
     }
 
     /**
@@ -43,12 +51,20 @@ class YokaiController extends CoreController
      * @return void
      */
     public function add($id=null){
+        $token = $this->generateToken();
+
         $yokai=null;
         if(isset($id)){
             $yokai = Yokai::find($id,'yokai');
+            if($yokai== false){
+                http_response_code(404);
+                $this->show('back/error/404');
+                exit;
+            }
+
         }
         
-        $this->show('back/yokai/add',['type'=>'yokai','yokai'=>$yokai]);
+        $this->show('back/yokai/add',['type'=>'yokai','token'=>$token,'yokai'=>$yokai]);
 
     }
 
@@ -95,30 +111,42 @@ class YokaiController extends CoreController
         $appearance=$this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
         $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
 
+        
 
         // If array is not empty, there is errors, so I go back on the form 
             //else, if empty and the request is successfull, i head towards the list with successfull flash message
             //else if request failed, i head towards the list with errors message
 
         if (!empty($_SESSION['errors'])){
-            $token = bin2hex(random_bytes(32));
-            $_SESSION['token'] = $token;
-            $this->show('back/yokai/add', [$_SESSION['errors'], 'yokai'=>$yokai, 'token'=>$token, 'request'=>$request]);
+            $token = $this->generateToken();
+            $this->show('back/yokai/add', [$_SESSION['errors'], 'yokai'=>$yokai, 'token'=>$token, 'type'=>'yokai']);
         } else{
             
             if ($yokai->$request()) {
                
                 ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
-                $this->redirect('back-yokailist', ['type'=>'yokai']);
+                $this->redirect('yokai-backlist', ['type'=>'yokai']);
                 
             }else{
-                echo "la requête a échouée";
-                $this->redirect('back-yokailist', ['type'=>'yokai']);
+              
+                $this->addFlashInfo("la requête a échouée");
+                $this->redirect('yokai-backlist', ['type'=>'yokai']);
             }
         }
     }
 
     public function delete($id){
+        $yokai = Yokai::find($id,'yokai');
         
+        if ($yokai->delete()) {
+               
+            $this->addFlashInfo("la suppression a bien été effectuée");
+            $this->redirect('yokai-backlist', ['type'=>'yokai']);
+            
+        }else{
+          
+            $this->addFlashInfo("la requête a échouée");
+            $this->redirect('yokai-backlist', ['type'=>'yokai']);
+        }
     }
 }

@@ -43,7 +43,7 @@ class Yokai extends CoreModel
     public static function getYokaiById($id){
         $pdo = Database::getPDO();
 
-        $sql = 'SELECT * FROM `yokais` WHERE `id` = '. $id;
+        $sql = 'SELECT * FROM `yokai` WHERE `id` = '. $id;
 
         $pdoStatement = $pdo->query($sql);
 
@@ -57,7 +57,7 @@ class Yokai extends CoreModel
         $pdo = Database::getPDO();
 
         $sql = "
-        INSERT INTO `yokais` (name, kanji, picture, translation, habitat, appearance, origin, behavior)
+        INSERT INTO `yokai` (name, kanji, picture, translation, habitat, appearance, origin, behavior)
         VALUES (:name, :kanji, :picture, :translation, :habitat, :appearance, NULLIF(:origin, ''), :behavior)
     ";
 
@@ -87,7 +87,7 @@ class Yokai extends CoreModel
         
         // Ecriture de la requête INSERT INTO
         $sql = "
-            UPDATE `yokais`
+            UPDATE `yokai`
             SET name = :name, kanji = :kanji, picture = :picture, translation = :translation, habitat = :habitat, appearance = :appearance, origin=NULLIF(:origin, ''), behavior = :behavior, updated_at = NOW()
             WHERE id=:id
         ";
@@ -109,7 +109,7 @@ class Yokai extends CoreModel
 
     public function delete(){
         $pdo = Database::getPDO();
-        $sql = "DELETE FROM `yokais`
+        $sql = "DELETE FROM `yokai`
         WHERE `id` = :id";
 
         // Pour éviter les injections SQL on va utiliser la méthode prepare de PDO

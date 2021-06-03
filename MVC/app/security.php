@@ -40,11 +40,13 @@ $csrfTokenToCheck = [
 
     // Routes en POST
     'user-create',
+    'user-modify',
     'yokai-create',
     'yokai-modify',
 
 
     // Routes en GET
-    'user-delete'
+    'user-delete',
+    'yokai-delete'
     // etc.
 ];

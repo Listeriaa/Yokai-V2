@@ -86,6 +86,14 @@ $this->addRoute(
     'createOrUpdate',
     'yokai-modify'
 );
+//BACK yokai GET to delete
+$this->addRoute(
+    'GET',
+    '/admin/yokai/delete/[i:id]',
+    'YokaiController',
+    'delete',
+    'yokai-delete'
+);
 //BACK login
 $this->addRoute(
     'GET',
@@ -131,6 +139,14 @@ $this->addRoute(
     'UserController',
     'add',
     'user-update'
+);
+//BACK user GET to delete
+$this->addRoute(
+    'GET',
+    '/admin/user/delete/[i:id]',
+    'UserController',
+    'delete',
+    'user-delete'
 );
 //BACK user POST to add
 $this->addRoute(

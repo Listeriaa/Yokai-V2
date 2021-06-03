@@ -1,6 +1,3 @@
-<?php
-dump($list);
-?>
 
 <div class="container d-flex flex-column align-items-center my-4">
     <h1 class="text-center">Gestion de la table : <?=$type?></h1>
@@ -30,7 +27,7 @@ dump($list);
                                 <i class="far fa-trash-alt" aria-hidden="true"></i>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Oui, je veux supprimer</a>
+                                <a class="dropdown-item" href="<?=($type == 'yokai')? $router->generate('yokai-delete', ['id'=>$element->getId()]):$router->generate('user-delete', ['id'=>$element->getId()])?>?token=<?=$token?>">Oui, je veux supprimer</a>
                                 <a class="dropdown-item" href="#" data-toggle="dropdown">Oups !</a>
                             </div>
                         </div>

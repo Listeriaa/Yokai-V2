@@ -57,27 +57,21 @@ class User extends CoreModel{
         // Execution de la requête d'insertion (exec, pas query)
         // $insertedRows = $pdo->exec($pdoStatement);
 
-        $insertedRows = $pdoStatement->execute([
-            ':email' => $this->email,
-            ':lastname' => $this->lastname,
-            ':firstname' => $this->firstname,
-            ':password' => $this->password,
-            ':role' => $this->role,
-            ':status' => $this->status
+        $pdoStatement->bindValue(':email', $this->email);
+        $pdoStatement->bindValue(':password', $this->password);
+        $pdoStatement->bindValue(':lastname', $this->lastname);
+        $pdoStatement->bindValue(':firstname', $this->firstname);
+        $pdoStatement->bindValue(':role', $this->role);
+        $pdoStatement->bindValue(':status', $this->status);
 
-        ]);
-        // Si au moins une ligne ajoutée
-        if ($insertedRows > 0) {
-            // Alors on récupère l'id auto-incrémenté généré par MySQL
+        $done = $pdoStatement->execute();
+
+        if($done) {
+            // si tout s'est bien passé on va renseigner l'identifiant généré par la BDD dans la propriété de l'objet
+            // la propriété id est définit dans le CoreModel !
             $this->id = $pdo->lastInsertId();
-
-            // On retourne VRAI car l'ajout a parfaitement fonctionné
-            return true;
-            // => l'interpréteur PHP sort de cette fonction car on a retourné une donnée
         }
-        
-        // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
-        return false;
+        return $done;
     }
     public function update(){
         // Récupération de l'objet PDO représentant la connexion à la DB
@@ -85,7 +79,7 @@ class User extends CoreModel{
         
         // Ecriture de la requête INSERT INTO
         $sql = "
-            UPDATE `users`
+            UPDATE `user`
             SET email =:email, password=:password, lastname=:lastname, firstname= :firstname,role= :role, status=:status, updated_at = NOW()
             WHERE id= :id
         ";
@@ -95,28 +89,15 @@ class User extends CoreModel{
         // Execution de la requête d'insertion (exec, pas query)
         // $insertedRows = $pdo->exec($pdoStatement);
 
-        $insertedRows = $pdoStatement->execute([
-            ':email' => $this->email,
-            ':lastname' => $this->lastname,
-            ':firstname' => $this->firstname,
-            ':password' => $this->password,
-            ':role' => $this->role,
-            ':status' => $this->status,
-            ':id'=>$this->id
-        ]);
+        $pdoStatement->bindValue(':email', $this->email);
+        $pdoStatement->bindValue(':password', $this->password);
+        $pdoStatement->bindValue(':lastname', $this->lastname);
+        $pdoStatement->bindValue(':firstname', $this->firstname);
+        $pdoStatement->bindValue(':role', $this->role);
+        $pdoStatement->bindValue(':status', $this->status);
+        $pdoStatement->bindValue(':id', $this->id);
 
-        // Si au moins une ligne ajoutée
-        if ($insertedRows > 0) {
-            // Alors on récupère l'id auto-incrémenté généré par MySQL
-            $this->id = $pdo->lastInsertId();
-
-            // On retourne VRAI car l'ajout a parfaitement fonctionné
-            return true;
-            // => l'interpréteur PHP sort de cette fonction car on a retourné une donnée
-        }
-        
-        // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
-        return false;
+        return $pdoStatement->execute();
     }
     public function delete(){
         // Récupération de l'objet PDO représentant la connexion à la DB
@@ -124,29 +105,15 @@ class User extends CoreModel{
         
         // Ecriture de la requête INSERT INTO
         $sql = "
-            DELETE FROM `users`
+            DELETE FROM `user`
             WHERE id=:id
         ";
 
         $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $this->id);
 
-        // Execution de la requête de suppresion (exec, pas query)
-        // On peut envoyer les données « brutes » à execute() qui va les "sanitize" pour SQL.
-        $deletedRows = $pdoStatement->execute([
-            ':id' => $this->id
-        ]);
-        // Si au moins une ligne ajoutée
-        if ($deletedRows > 0) {
-            // Alors on récupère l'id auto-incrémenté généré par MySQL
-            $this->id = $pdo->lastInsertId();
+        return $pdoStatement->execute();
 
-            // On retourne VRAI car l'ajout a parfaitement fonctionné
-            return true;
-            // => l'interpréteur PHP sort de cette fonction car on a retourné une donnée
-        }
-        
-        // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
-        return false;
     }
 
     /**
@@ -189,7 +156,7 @@ class User extends CoreModel{
     {
         $regex = "~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$%_*|=&-])[A-Za-z\d@$%_*|=&-]{8,}$~";
         if ((preg_match($regex, $password)===1)){
-            $this->password = password_hash($password, PASSWORD_DEFAULT);;
+            $this->password = password_hash($password, PASSWORD_DEFAULT);
             return $this->password;
         }
         else{
@@ -282,7 +249,7 @@ class User extends CoreModel{
      */ 
     public function setStatus($status)
     {
-        if($status>=0 && $status <=2){
+        if($status==1 || $status ==2){
             $this->status = $status;
             return $this->status;
         } else {

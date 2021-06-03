@@ -27,10 +27,10 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?= ($type == 'yokai')?'active':''?>" aria-current="page" href="<?= $router->generate('yokai-backlist')?>">Gestion des yokai</a>
+          <a class="nav-link <?= (isset($type) && $type == 'yokai')?'active':''?>" aria-current="page" href="<?= $router->generate('yokai-backlist')?>">Gestion des yokai</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= ($type == 'user')?'active':''?>" href="<?= $router->generate('user-list')?>">gestion des users</a>
+          <a class="nav-link <?= (isset($type) && $type == 'user')?'active':''?>" href="<?= $router->generate('user-list')?>">gestion des users</a>
         </li>
         <?php if (isset($_SESSION['isConnected'])) : ?>
 
@@ -41,9 +41,10 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <?php if ($_SESSION['userObject']->getRole()=='admin') : ?>
             <li><a class="dropdown-item" href="<?= $router->generate('user-update', ['id'=>$_SESSION['userId']])?>">Profil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            
             <?php endif; ?>
 
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="<?= $router->generate('user-logout')?>">Déconnexion</a></li>
           </ul>
         </li>

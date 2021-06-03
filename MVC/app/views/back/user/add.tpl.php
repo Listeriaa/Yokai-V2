@@ -1,7 +1,8 @@
+
 <div class="container my-4">
     <h1 class="text-center">
     <?php if (isset($user) && $user->getId() !== null) : ?>
-    Modifier <?= $user->getName() ?>
+    Modifier <?= $user->getFirstname() ?> <?= $user->getLastname() ?>
     <?php else : ?>
     Ajouter un utilisateur
     <?php endif; ?>
@@ -9,7 +10,7 @@
 
     <a href="<?= $router->generate('user-list') ?>" class="btn btn-danger float-left">Retour</a>
     <form action="" method="POST" class="mt-5">
-
+    <input type="hidden" name="token" value="<?= $token; ?>" />
         <div class="mb-3">
             <label for="email" class="form-label" >Email</label>
             <input type="email" class="form-control" id="email" value="<?=  (isset($user))?$user->getEmail() :"" ?>" name="email" placeholder="Mail de l'utilisateur">
@@ -22,7 +23,7 @@
             <label for="password" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="mot de passe" aria-describedby="passwordHelpBlock">
             <?php if (isset($_SESSION['errors']['password'])) :?>
-                <div id="passwordHelp" class="form-text text-danger"><?= $_SESSION['errors']['email'] ?></div>
+                <div id="passwordHelp" class="form-text text-danger"><?= $_SESSION['errors']['password'] ?></div>
             <?php else: ?>
                 <div id="passwordHelp" class="form-text ">   Au moins : 8 caractères / 1 lettre minuscule / 1 lettre majuscule / un chiffre /  et un caractère spécial</div>
 

@@ -9,6 +9,8 @@
     </h1>
     <a href="<?= $router->generate('yokai-backlist')?>" class="btn btn-danger float-left">Retour</a>
     <form action="" method="POST" class="mt-5 yokai-add">
+    <input type="hidden" name="token" value="<?= $token; ?>" />
+
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
             <input type="text" class="form-control" id="name" value="<?= (isset($yokai))? $yokai->getName() :"" ?>" name="name" placeholder="Nom du Yokai" aria-describedby="nameHelp">

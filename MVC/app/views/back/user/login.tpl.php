@@ -13,6 +13,8 @@
 
     <h2 class="text-center">Connexion</h2>
     <form method="POST">
+    <input type="hidden" name="token" value="<?= $token; ?>" />
+
         <div class="form-group">
             <label for="inputEmail">Email</label>
             <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp" placeholder="Entrez votre email">
