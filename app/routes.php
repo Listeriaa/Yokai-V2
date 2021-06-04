@@ -35,7 +35,14 @@ $this->addRoute(
     'showById',
     'yokai-showbyid'
 );
-
+// routes for more
+$this->addRoute(
+    'GET',
+    '/ressource',
+    'RessourceController',
+    'list',
+    'ressource-list'
+);
 //routes for backoffice
 // BACK Homepage
 $this->addRoute(

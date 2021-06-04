@@ -9,7 +9,7 @@
                     <li><a href="#">Yokai3</a></li>
                     <li><a href="#">Yokai4</a></li>
                 </ul> -->
-            <li><a class="hover_nav" href="#">aller plus loin</a></li>
+            <li><a class="hover_nav" href="<?=$router->generate('ressource-list')?>">aller plus loin</a></li>
         </ul>          
     </nav>
 </header>

@@ -14,4 +14,5 @@ class MainController extends CoreController
       
         $this->show('main/home', ['title'=>'Yōkai on the watch', 'yokai'=>Yokai::getRandomYokai()]);
     }
+
 }

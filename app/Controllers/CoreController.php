@@ -225,7 +225,7 @@ abstract class CoreController
         $viewVars['baseUri'] = $_SERVER['BASE_URI'];
         
         extract($viewVars);
-       
+        
         if (substr($viewName, 0,4) == 'back'){
             require_once __DIR__ . '/../views/back/layout/header.tpl.php';
             require_once __DIR__ . '/../views/'. $viewName . '.tpl.php';
