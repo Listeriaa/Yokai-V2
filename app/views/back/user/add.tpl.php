@@ -52,8 +52,9 @@
             <label for="role" class="form-label">Rôle</label>
             <select class="custom-select" id="role" name="role" aria-describedby="roleHelpBlock">
                 <option value="">--Choisissez un rôle--</option>
-                <option <?php if (isset($user) && $user->getRole() == 'manager') : ?>selected <?php endif; ?> value="manager">manager</option>
+                <option <?php if (isset($user) && $user->getRole() == 'manager') : ?>selected <?php endif; ?> value="manager">Manager</option>
                 <option <?php if (isset($user) && $user->getRole() == 'admin') : ?>selected <?php endif; ?> value="admin">Admin</option>
+                <option <?php if (isset($user) && $user->getRole() == 'guest') : ?>selected <?php endif; ?> value="guest">Guest</option>
             </select>
             <?php if (isset($_SESSION['errors']['role'])) :?>
                 <div id="roleHelp" class="form-text text-danger"><?= $_SESSION['errors']['role'] ?></div>

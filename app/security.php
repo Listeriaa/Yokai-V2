@@ -14,20 +14,20 @@
 $acl = [
     // 'Ressource' => 'les personnes (rôles) qui peuvent y accéder'
     
-    'yokai-backlist' => ['admin', 'manager'],
-    'yokai-add' => ['admin', 'manager'],
-    'yokai-update' => ['admin', 'manager'],
+    'yokai-backlist' => ['admin', 'manager', 'guest'],
+    'yokai-add' => ['admin', 'manager', 'guest'],
+    'yokai-update' => ['admin', 'manager', 'guest'],
     'yokai-create' => ['admin', 'manager'],
     'yokai-modify' => ['admin', 'manager'],
     'yokai-delete' => ['admin', 'manager'],
 
     
-    'user-add' => ['admin'],
+    'user-add' => ['admin', 'guest'],
     'user-create' => ['admin'],
-    'user-update' => ['admin'],
+    'user-update' => ['admin', 'guest'],
     'user-modify' => ['admin'],
     'user-delete' => ['admin'],
-    'user-list' => ['admin']
+    'user-list' => ['admin', 'guest']
 
     // ...
 ];

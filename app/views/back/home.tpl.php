@@ -20,7 +20,7 @@
                     <h5 class="card-title">Utilisateurs</h5>
                     <p class="card-text">Ajouter, modifier ou supprimer des utilisateurs</p>
                     <?php if(isset($_SESSION['isConnected'])): ?>
-                        <?php if ($_SESSION['userObject']->getRole()=='admin') : ?>
+                        <?php if ($_SESSION['userObject']->getRole()!=='manager') : ?>
                         <a href="<?= $router->generate('user-list')?>" class="btn btn-custom btn-outline-light">J'y vais!</a>
                         <?php else: ?>
                         <a href="#" class="btn btn-warning">droits insuffisants</a>
