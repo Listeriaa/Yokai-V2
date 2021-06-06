@@ -43,6 +43,7 @@ $csrfTokenToCheck = [
     'user-modify',
     'yokai-create',
     'yokai-modify',
+    'user-doLogin',
     
 
     // Routes en GET
