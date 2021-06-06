@@ -25,6 +25,7 @@ Je suis très à l'écoute de tous les conseils ou critiques constructives sur m
 * HTML
 * CSS
 * Javascript Vanilla
+* Bootstrap pour le back-office
 * PHP
 * Framework crée pendant ma formation avec O'clock
 * Composer
@@ -39,7 +40,7 @@ Je suis très à l'écoute de tous les conseils ou critiques constructives sur m
 
 ## Responsive
 
-Oui! il a été développé en mobile-first. 
+Oui! il a été développé en mobile-first, que ce soit le front-office ou le back-office.
 
 ## Progression et améliorations à venir
 ### Progression
@@ -60,10 +61,13 @@ Il est visible à l'adresse suivante (http://yokai.laetitia-dev.com/), vous pour
 
 ## Aperçu
 
-Je mets un screen pour chaque version : mobile et PC.
+Je mets un screen pour chaque version : mobile et PC du front-office.
 
 ![capture écran pc version](public/assets/images/yokaiV2-desktop.png)                     ![capture écran mobile version](public/assets/images/yokaiV2-mobile.png)  
 
+Et voici un apercu du back-office:
+
+![capture écran pc back-office](public/assets/images/backoffice-yokaiV2.png) 
 
 ## Contributions
 
