@@ -62,7 +62,7 @@ Il est visible à l'adresse suivante (http://yokai.laetitia-dev.com/), vous pour
 
 Je mets un screen pour chaque version : mobile et PC.
 
-![capture écran pc version](images/yokaiV2-desktop.png)                     ![capture écran mobile version](images/yokaiV2-mobile.png)  
+![capture écran pc version](public/assets/images/yokaiV2-desktop.png)                     ![capture écran mobile version](public/assets/images/yokaiV2-mobile.png)  
 
 
 ## Contributions
