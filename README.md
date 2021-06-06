@@ -71,4 +71,4 @@ Et voici un apercu du back-office:
 
 ## Contributions
 
-Il s'agit de mon tout premier repo sur Github. Je suis de tous conseils ou critiques sur mon travail.
+Je suis de tous conseils ou critiques sur mon travail.
