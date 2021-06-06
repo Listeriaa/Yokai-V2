@@ -5,7 +5,6 @@
 </footer>
 </div>
 
-<script src="<?=$assetsBaseUri?>js/app.js"></script>
 </body>
 
 </html>
