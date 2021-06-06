@@ -1,4 +1,4 @@
-
+l
 <div class="container my-4">
     <h1 class="text-center">
     <?php if (isset($user) && $user->getId() !== null) : ?>
@@ -14,7 +14,7 @@
         <div class="mb-3">
             <label for="email" class="form-label" >Email</label>
             <input type="email" class="form-control" id="email" value="<?=  (isset($user))?$user->getEmail() :"" ?>" name="email" placeholder="Mail de l'utilisateur">
-            <?php if (isset($_SESSION['errors']['name'])) :?>
+            <?php if (isset($_SESSION['errors']['email'])) :?>
                 <div id="nameHelp" class="form-text text-danger"><?= $_SESSION['errors']['email'] ?></div>
             <?php endif; ?>
         </div>
