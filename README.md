@@ -11,14 +11,14 @@ La V3 est prévue et sera codée en Symfony.
 
 ## Qui suis-je?
 
-J'ai quitté mon travail dans la biologie médicale et j'ai commencé une formation intensive avec O'clock, il y a 3 mois.
+J'ai quitté mon travail dans la biologie médicale et j'ai commencé une formation intensive avec O'clock (https://oclock.io/formations/developpeur-web), il y a 3 mois.
 Il y a 2 mois, j'avais mis en pratique mes premières lignes de code sur la V1 de **yokai on the wach** qui est visible ici (http://yokaiV1.laetitia-dev.com/) , code source ici (https://github.com/Listeriaa/Yokai)
 
 Très attirée par le back-end, et après avoir découvert l'architecture MVC, ainsi que quelques dépendances facilitant la vie, j'ai repris mon projet personnel pour le mettre à jour avec mes nouvelles connaissances.
 
 Ce fut également l'occasion de repenser le design.
 
-Je suis très à l'écoute de tous les conseils ou critiques constructives sur mon projet, il y a sans doute des choses que je n'ai fait selon les règles de l'art.
+Je suis très à l'écoute de tous les conseils ou critiques constructives sur mon projet, il y a sans doute des choses que je n'ai pas fait selon les règles de l'art.
 
 ## Langages/technos
 
@@ -50,7 +50,7 @@ m'en occuper.
 ### Améliorations à venir
 Pour la V3, j'aimerais :
 - utiliser Symfony.
-- Modifier le "Yokai au hasard" de la page d'accueil pour ne plus avoir le blur de l'image.
+- Modifier le design "Yokai au hasard" de la page d'accueil pour ne plus avoir le blur de l'image (sans doute en JS)
 - Optimiser les images en fonction de la taille de l'écran.
 - ajouter la page "ressource" que ce soit en front-office ou en back-office.
 
@@ -71,4 +71,4 @@ Et voici un apercu du back-office:
 
 ## Contributions
 
-Je suis de tous conseils ou critiques sur mon travail.
+Je suis ouverte à tous conseils ou critiques sur mon travail.
