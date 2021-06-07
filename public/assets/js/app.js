@@ -1,8 +1,6 @@
 const app = {
     home: document.querySelector('.div-home'),
-
     hbgButton: document.querySelector('.hbg-menu'),
-
     nav: document.querySelector('nav'),
     accueil: document.querySelector('.accueil'),
     presentation: document.querySelector('.presentation'),
