@@ -19,6 +19,7 @@ l
             <?php endif; ?>
         </div>
 
+        <?php if (!(isset($user) && $user->getId() !== null)) : ?>
         <div class="mb-3">
             <label for="password" class="form-label">Mot de passe</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="mot de passe" aria-describedby="passwordHelpBlock">
@@ -29,6 +30,7 @@ l
 
             <?php endif; ?>
         </div>
+        <?php endif; ?>
 
         <div class="mb-3">
             <label for="firstname" class="form-label">Nom de famille</label>
