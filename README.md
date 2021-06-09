@@ -4,7 +4,7 @@
 
 Il s'agit de la version 2 d'un projet personnel, sur le format d'un **blog**, ayant pour sujet les êtres fascinants que sont les *yōkai*.
 
-Géré en MVC avec une base de données mySQL, j'ai également codé un **back office** pour le CRUD des articles et des users (avec token CSRF et ACL).
+Géré en MVC avec une base de données MySQL, j'ai également codé un **back office** pour le CRUD des articles et des users (avec token CSRF et ACL).
 
 
 ## Qui suis-je?
@@ -41,11 +41,12 @@ Oui! il a été développé en mobile-first, que ce soit le front-office ou le b
 
 ## Progression et améliorations à venir
 ### Progression
-Toute la partie "ressource" reste à coder (le front et le back-office). Il s'agira de lister les ressources existantes sur les yokai (livres, mangas, podcasts, films...) Le travail de recherche de sources est important et le rythme intensif de la formation ne m'a pas permis de m'en occuper.
+Je souhaite une page recensant toutes les ressources concernant les Yokai : livres, manga, sites, podcasts...
+Toute cette partie reste à coder (le front et le back-office). Le travail de recherche de sources est important et le rythme intensif de la formation ne m'a pas permis de m'en occuper.
 
 ### Améliorations à venir
 Pour la V3, j'aimerais :
-- Basculer sur un skeleton Symfony.
+- Basculer sur un skeleton Symfony ou tester quelques composants (formulaire, dotenv...)
 - Modifier le design "Yokai au hasard" de la page d'accueil pour ne plus avoir le blur de l'image (sans doute en JS)
 - Optimiser les images en fonction de la taille de l'écran.
 - ajouter la page "ressource" que ce soit en front-office ou en back-office.
