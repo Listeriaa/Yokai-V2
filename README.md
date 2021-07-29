@@ -37,7 +37,7 @@ Je suis très à l'écoute de tous les conseils ou critiques constructives sur m
 
 ## Responsive
 
-Oui! il a été développé en mobile-first, que ce soit le front-office ou le back-office.
+Oui!  il a également été développé en mobile-first, que ce soit le front-office ou le back-office.
 
 ## Progression et améliorations à venir
 ### Progression
