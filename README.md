@@ -20,6 +20,14 @@ Je suis très à l'écoute de tous les conseils ou critiques constructives sur m
 
 ## Langages/technos
 
+[![forthebadge](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](http://forthebadge.com)
+[![forthebadge](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](http://forthebadge.com)
+[![forthebadge](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](http://forthebadge.com)
+[![forthebadge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](http://forthebadge.com)
+[![forthebadge](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)](http://forthebadge.com)
+[![forthebadge](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](http://forthebadge.com)
+[![forthebadge](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](http://forthebadge.com)
+
 * HTML
 * CSS
 * Javascript Vanilla
