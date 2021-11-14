@@ -2,9 +2,9 @@
 <section class="page_article">
     
     <article class="clearfix">
-        <h2><?= $yokai->getName() ?> <?= $yokai->getKanji() ?></h2>
+        <h2><?= $yokai->getName() ?> <span  lang="ja" ><?= $yokai->getKanji() ?></span></h2>
         <div class="image_article_responsive image_float">
-            <img src="<?= $assetsBaseUri.$yokai->getPicture() ?>" alt="illustration de <?= $yokai->getName() ?>">
+            <img src="<?= $assetsBaseUri.$yokai->getPicture() ?>" alt="<?= $yokai->getAlt() ?>">
         </div>
         <div class="descriptif_article_responsive">
             <h3>Traduction :</h3>

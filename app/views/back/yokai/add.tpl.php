@@ -91,7 +91,16 @@
             <?php endif;?>
             
         </div>
-
+        <div class="mb-3">
+            <label for="alt" class="form-label">Texte alternatif</label>
+            <textarea type="text" class="form-control" id="alt" name="alt" style="height:200px" aria-describedby="altHelp"><?= (isset($yokai))? $yokai->getAlt() :"" ?></textarea>
+            <?php if (isset($_SESSION['errors']['alt'])) :?>
+            <div id="altHelp" class="form-text text-danger"><?= $_SESSION['errors']['alt'] ?></div>
+            <?php else: ?>
+                <div id="altHelp" class="form-text">3 caractères minimum</div>
+            <?php endif;?>
+            
+        </div>
         <button type="submit" class="btn btn-custom">Submit</button>
     </form>
 </div>
