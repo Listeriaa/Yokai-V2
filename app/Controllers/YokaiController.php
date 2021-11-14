@@ -103,15 +103,15 @@ class YokaiController extends CoreController
         
        // I check the value with setters : if it returns false, i push the errors in the $_SESSION['errors'], else
        // the data is valid and it is set
-        $name=$this->checkValue($yokai->setName($name),"name", "Nombre de caractères insuffisant (3 minimum)");
-        $kanji=$this->checkValue($yokai->setKanji($kanji),"kanji", "Non conforme");
-        $translation=$this->checkValue($yokai->setTranslation($translation),"translation", "Nombre de caractères insuffisant (5 minimum)");
-        $picture=$this->checkValue($yokai->setPicture($picture),"picture", "le format de l'image doit être .jpg ou .png");
-        $habitat=$this->checkValue($yokai->setHabitat($habitat),'habitat', "Nombre de caractères insuffisant (5 minimum)");
-        $origin=$this->checkValue($yokai->setOrigin($origin),"origin", "Nombre de caractères insuffisant (20 minimum)");
-        $appearance=$this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
-        $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
-        $alt=$this->checkValue($yokai->setAlt($behavior),"alt", "Nombre de caractères insuffisant (3 minimum)");
+        $name = $this->checkValue($yokai->setName($name),"name", "Nombre de caractères insuffisant (3 minimum)");
+        $kanji = $this->checkValue($yokai->setKanji($kanji),"kanji", "Non conforme");
+        $translation = $this->checkValue($yokai->setTranslation($translation),"translation", "Nombre de caractères insuffisant (5 minimum)");
+        $picture = $this->checkValue($yokai->setPicture($picture),"picture", "le format de l'image doit être .jpg ou .png");
+        $habitat = $this->checkValue($yokai->setHabitat($habitat),'habitat', "Nombre de caractères insuffisant (5 minimum)");
+        $origin = $this->checkValue($yokai->setOrigin($origin),"origin", "Nombre de caractères insuffisant (20 minimum)");
+        $appearance = $this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
+        $behavior = $this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
+        $alt = $this->checkValue($yokai->setAlt($alt),"alt", "Nombre de caractères insuffisant (3 minimum)");
 
         
 
@@ -126,12 +126,12 @@ class YokaiController extends CoreController
             
             if ($yokai->$request()) {
                
-                ($request == 'insert')?$this->addFlashInfo("l'ajout a bien été effectué"):$this->addFlashInfo("la modification a bien été effectuée");
+                ($request == 'insert') ? $this->addFlashInfo("l'ajout a bien été effectué") : $this->addFlashInfo("la modification a bien été effectuée");
                 $this->redirect('yokai-backlist');
                 exit;
                 
             }else{
-              
+                
                 $this->addFlashInfo("la requête a échouée");
                 $this->redirect('yokai-backlist');
                 exit;
