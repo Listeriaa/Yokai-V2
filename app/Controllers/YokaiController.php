@@ -111,7 +111,7 @@ class YokaiController extends CoreController
         $origin=$this->checkValue($yokai->setOrigin($origin),"origin", "Nombre de caractères insuffisant (20 minimum)");
         $appearance=$this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
         $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
-        $alt=$this->checkValue($yokai->setAlt($behavior),"alt", "Nombre de caractères insuffisant (3 minimum)");
+        $alt=$this->checkValue($yokai->setAlt($alt),"alt", "Nombre de caractères insuffisant (3 minimum)");
 
         
 
