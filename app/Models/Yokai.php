@@ -5,8 +5,6 @@ namespace App\Models;
 use App\Utils\Database;
 use PDO;
 
-// Classe mère de tous les Models
-// On centralise ici toutes les propriétés et méthodes utiles pour TOUS les Models
 class Yokai extends CoreModel
 {
 
@@ -17,25 +15,24 @@ class Yokai extends CoreModel
     private $appearance;
     private $origin;
     private $behavior;
+    private $alt;
 
 
-//     et pour le tableClass tu as des fonctions php qui te permettent d'avoir la classe de l'objet en cours (ou de la classe qui appelle la fonction si on est en static)
-// c'est get_class et get_called_class
     public static function getRandomYokai(){
-        //je sélectionne tous les id des yokai
+        
         $pdo = Database::getPDO();
         $sql = 'SELECT `id` FROM `yokai`';
         $pdoStatement = $pdo->query($sql);
         $arrayId = $pdoStatement->fetchAll(PDO::FETCH_COLUMN);
 
-        //je choisis une clé du tableau au hasard et je récupère sa valeur c'est à dire une id existante (présente dans la bdd)
+        
         $id = $arrayId[array_rand($arrayId, 1)];
 
-        //je récupère le yokai correspondant à cette id
+        
         $sql = 'SELECT * FROM `yokai` WHERE `id` = '. $id;
         $pdoStatement = $pdo->query($sql);
         
-        //je retourne l'objet Yokai correspondant
+        
         $yokai = $pdoStatement->fetchObject(self::class);
         return $yokai;
     }
@@ -57,8 +54,8 @@ class Yokai extends CoreModel
         $pdo = Database::getPDO();
 
         $sql = "
-        INSERT INTO `yokai` (name, kanji, picture, translation, habitat, appearance, origin, behavior)
-        VALUES (:name, :kanji, :picture, :translation, :habitat, :appearance, NULLIF(:origin, ''), :behavior)
+        INSERT INTO `yokai` (name, kanji, picture, translation, habitat, appearance, origin, behavior, alt)
+        VALUES (:name, :kanji, :picture, :translation, :habitat, :appearance, NULLIF(:origin, ''), :behavior, :alt)
     ";
 
         $pdoStatement = $pdo->prepare($sql);
@@ -71,12 +68,12 @@ class Yokai extends CoreModel
         $pdoStatement->bindValue(':appearance', $this->appearance);
         $pdoStatement->bindValue(':origin', $this->origin);
         $pdoStatement->bindValue(':behavior', $this->behavior);
+        $pdoStatement->bindValue(':alt', $this->alt);
 
         $done = $pdoStatement->execute();
 
         if($done) {
-            // si tout s'est bien passé on va renseigner l'identifiant généré par la BDD dans la propriété de l'objet
-            // la propriété id est définit dans le CoreModel !
+            
             $this->id = $pdo->lastInsertId();
         }
         return $done;
@@ -85,10 +82,10 @@ class Yokai extends CoreModel
     public function update(){
         $pdo = Database::getPDO();
         
-        // Ecriture de la requête INSERT INTO
+       
         $sql = "
             UPDATE `yokai`
-            SET name = :name, kanji = :kanji, picture = :picture, translation = :translation, habitat = :habitat, appearance = :appearance, origin=NULLIF(:origin, ''), behavior = :behavior, updated_at = NOW()
+            SET name = :name, kanji = :kanji, picture = :picture, translation = :translation, habitat = :habitat, appearance = :appearance, origin=NULLIF(:origin, ''), behavior = :behavior, alt= :alt, updated_at = NOW()
             WHERE id=:id
         ";
 
@@ -102,6 +99,7 @@ class Yokai extends CoreModel
         $pdoStatement->bindValue(':appearance', $this->appearance);
         $pdoStatement->bindValue(':origin', $this->origin);
         $pdoStatement->bindValue(':behavior', $this->behavior);
+        $pdoStatement->bindValue(':alt', $this->alt);
         $pdoStatement->bindValue(':id', $this->id);
         
         return $pdoStatement->execute();
@@ -112,10 +110,10 @@ class Yokai extends CoreModel
         $sql = "DELETE FROM `yokai`
         WHERE `id` = :id";
 
-        // Pour éviter les injections SQL on va utiliser la méthode prepare de PDO
+        
         $pdoStatement = $pdo->prepare($sql);
 
-        // bindValue associe une valeur à un paramètre
+        
 
         $pdoStatement->bindValue(':id', $this->id);
 
@@ -291,5 +289,26 @@ class Yokai extends CoreModel
         }
     }
 
+    /**
+     * Get the value of alt
+     */ 
+    public function getAlt()
+    {
+        return $this->alt;
+    }
 
+    /**
+     * Set the value of alt
+     *
+     * @return  self
+     */ 
+    public function setAlt($alt)
+    {
+        if (strlen($alt) >= 1){
+            $this->alt = $alt;
+            return $this->alt;
+        }else {
+            return false;
+        }
+    }
 }

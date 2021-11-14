@@ -85,6 +85,7 @@ class YokaiController extends CoreController
         $origin = $this->dataValidate(filter_input(INPUT_POST, 'origin'));
         $appearance = $this->dataValidate(filter_input(INPUT_POST, 'appearance'));
         $behavior = $this->dataValidate(filter_input(INPUT_POST, 'behavior'));
+        $alt = $this->dataValidate(filter_input(INPUT_POST, 'alt'));
 
         
         //If id is null, it is a insert, if not, it is an update
@@ -110,6 +111,7 @@ class YokaiController extends CoreController
         $origin=$this->checkValue($yokai->setOrigin($origin),"origin", "Nombre de caractères insuffisant (20 minimum)");
         $appearance=$this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
         $behavior=$this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
+        $alt=$this->checkValue($yokai->setAlt($behavior),"alt", "Nombre de caractères insuffisant (3 minimum)");
 
         
 
