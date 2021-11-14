@@ -103,6 +103,7 @@ class YokaiController extends CoreController
         
        // I check the value with setters : if it returns false, i push the errors in the $_SESSION['errors'], else
        // the data is valid and it is set
+
         $name = $this->checkValue($yokai->setName($name),"name", "Nombre de caractères insuffisant (3 minimum)");
         $kanji = $this->checkValue($yokai->setKanji($kanji),"kanji", "Non conforme");
         $translation = $this->checkValue($yokai->setTranslation($translation),"translation", "Nombre de caractères insuffisant (5 minimum)");
@@ -112,6 +113,7 @@ class YokaiController extends CoreController
         $appearance = $this->checkValue($yokai->setAppearance($appearance),"appearance", "Nombre de caractères insuffisant (50 minimum)");
         $behavior = $this->checkValue($yokai->setBehavior($behavior),"behavior", "Nombre de caractères insuffisant (50 minimum)");
         $alt = $this->checkValue($yokai->setAlt($alt),"alt", "Nombre de caractères insuffisant (3 minimum)");
+
 
         
 
