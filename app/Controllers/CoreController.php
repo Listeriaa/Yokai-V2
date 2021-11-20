@@ -184,8 +184,6 @@ abstract class CoreController
      */
     function dataValidate($data){
         $data = trim($data);
-               
-        htmlspecialchars($data);
         return $data;
     }
 
