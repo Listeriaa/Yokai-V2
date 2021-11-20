@@ -271,7 +271,7 @@ class Yokai extends CoreModel
      */ 
     public function getKanji()
     {
-        return $this->kanji;
+        return htmlspecialchars_decode($this->kanji);
     }
 
     /**

@@ -63,7 +63,7 @@ abstract class  CoreModel {
      */ 
     public function getName()
     {
-        return $this->name;
+        return htmlspecialchars_decode($this->name);
     }
 
     /**
